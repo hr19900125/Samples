@@ -1,4 +1,4 @@
-package com.ryan.java.basic;
+package com.ryan.java.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 
