@@ -101,6 +101,7 @@ public class ReflectionUtil {
         try {
             Class<?> clazz = target.getClass();
             Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
             return field;
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -109,6 +110,23 @@ public class ReflectionUtil {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } 
+        return null;
+    }
+    
+    public static Field getField(String className, String fieldName){
+        Class<?> clazz;
+        try {
+            clazz = Class.forName(className);
+            Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            return field;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
         return null;
     }
     
@@ -124,6 +142,19 @@ public class ReflectionUtil {
             }
         }
         return null;
+    }
+    
+    public static void setFieldValue(Object target, String fieldName, Object value){
+        Field field = getField(target, fieldName);
+        if(field != null){
+            try {
+                field.set(target, value);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     public static boolean getFieldBooleanValue(Object target, String fieldName, boolean defaultValue){
@@ -142,6 +173,19 @@ public class ReflectionUtil {
         return fieldValue;
     }
     
+    public static void setFieldBooleanValue(Object target, String fieldName, boolean value){
+        Field field = getField(target, fieldName);
+        if(field != null){
+            try {
+                field.setBoolean(target, value);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     public static int getFieldIntValue(Object target, String fieldName, int defaultValue){
         int fieldValue = defaultValue;
         Field field = null;
@@ -158,6 +202,19 @@ public class ReflectionUtil {
         return fieldValue;
     }
     
+    public static void setFieldIntValue(Object target, String fieldName, int value){
+        Field field = getField(target, fieldName);
+        if(field != null){
+            try {
+                field.setInt(target, value);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     public static String getFieldStringValue(Object target, String fieldName, String defaultValue){
         String fieldValue = defaultValue;
         Field field = null;
@@ -165,6 +222,90 @@ public class ReflectionUtil {
         if(field != null){
             try {
                 fieldValue = (String) field.get(target);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassCastException e) {
+                e.printStackTrace();
+            }
+        }
+        return fieldValue;
+    }
+    
+    public static void setFieldStringValue(Object target, String fieldName, String value){
+        setFieldValue(target, fieldName, value);
+    }
+    
+    public static Field getStaticField(String className, String fieldName){
+        Class<?> clazz;
+        try {
+            clazz = Class.forName(className);
+            Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            return field;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object getStaticFieldValue(String className, String fieldName){
+        Field field = getStaticField(className, fieldName);
+        if(field != null){
+            try {
+                return field.get(null);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
+    public static boolean getStaticFieldBooleanValue(String className, String fieldName, boolean defaultValue){
+        boolean fieldValue = defaultValue;
+        Field field = getStaticField(className, fieldName);
+        if(field != null){
+            try {
+                fieldValue = field.getBoolean(null);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return fieldValue;
+    }
+    
+    public static int getStaticFieldIntValue(String className, String fieldName, int defaultValue){
+        int fieldValue = defaultValue;
+        Field field = getStaticField(className, fieldName);
+        if(field != null){
+            try {
+                fieldValue = field.getInt(null);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return fieldValue;
+    }
+    
+    public static String getStaticFieldStringValue(String className, String fieldName, String defaultValue){
+        String fieldValue = defaultValue;
+        Field field = getStaticField(className, fieldName);
+        if(field != null){
+            try {
+                fieldValue = (String) field.get(null);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

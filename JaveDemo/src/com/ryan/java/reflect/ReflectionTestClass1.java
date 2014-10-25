@@ -12,6 +12,26 @@ public class ReflectionTestClass1 {
     
     private static String mField5 = "field_5_value";
     
+    private static final int INT_FIELD_1 = 1;
+    
+    private int mIntField2 = 2;
+    
+    protected int mIntField3 = 3;
+    
+    public int mIntField4 = 4;
+    
+    private static int mIntField5 = 5;
+    
+    private static final boolean BOOLEAN_FIELD_1 = true;
+    
+    private boolean mBooleanField2 = false;
+    
+    protected boolean mBooleanField3 = true;
+    
+    public boolean mBooleanField4 = false;
+    
+    private static boolean mBooleanField5 = true;
+    
     public void testMethod1(){
         
     }
