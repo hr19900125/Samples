@@ -61,12 +61,21 @@ public class ReflectionUtilTest {
          System.out.println("mField5 = "+field5Value+" \n");
      }
      
+     public static void testGetStaticFieldValue(){
+         System.out.println("testGetStaticFieldValue---------------------------");
+         int field1Value = ReflectionUtil.getStaticFieldIntValue("com.ryan.java.reflect.ReflectionTestClass1", "INT_FIELD_1", -1);
+         String field2Value = ReflectionUtil.getStaticFieldStringValue("com.ryan.java.reflect.ReflectionTestClass1", "FIELD_1", "");
+         System.out.println("FIELD_1 = "+field1Value+" \n");
+         System.out.println("mField2 = "+field2Value+" \n");
+     }
+     
      public static void main(String[] args){
          testGetName();
          testDump();
          testGetFieldStringValue();
          testGetFieldBooleanValue();
          testGetFieldIntValue();
+         testGetStaticFieldValue();
      }
     
 }

@@ -316,22 +316,7 @@ public class ReflectionUtil {
         }
         return fieldValue;
     }
+   
     
-//    public static Object getStaticField(String className, String fieldName){
-//        Class<?> clazz;
-//        try {
-//            clazz = Class.forName(className);
-//            Field field = clazz.getDeclaredField(fieldName);
-//            field.get
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchFieldException e) {
-//            e.printStackTrace();
-//        }
-//        
-//        return null;
-//    }
     
 }
