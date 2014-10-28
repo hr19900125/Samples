@@ -33,15 +33,16 @@ public class ReflectionTestClass1 {
     private static boolean mBooleanField5 = true;
     
     public void testMethod1(){
-        
+        System.out.println("testMethod1 ...");
     }
     
     public void testMethod2(String arg1){
-        
+        System.out.println("testMethod2 ... arg1 = "+arg1);
     }
     
     public static boolean testMethod3(){
-        return true;
+        System.out.println("testMethod3 ...");
+        return false;
     }
     
 }

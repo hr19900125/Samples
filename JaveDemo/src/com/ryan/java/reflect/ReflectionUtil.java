@@ -2,6 +2,8 @@ package com.ryan.java.reflect;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ReflectionUtil {
 
@@ -316,7 +318,62 @@ public class ReflectionUtil {
         }
         return fieldValue;
     }
-   
+    
+    public static Object invoke(Object target, String methodName, Object... paras){
+        Class<?> clazz = target.getClass();
+        Class<?>[] params = null;
+        if(paras != null){
+            params = new Class<?>[paras.length];
+            for(int i=0,size=paras.length;i < size;i ++){
+                params[i] = paras[i].getClass();
+            }
+        }
+        try {
+            Method method = clazz.getDeclaredMethod(methodName, params);
+            method.setAccessible(true);
+            return method.invoke(target, paras);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static Object invoke(String className, String methodName, Object... paras){
+        try {
+            Class<?> clazz = Class.forName(className);
+            Class<?>[] params = null;
+            if(paras != null){
+                params = new Class<?>[paras.length];
+                for(int i=0,size=paras.length;i < size;i ++){
+                    params[i] = paras[i].getClass();
+                }
+            }
+            Method method = clazz.getDeclaredMethod(methodName, params);
+            method.setAccessible(true);
+            return method.invoke(null, params);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     
     
 }

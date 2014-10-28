@@ -1,6 +1,18 @@
 package com.ryan.java.reflect;
 
 public class ReflectionUtilTest {
+    
+     public static void testNewInstance(){
+         System.out.println("testNewInstance---------------------------");
+         ReflectionTestClass1 rtc1 = (ReflectionTestClass1) ReflectionUtil.newInstance(ReflectionTestClass1.class);
+         ReflectionTestClass1 rtc2 = (ReflectionTestClass1) ReflectionUtil.newInstance("com.ryan.java.reflect.ReflectionTestClass1");
+         rtc1.mField3 = "change field3";
+         rtc2.mField3 = "change field3 111";
+         System.out.println("rtc1----------");
+         System.out.println(ReflectionUtil.dump(rtc1, 1));
+         System.out.println("rtc2----------");
+         System.out.println(ReflectionUtil.dump(rtc2, 1));
+     }
 
      public static void testGetName(){
          System.out.println("testGetName---------------------------");
@@ -69,13 +81,24 @@ public class ReflectionUtilTest {
          System.out.println("mField2 = "+field2Value+" \n");
      }
      
+     public static void testInvokeMethod(){
+         System.out.println("testInvokeMethod---------------------------");
+         ReflectionTestClass1 obj = new ReflectionTestClass1();
+         ReflectionUtil.invoke(obj, "testMethod1", null);
+         ReflectionUtil.invoke(obj, "testMethod2", "test arg1");
+         boolean flag = (Boolean) ReflectionUtil.invoke("com.ryan.java.reflect.ReflectionTestClass1", "testMethod3", null);
+         System.out.println("flag = "+flag);
+     }
+     
      public static void main(String[] args){
+         testNewInstance();
          testGetName();
          testDump();
          testGetFieldStringValue();
          testGetFieldBooleanValue();
          testGetFieldIntValue();
          testGetStaticFieldValue();
+         testInvokeMethod();
      }
     
 }
