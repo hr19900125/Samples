@@ -86,8 +86,10 @@ public class ReflectionUtilTest {
          ReflectionTestClass1 obj = new ReflectionTestClass1();
          ReflectionUtil.invoke(obj, "testMethod1", null);
          ReflectionUtil.invoke(obj, "testMethod2", "test arg1");
-         boolean flag = (Boolean) ReflectionUtil.invoke("com.ryan.java.reflect.ReflectionTestClass1", "testMethod3", null);
+         boolean flag = (Boolean) ReflectionUtil.invokeStatic("com.ryan.java.reflect.ReflectionTestClass1", "testMethod3", null);
          System.out.println("flag = "+flag);
+         boolean flag2 = (Boolean) ReflectionUtil.invokeStatic(ReflectionTestClass1.class, "testMethod3", null);
+         System.out.println("flag2 = "+flag2);
      }
      
      public static void main(String[] args){

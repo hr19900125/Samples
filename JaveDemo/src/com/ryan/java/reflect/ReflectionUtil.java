@@ -346,7 +346,7 @@ public class ReflectionUtil {
         return null;
     }
     
-    public static Object invoke(String className, String methodName, Object... paras){
+    public static Object invokeStatic(String className, String methodName, Object... paras){
         try {
             Class<?> clazz = Class.forName(className);
             Class<?>[] params = null;
@@ -372,6 +372,32 @@ public class ReflectionUtil {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+    
+    public static Object invokeStatic(Class clazz, String methodName, Object... paras){
+        try{
+            Class<?>[] params = null;
+            if (paras != null) {
+                params = new Class<?>[paras.length];
+                for (int i = 0, size = paras.length; i < size; i++) {
+                    params[i] = paras[i].getClass();
+                }
+            }
+            Method method = clazz.getDeclaredMethod(methodName, params);
+            method.setAccessible(true);
+            return method.invoke(null, params);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } 
         return null;
     }
     
