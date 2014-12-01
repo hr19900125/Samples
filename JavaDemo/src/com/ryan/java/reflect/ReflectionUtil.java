@@ -1,4 +1,4 @@
-package com.ryan.java.reflect;
+package com.meizu.flyme.filemanager.reflection;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -24,10 +24,10 @@ public class ReflectionUtil {
                     buffer.append(",");
                 Object value = Array.get(o, i);
                 if (value.getClass().isPrimitive() ||
-                        value.getClass() == java.lang.Long.class ||
-                        value.getClass() == java.lang.String.class ||
-                        value.getClass() == java.lang.Integer.class ||
-                        value.getClass() == java.lang.Boolean.class
+                        value.getClass() == Long.class ||
+                        value.getClass() == String.class ||
+                        value.getClass() == Integer.class ||
+                        value.getClass() == Boolean.class
                         ) {
                     buffer.append(value);
                 } else {
@@ -51,10 +51,10 @@ public class ReflectionUtil {
                         Object value = fields[i].get(o);
                         if (value != null) {
                             if (value.getClass().isPrimitive() ||
-                                    value.getClass() == java.lang.Long.class ||
-                                    value.getClass() == java.lang.String.class ||
-                                    value.getClass() == java.lang.Integer.class ||
-                                    value.getClass() == java.lang.Boolean.class
+                                    value.getClass() == Long.class ||
+                                    value.getClass() == String.class ||
+                                    value.getClass() == Integer.class ||
+                                    value.getClass() == Boolean.class
                                     ) {
                                 buffer.append(value);
                             } else {
@@ -322,16 +322,19 @@ public class ReflectionUtil {
     public static Object invoke(Object target, String methodName, Object... paras){
         Class<?> clazz = target.getClass();
         Class<?>[] params = null;
+        Object[] paramsObj = null;
         if(paras != null){
             params = new Class<?>[paras.length];
+            paramsObj = new Object[paras.length];
             for(int i=0,size=paras.length;i < size;i ++){
                 params[i] = paras[i].getClass();
+                paramsObj[i] = paras[i];
             }
         }
         try {
             Method method = clazz.getDeclaredMethod(methodName, params);
             method.setAccessible(true);
-            return method.invoke(target, paras);
+            return method.invoke(target, paramsObj);
         } catch (SecurityException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -350,15 +353,18 @@ public class ReflectionUtil {
         try {
             Class<?> clazz = Class.forName(className);
             Class<?>[] params = null;
+            Object[] paramsObj = null;
             if(paras != null){
                 params = new Class<?>[paras.length];
+                paramsObj = new Object[paras.length];
                 for(int i=0,size=paras.length;i < size;i ++){
                     params[i] = paras[i].getClass();
+                    paramsObj[i] = paras[i];
                 }
             }
             Method method = clazz.getDeclaredMethod(methodName, params);
             method.setAccessible(true);
-            return method.invoke(null, params);
+            return method.invoke(null, paramsObj);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SecurityException e) {
@@ -378,15 +384,18 @@ public class ReflectionUtil {
     public static Object invokeStatic(Class clazz, String methodName, Object... paras){
         try{
             Class<?>[] params = null;
+            Object[] paramsObj = null;
             if (paras != null) {
                 params = new Class<?>[paras.length];
+                paramsObj = new Object[paras.length];
                 for (int i = 0, size = paras.length; i < size; i++) {
                     params[i] = paras[i].getClass();
+                    paramsObj[i] = paras[i];
                 }
             }
             Method method = clazz.getDeclaredMethod(methodName, params);
             method.setAccessible(true);
-            return method.invoke(null, params);
+            return method.invoke(null, paramsObj);
         } catch (SecurityException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
