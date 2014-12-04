@@ -239,6 +239,19 @@ public class ReflectionUtil {
         setFieldValue(target, fieldName, value);
     }
     
+    public static void setStaticField(String className, String fieldName, Object value){
+        Field field = getStaticField(className, fieldName);
+        if(field != null){
+            try {
+                field.set(null, value);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     public static Field getStaticField(String className, String fieldName){
         Class<?> clazz;
         try {

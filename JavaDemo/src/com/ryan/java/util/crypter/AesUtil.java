@@ -2,6 +2,7 @@ package com.ryan.java.util.crypter;
 
 import org.apache.commons.codec.binary.Base64;
 
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -21,7 +22,7 @@ public class AesUtil {
             SecretKeySpec key = new SecretKeySpec(passwd.getBytes(), "AES");
             aesECB.init(Cipher.ENCRYPT_MODE, key);
             byte[] result = aesECB.doFinal(content.getBytes());
-            return Base64.encodeBase64String(result);
+            return new String(Base64.encodeBase64(result),"UTF-8");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -31,6 +32,8 @@ public class AesUtil {
         } catch (IllegalBlockSizeException e) {
             e.printStackTrace();
         } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return null;

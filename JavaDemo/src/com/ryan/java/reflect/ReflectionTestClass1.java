@@ -2,7 +2,7 @@ package com.ryan.java.reflect;
 
 public class ReflectionTestClass1 {
 
-    private static final String FIELD_1 = "field_1_value";
+    public static String FIELD_1 = "field_1_value";
     
     private String mField2 = "field_2_value";
     

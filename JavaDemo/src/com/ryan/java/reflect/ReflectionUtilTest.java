@@ -92,6 +92,16 @@ public class ReflectionUtilTest {
          System.out.println("flag2 = "+flag2);
      }
      
+     public static void testFieldSetMethod(){
+         System.out.println("testFieldSetMethod---------------------------");
+         ReflectionTestClass1 obj = new ReflectionTestClass1();
+         ReflectionUtil.setFieldStringValue(obj, "mField4", "new mField4 Value");
+         System.out.println("obj mField4 = " + obj.mField4);
+         
+         ReflectionUtil.setStaticField("com.ryan.java.reflect.ReflectionTestClass1", "FIELD_1", "new FIELD_1 Value");
+         System.out.println("FIELD_1 = " + ReflectionTestClass1.FIELD_1);
+     }
+     
      public static void main(String[] args){
          testNewInstance();
          testGetName();
@@ -101,6 +111,7 @@ public class ReflectionUtilTest {
          testGetFieldIntValue();
          testGetStaticFieldValue();
          testInvokeMethod();
+         testFieldSetMethod();
      }
     
 }
