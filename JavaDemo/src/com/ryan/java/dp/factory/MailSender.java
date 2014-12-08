@@ -1,4 +1,4 @@
-package com.ryan.java.factorydesign;
+package com.ryan.java.dp.factory;
 
 public class MailSender implements Sender{
 

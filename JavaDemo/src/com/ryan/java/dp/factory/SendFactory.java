@@ -1,4 +1,4 @@
-package com.ryan.java.factorydesign;
+package com.ryan.java.dp.factory;
 /**
  * 普通工厂模式 
  *
