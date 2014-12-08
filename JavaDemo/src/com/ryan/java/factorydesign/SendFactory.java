@@ -1,5 +1,8 @@
 package com.ryan.java.factorydesign;
-
+/**
+ * 普通工厂模式 
+ *
+ */
 public class SendFactory {
 	
 	public Sender produce(String type){
