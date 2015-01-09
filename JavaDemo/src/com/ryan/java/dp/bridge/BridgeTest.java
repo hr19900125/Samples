@@ -1,5 +1,7 @@
 package com.ryan.java.dp.bridge;
-
+/**
+ * 桥接器模式 
+ */
 public class BridgeTest {
 
     public static void main(String[] args) {  
