@@ -1,6 +1,6 @@
 package com.ryan.java.dp.singleton;
 /**
- * 完美单例模式
+ * 单例模式
  * 
  */
 public class Singleton {
