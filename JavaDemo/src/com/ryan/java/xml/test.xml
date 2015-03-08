@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Cloud>  
+   
+  <Project name="FileManager">
+       
+    <Description>File abc</Description>
+       
+    <Author>Ryan</Author>
+       
+    <Telephone>123456789</Telephone>
+   
+  </Project>
+   
+  <Project name="AppStore">
+       
+    <Description>App Store</Description>
+       
+    <Author>Tom</Author>
+       
+    <Telephone>987654321</Telephone>
+   
+  </Project>
+   
+  <Project name="JavaDemo">
+       
+    <Description>Java Demo</Description>
+       
+    <Author>Huang</Author>
+       
+    <Telephone>213456789</Telephone>
+   
+  </Project>
+
+  <Project name="DocDemo">
+    <Description>Doc Demo</Description>
+    <Author>Ryan</Author>
+    <Telephone>897654321</Telephone>
+  </Project>
+</Cloud>
+

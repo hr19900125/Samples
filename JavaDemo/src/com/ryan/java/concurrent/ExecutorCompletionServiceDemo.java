@@ -29,11 +29,11 @@ public class ExecutorCompletionServiceDemo {
 
         Thread.sleep(1000 * 2);
         System.out.println("Show web content");
-        for (int index = 0; index < 5; index++) {
-            Future<String> task = serv.take();
-            String img = task.get();
-            System.out.println(img);
-        }
+//        for (int index = 0; index < 5; index++) {
+//            Future<String> task = serv.take();
+//            String img = task.get();
+//            System.out.println(img);
+//        }
         System.out.println("End");
         // 关闭线程池
         exec.shutdown();
