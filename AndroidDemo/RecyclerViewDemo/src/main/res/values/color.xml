@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_pressed" >@android:color/holo_blue_light</color>
+    <color name="item_normal" >@android:color/white</color>
+</resources>

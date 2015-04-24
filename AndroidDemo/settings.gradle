@@ -1,1 +1,1 @@
-include ':app', ':NetworkTest', ':JobQueueDemo'
+include ':app', ':NetworkTest', ':JobQueueDemo', ':RecyclerViewDemo'
