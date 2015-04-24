@@ -38,6 +38,7 @@ public class RecyclerViewActivity extends Activity {
             @Override
             public void onItemLongClick(View v, int position) {
                 Log.i(LOG_TAG, "onItemLongClick Item info : "+itemList.get(position).name);
+                mRecyclerAdapter.remove(position);
             }
         });
         mRecyclerView.setAdapter(mRecyclerAdapter);

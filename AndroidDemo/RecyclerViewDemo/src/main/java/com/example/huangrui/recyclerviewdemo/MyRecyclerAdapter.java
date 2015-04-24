@@ -48,6 +48,16 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         mItemLongClickListener = listener;
     }
 
+    public void add(ViewModel model, int position){
+        items.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void remove(int position){
+        items.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
         public TextView textView;
