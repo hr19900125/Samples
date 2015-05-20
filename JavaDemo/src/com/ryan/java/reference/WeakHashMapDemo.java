@@ -1,5 +1,5 @@
 
-package com.ryan.java.basic;
+package com.ryan.java.reference;
 
 import java.util.WeakHashMap;
 
