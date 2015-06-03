@@ -2,11 +2,13 @@ package com.ryan.java.gson;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class GsonTest {
@@ -52,18 +54,33 @@ public class GsonTest {
         System.out.println(GSON.toJson(intList));
         
         //
-        Foo<Bar> foo = new Foo<Bar>();
-        foo.value = new Bar();
+//        Foo<Bar> foo = new Foo<Bar>();
+//        foo.value = new Bar();
         //这种方式导致结果错误
-        System.out.println(GSON.toJson(foo));
+//        System.out.println(GSON.toJson(foo));
         
         //解决方式 使用TypeToken
-        Type fooType = new TypeToken<Foo<Bar>>() {}.getType();
-        System.out.println(GSON.toJson(foo, fooType));
+//        Type fooType = new TypeToken<Foo<Bar>>() {}.getType();
+//        System.out.println(GSON.toJson(foo, fooType));
         
-        String fooStr = "{\"value\":{\"a\":\"aaaaaxxx\",\"b\":\"bbbbbxxxx\"}}";
-        Foo<Bar> sFoo = GSON.fromJson(fooStr, foo.getClass());
-        System.out.println(sFoo.value);
+//        String fooStr = "{\"value\":{\"a\":\"aaaaaxxx\",\"b\":\"bbbbbxxxx\"}}";
+//        Foo<Bar> sFoo = GSON.fromJson(fooStr, foo.getClass());
+//        System.out.println(sFoo.value);
+        
+        //DateTimeTypeConverter Test 
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(DateTime.class, new DateTimeTypeConverter());
+        Gson gson = gsonBuilder.create();
+        DateTime time = new DateTime(new Date());
+        String jsonStr = gson.toJson(time);
+        System.out.println("time = "+gson.toJson(time));
+        DateTime desTime = gson.fromJson(jsonStr, DateTime.class);
+        System.out.println(desTime.toString());
+        
+        //PrettyPrinting
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson2.toJson(bag));
+        
     }
     
 }
