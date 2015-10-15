@@ -1,1 +1,1 @@
-include ':app', ':NetworkTest', ':JobQueueDemo', ':RecyclerViewDemo', ':SlidingDrawerDemo', ':demo', ':myapplication', ':CustomDrawableState', ':DrawableDemo'
+include ':app', ':NetworkTest', ':JobQueueDemo', ':RecyclerViewDemo', ':SlidingDrawerDemo', ':demo', ':myapplication', ':CustomDrawableState', ':CustomWidgetDemo', ':TouchEventDeliver'

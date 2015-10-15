@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <Button
+        android:id="@+id/round_image_drawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Round Image Drawable"
+        android:layout_marginBottom="5dip"/>
+
+    <Button
+        android:id="@+id/circle_image_drawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Circle Image Drawable"
+        android:layout_marginBottom="5dip"/>
+
+    <Button
+        android:id="@+id/circle_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RoundImageView"
+        android:layout_marginBottom="5dip"/>
+
+</LinearLayout>

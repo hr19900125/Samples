@@ -9,11 +9,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CustomDrawableState" />
-            <option value="$PROJECT_DIR$/DrawableDemo" />
+            <option value="$PROJECT_DIR$/CustomWidgetDemo" />
             <option value="$PROJECT_DIR$/JobQueueDemo" />
             <option value="$PROJECT_DIR$/NetworkTest" />
             <option value="$PROJECT_DIR$/RecyclerViewDemo" />
             <option value="$PROJECT_DIR$/SlidingDrawerDemo" />
+            <option value="$PROJECT_DIR$/TouchEventDeliver" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/demo" />
             <option value="$PROJECT_DIR$/myapplication" />

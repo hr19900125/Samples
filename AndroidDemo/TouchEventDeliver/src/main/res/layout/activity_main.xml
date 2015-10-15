@@ -1,0 +1,63 @@
+<com.ryan.demo.MyLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ryan.demo.MyLinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/ll_selector"
+        android:orientation="vertical" />
+
+    <com.ryan.demo.MyLinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ll_selector"
+        android:orientation="vertical">
+
+        <com.ryan.demo.MyLinearLayout
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ll_selector2"
+            android:clickable="true"
+            android:orientation="vertical" />
+    </com.ryan.demo.MyLinearLayout>
+
+    <com.ryan.demo.MyLinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ll_selector"
+        android:orientation="vertical">
+
+        <com.ryan.demo.MyButton
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn_selector"
+            android:text="button1" />
+    </com.ryan.demo.MyLinearLayout>
+
+    <com.ryan.demo.MyLinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ll_selector"
+        android:orientation="vertical">
+
+        <com.ryan.demo.MyButtonWithOutEvent
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn_selector"
+            android:text="button2" />
+    </com.ryan.demo.MyLinearLayout>
+
+</com.ryan.demo.MyLinearLayout>
