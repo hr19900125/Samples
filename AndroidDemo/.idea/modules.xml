@@ -9,9 +9,11 @@
       <module fileurl="file://$PROJECT_DIR$/NetworkTest/NetworkTest.iml" filepath="$PROJECT_DIR$/NetworkTest/NetworkTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" filepath="$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Toolbox/Toolbox.iml" filepath="$PROJECT_DIR$/Toolbox/Toolbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" filepath="$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmentargument/fragmentargument.iml" filepath="$PROJECT_DIR$/fragmentargument/fragmentargument.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
     </modules>
   </component>
