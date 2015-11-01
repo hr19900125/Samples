@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_GPS"/>
+
+    <!-- auto lock -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
 
     <application
         android:allowBackup="true"
@@ -39,6 +45,27 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".viewdemo.SetPrefAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.GetCurrentLocationAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.PinchZoomImageViewAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.AppIconAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.SendLocatoNotificationAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.ScreenModeDis_Ean_Act"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.OpenUrlINBrowserAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.AddressOnMapActivity"
             android:screenOrientation="portrait">
         </activity>
     </application>

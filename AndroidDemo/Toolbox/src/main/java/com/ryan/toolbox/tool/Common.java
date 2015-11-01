@@ -1,25 +1,38 @@
 package com.ryan.toolbox.tool;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.KeyguardManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ryan.toolbox.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -393,6 +406,177 @@ public class Common {
                 });
         alert = alertDialogBuilder.create();
         alert.show();
+    }
+
+    public static void showNETWORDDisabledAlert(final Context ctx) {
+        AlertDialog alert;
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctx);
+        alertDialogBuilder.setMessage("Let the app use data connectivity.")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent callGPSSettingIntent = new Intent(
+                                android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
+                        ctx.startActivity(callGPSSettingIntent);
+                    }
+                });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    /**
+     * use for getting application Icon.
+     *
+     * @param mContext
+     * @return Icon as drawable from the application
+     */
+    public static Drawable getAppIcon(Context mContext) {
+        Drawable icon = null;
+        final PackageManager pm = mContext.getPackageManager();
+        String packageName = mContext.getPackageName();
+        try {
+            icon = pm.getApplicationIcon(packageName);
+            return icon;
+        } catch (PackageManager.NameNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * use for make local notification from application
+     *
+     * @param mContext
+     * @param title    for the Notification
+     * @param message  for the notification
+     * @param mIntent  for open activity to open on touch of notification
+     */
+    @SuppressLint("NewApi")
+    @SuppressWarnings({"static-access"})
+    public static void sendLocatNotification(Context mContext, String title,
+                                             String message, Intent mIntent) {
+        System.out.println("called: " + title + " : " + message);
+        int appIconResId = 0;
+        PendingIntent pIntent = null;
+        if (mIntent != null)
+            pIntent = PendingIntent.getActivity(mContext, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        final PackageManager pm = mContext.getPackageManager();
+        String packageName = mContext.getPackageName();
+        ApplicationInfo applicationInfo;
+        try {
+            applicationInfo = pm.getApplicationInfo(packageName,
+                    PackageManager.GET_META_DATA);
+            appIconResId = applicationInfo.icon;
+        } catch (PackageManager.NameNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        // Notification notification = new Notification.Builder(mContext)
+        // .setSmallIcon(appIconResId).setWhen(System.currentTimeMillis())
+        // .setContentTitle(title).setContentText(message)
+        // .setContentIntent(pIntent).getNotification();
+
+        Notification notification;
+        if (mIntent == null) {
+            notification = new Notification.Builder(mContext)
+                    .setSmallIcon(appIconResId).setWhen(System.currentTimeMillis())
+                    .setContentTitle(message)
+                    .setStyle(new Notification.BigTextStyle().bigText(message))
+                    .setAutoCancel(true)
+                    .setContentText(message)
+                    .setContentIntent(PendingIntent.getActivity(mContext, 0, new Intent(), 0))
+                    .getNotification();
+
+        } else {
+            notification = new Notification.Builder(mContext)
+                    .setSmallIcon(appIconResId).setWhen(System.currentTimeMillis())
+                    .setContentTitle(message)
+                    .setContentText(message)
+                    .setAutoCancel(true)
+                    .setStyle(new Notification.BigTextStyle().bigText(message))
+                    .setContentIntent(pIntent).getNotification();
+        }
+        // Remove the notification on click
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        // Play default notification sound
+        notification.defaults |= Notification.DEFAULT_SOUND;
+
+        // Vibrate if vibrate is enabled
+        notification.defaults |= Notification.DEFAULT_VIBRATE;
+
+        NotificationManager manager = (NotificationManager) mContext
+                .getSystemService(mContext.NOTIFICATION_SERVICE);
+        // manager.notify(0, notification);
+        manager.notify(R.string.app_name, notification);
+    }
+
+    public static char getRandomCharacter() {
+        Random r = new Random();
+        char c = (char) (r.nextInt(26) + 'a');
+
+        return c;
+    }
+
+    // ------------------------------
+
+    private static KeyguardManager.KeyguardLock lock;
+
+    /**
+     * use for make disable sleep screen lock while application in use.
+     * 让屏幕保持不暗
+     * @param mContext
+     */
+    @SuppressWarnings({"static-access"})
+    public static void disableSleepMode(Context mContext) {
+        System.out.println("disable");
+        ((Activity) mContext).getWindow().addFlags(
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        KeyguardManager keyguardManager = (KeyguardManager) mContext
+                .getSystemService(Activity.KEYGUARD_SERVICE);
+        lock = keyguardManager.newKeyguardLock(mContext.KEYGUARD_SERVICE);
+        lock.disableKeyguard();
+    }
+
+    // ----------------------------
+
+    /**
+     * use for enable sleep screen while using application.
+     * 释放屏幕索
+     */
+    public static void enableSleepMode() {
+        lock.reenableKeyguard();
+    }
+
+    /**
+     * use for oepn any url in browser.
+     *
+     * @param mContext
+     * @param url      to open in your mobile browser
+     */
+    public static void openURL(Context mContext, String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        mContext.startActivity(intent);
+    }
+
+    /**
+     * use to show address location pin on map.
+     *
+     * @param mContext
+     * @param address  to show on map.
+     */
+    public static void showAddressOnMap(Context mContext, String address) {
+        address = address.replace(' ', '+');
+        Intent geoIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("geo:0,0?q=" + address));
+        mContext.startActivity(geoIntent);
     }
 
 }

@@ -27,13 +27,20 @@ public class ViewDemoHomeActivity extends Activity{
         mContext = this;
 
         String[] sdkFunctionalityListValue = new String[]{
-                "Validations",
-                "Internet availability",
-                "Date formats",
-                "Device id",
-                "Set preferences",
-                "Get preferences",
-                "Get current location"
+                "Validations", /* 0 */
+                "Internet availability", /* 1 */
+                "Date formats", /* 2 */
+                "Device id", /* 3 */
+                "Set preferences", /* 4 */
+                "Get preferences", /* 5 */
+                "Get current location", /* 6 */
+                "Pinchzoom image", /* 7 */
+                "Get application icon", /* 8 */
+                "Send notification", /* 9 */
+                "Get random character from A to Z",/* 10 */
+                "Screen sleep mode on off",/* 11 */
+                "Open url in browser",/* 12 */
+                "Show address on map",/* 13 */
         };
         sdkFunctionalityList = (ListView) findViewById(R.id.demo_list);
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sdkFunctionalityListValue);
@@ -74,7 +81,29 @@ public class ViewDemoHomeActivity extends Activity{
                 intent = new Intent(mContext, GetPrefAct.class);
                 break;
             case 6:
-
+                intent = new Intent(mContext, GetCurrentLocationAct.class);
+                break;
+            case 7:
+                intent = new Intent(mContext, PinchZoomImageViewAct.class);
+                break;
+            case 8:
+                intent = new Intent(mContext, AppIconAct.class);
+                break;
+            case 9:
+                intent = new Intent(mContext, SendLocatoNotificationAct.class);
+                break;
+            case 10:
+//                Toast.makeText(mContext, Common.getRandomCharacter(), Toast.LENGTH_SHORT).show();
+                Common.showAlertDialog(mContext, "", Common.getRandomCharacter()+"", false);
+                break;
+            case 11:
+                intent = new Intent(mContext, ScreenModeDis_Ean_Act.class);
+                break;
+            case 12:
+                intent = new Intent(mContext, OpenUrlINBrowserAct.class);
+                break;
+            case 13:
+                intent = new Intent(mContext, AddressOnMapActivity.class);
                 break;
         }
         if(intent != null)startActivity(intent);
