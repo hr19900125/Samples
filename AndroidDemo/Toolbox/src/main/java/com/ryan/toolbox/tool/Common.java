@@ -3,10 +3,12 @@ package com.ryan.toolbox.tool;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +17,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
@@ -23,14 +26,22 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.ryan.toolbox.R;
+import com.ryan.toolbox.viewdemo.service.BackgroundMusicService;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -577,6 +588,202 @@ public class Common {
         Intent geoIntent = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("geo:0,0?q=" + address));
         mContext.startActivity(geoIntent);
+    }
+
+    // ------------------------------------------
+
+    /**
+     * use image from URL.
+     *
+     * @param imgurl     of the image.
+     * @param mImageView in which you have to set image
+     */
+    public static void downloadImageFromURL(final String imgurl,
+                                            final ImageView mImageView) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    final Bitmap bitmap = BitmapFactory
+                            .decodeStream((InputStream) new URL(imgurl)
+                                    .getContent());
+                    mImageView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (bitmap != null) {
+
+                                mImageView.setImageBitmap(bitmap);
+                            }
+
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    private static Calendar dateTime = Calendar.getInstance();
+    /**
+     * use to show datepicker
+     *
+     * @param mContext
+     * @param format    of the date format
+     * @param mTextView in which you have to set selected date
+     */
+    public static void showDatePickerDialog(final Context mContext,
+                                            final String format) {
+        new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                SimpleDateFormat dateFormatter = new SimpleDateFormat(format);
+                dateTime.set(year, monthOfYear, dayOfMonth);
+
+//                mTextView.setText(dateFormatter.format(dateTime.getTime())
+//                        .toString());
+            }
+        }, dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH),
+                dateTime.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    /**
+     * show timepicker
+     *
+     * @param mContext
+     * @param mTextView formar of the time
+     * @return show timepicker
+     */
+    public static void showTimePickerDialog(final Context mContext) {
+        new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
+
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm a");
+                dateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                dateTime.set(Calendar.MINUTE, minute);
+
+//                mTextView.setText(timeFormatter.format(dateTime.getTime())
+//                        .toString());
+            }
+        }, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE),
+                false).show();
+    }
+
+    /**
+     * use for getting device height
+     *
+     * @param mContext
+     * @return height of your device
+     */
+    public static int getDeviceHeight(Context mContext) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) mContext).getWindowManager().getDefaultDisplay()
+                .getMetrics(displaymetrics);
+        return displaymetrics.heightPixels;
+    }
+
+    /**
+     * use for getting device width
+     *
+     * @param mContext
+     * @return width of your device
+     */
+    public static int getDeviceWidth(Context mContext) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) mContext).getWindowManager().getDefaultDisplay()
+                .getMetrics(displaymetrics);
+        return displaymetrics.widthPixels;
+    }
+
+    /**
+     * use for add postfix to the number like: 1st, 3rd..
+     *
+     * @param number which you have to add postfix
+     * @return number in string with postfix
+     */
+    public static String getPostFixForNumber(int number) {
+        String strValue = "";
+        // int npos = Integer.valueOf(Pos);
+
+        switch (number % 10) {
+            case 1:
+                strValue = (number % 100 == 11) ? "th" : "st";
+                break;
+            case 2:
+                strValue = (number % 100 == 12) ? "th" : "nd";
+                break;
+            case 3:
+                strValue = (number % 100 == 13) ? "th" : "rd";
+                break;
+            default:
+                strValue = "th";
+                break;
+        }
+        return number + strValue;
+    }
+
+    /**
+     * start background music
+     *
+     * @param mContext
+     */
+    public static void backgroundMusicStart(Context mContext) {
+        mContext.startService(new Intent(mContext, BackgroundMusicService.class));
+    }
+
+    /**
+     * stop background music
+     *
+     * @param mContext
+     */
+    public static void backgroundMusicStop(Context mContext) {
+        mContext.stopService(new Intent(mContext, BackgroundMusicService.class));
+    }
+
+    /**
+     * apply blue effect on darawable.
+     *
+     * @param mContext
+     * @param drawable for applying effect
+     * @param radius   for blur effect 0 to 25
+     * @return drawable
+     */
+    public static Drawable blurEffectsOnDrawable(Context mContext, int drawable, int radius) {
+
+        if (radius == 0)
+            radius = 20;
+        Bitmap blurBitmap;
+        Bitmap bitmap = drawableTobitmap(mContext, drawable);
+        blurBitmap = BlurEffect.fastblur(mContext, bitmap, radius);
+        return new BitmapDrawable(blurBitmap);
+    }
+
+    /**
+     * convert drawable to bitmap
+     *
+     * @param mContext
+     * @param drawable for convert to bitmap
+     * @return bitmap image
+     */
+    public static Bitmap drawableTobitmap(Context mContext, int drawable) {
+        // TODO Auto-generated method stub
+        Drawable myDrawable = mContext.getResources().getDrawable(drawable);
+        return ((BitmapDrawable) myDrawable).getBitmap();
+    }
+
+    /**
+     * convert bitmap to drawable
+     *
+     * @param mContext
+     * @param bitmap   for convert to drawable
+     * @return drawable image
+     */
+    public static Drawable bitmapToDrawable(Context mContext, Bitmap bitmap) {
+        return new BitmapDrawable(bitmap);
     }
 
 }

@@ -41,6 +41,14 @@ public class ViewDemoHomeActivity extends Activity{
                 "Screen sleep mode on off",/* 11 */
                 "Open url in browser",/* 12 */
                 "Show address on map",/* 13 */
+                "Download image from url", /* 14 */
+                "Open date picker",/* 15 */
+                "Open time picker",/* 16 */
+                "Get device height",/* 17 */
+                "Get device width",/* 18 */
+                "Postfix for number",/* 19 */
+                "Music ON OFF",/* 20 */
+                "Apply blur bffect on image",/* 21 */
         };
         sdkFunctionalityList = (ListView) findViewById(R.id.demo_list);
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sdkFunctionalityListValue);
@@ -104,6 +112,30 @@ public class ViewDemoHomeActivity extends Activity{
                 break;
             case 13:
                 intent = new Intent(mContext, AddressOnMapActivity.class);
+                break;
+            case 14:
+                intent = new Intent(mContext, DownloadImageFromUrlAct.class);
+                break;
+            case 15:
+                Common.showDatePickerDialog(mContext, "yyyy-MM-dd");
+                break;
+            case 16:
+                Common.showTimePickerDialog(mContext);
+                break;
+            case 17:
+                Common.showAlertDialog(this, getString(R.string.app_name), "Your device height is: " + Common.getDeviceHeight(mContext) + ".", false);
+                break;
+            case 18:
+                Common.showAlertDialog(this, getString(R.string.app_name), "Your device width is: " + Common.getDeviceWidth(mContext) + ".", false);
+                break;
+            case 19:
+                intent = new Intent(mContext, PostFixForNumberAct.class);
+                break;
+            case 20:
+                intent = new Intent(mContext, BackGroundMusicStartStopAct.class);
+                break;
+            case 21:
+                intent = new Intent(mContext, BlurEffectActivity.class);
                 break;
         }
         if(intent != null)startActivity(intent);

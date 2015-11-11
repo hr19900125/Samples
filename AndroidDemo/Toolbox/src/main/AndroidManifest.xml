@@ -68,6 +68,20 @@
         <activity android:name=".viewdemo.AddressOnMapActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".viewdemo.DownloadImageFromUrlAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.PostFixForNumberAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.BackGroundMusicStartStopAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <service android:name=".viewdemo.service.BackgroundMusicService">
+        </service>
+        <activity android:name=".viewdemo.BlurEffectActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
