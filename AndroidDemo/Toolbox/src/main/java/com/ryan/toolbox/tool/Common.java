@@ -9,6 +9,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -892,6 +894,40 @@ public class Common {
         canvas.drawBitmap(bitmap, rect, rect, paint);
 
         return output;
+    }
+
+    // -----------------------------------
+    @SuppressLint("DefaultLocale")
+    public static void onBlueTooth(String action) {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter
+                .getDefaultAdapter();
+        if (action.toLowerCase().equalsIgnoreCase("on")) {
+            if (!mBluetoothAdapter.isEnabled()) {
+                mBluetoothAdapter.enable();
+            }
+        }
+
+        if (action.toLowerCase().equalsIgnoreCase("off")) {
+            if (mBluetoothAdapter.isEnabled()) {
+                mBluetoothAdapter.disable();
+            }
+        }
+    }
+
+    public static void onWifi(Context mContext, String action) {
+        WifiManager wm = ((WifiManager) mContext
+                .getSystemService(Context.WIFI_SERVICE));
+        if (action.toLowerCase().equalsIgnoreCase("on")) {
+            if (!wm.isWifiEnabled()) {
+                wm.setWifiEnabled(true);
+            }
+        }
+
+        if (action.toLowerCase().equalsIgnoreCase("off")) {
+            if (wm.isWifiEnabled()) {
+                wm.setWifiEnabled(false);
+            }
+        }
     }
 
 }

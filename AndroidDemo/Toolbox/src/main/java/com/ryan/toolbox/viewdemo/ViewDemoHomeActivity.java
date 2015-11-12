@@ -57,6 +57,7 @@ public class ViewDemoHomeActivity extends Activity{
                 "Change device profile",/* 27 */
                 "Change bitmap to rounded cornered",/* 28 */
                 "Prevent double click",/* 29 */
+                "Bluetooth/wifi ON OFF",/* 30 */
         };
         sdkFunctionalityList = (ListView) findViewById(R.id.demo_list);
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sdkFunctionalityListValue);
@@ -172,6 +173,10 @@ public class ViewDemoHomeActivity extends Activity{
             case 29:
                 intent = new Intent(mContext, PreventClickActivity.class);
                 break;
+            case 30:
+                intent = new Intent(mContext, BluetoothOrWifiOnOffAct.class);
+                break;
+
         }
         if(intent != null)startActivity(intent);
     }
