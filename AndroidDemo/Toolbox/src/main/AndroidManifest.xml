@@ -82,6 +82,21 @@
         <activity android:name=".viewdemo.BlurEffectActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".viewdemo.SaveImageInPreferenceAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.VerticalTextViewsAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.ChooseProfileActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.RoundedBitmapActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewdemo.PreventClickActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

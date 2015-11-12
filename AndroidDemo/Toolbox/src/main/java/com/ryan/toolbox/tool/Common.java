@@ -14,17 +14,27 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Environment;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -784,6 +794,104 @@ public class Common {
      */
     public static Drawable bitmapToDrawable(Context mContext, Bitmap bitmap) {
         return new BitmapDrawable(bitmap);
+    }
+
+    /**
+     * get the version of the application
+     *
+     * @param context
+     * @return version code.
+     */
+    public static int getAppVersionCode(Context context) {
+        PackageInfo pInfo = null;
+        try {
+            pInfo = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return pInfo.versionCode;
+    }
+
+    /**
+     * 判断sdcard是否已挂载
+     * @param mContext
+     * @return
+     */
+    // -----------------------
+    public static boolean isSDCardAvailable(Context mContext) {
+        return Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED);
+
+    }
+
+    /**
+     * Opens android share dialog pass one of uri or shareText
+     *
+     * @param context
+     * @param title
+     * @param uri
+     * @param shareText
+     */
+    public static void openShareDialog(Context context, String title, String uri, String shareText, String shareSubject) {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, shareText);
+        share.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+
+        if (!TextUtils.isEmpty(uri)) {
+            share.setType("image/*");
+            share.putExtra(Intent.EXTRA_STREAM, Uri.parse(uri));
+        }
+        context.startActivity(Intent.createChooser(share, title));
+    }
+
+    /**
+     * Changes mobile profile to "Silent" or "Vibrate" or "Normal" mode
+     *
+     * @param context
+     * @param mode    types of mode  - "0- Silent"
+     *                - "1 - Vibrate"
+     *                - "2 - Normal"
+     */
+    public static void chooseProfile(Context context, int mode) {
+        AudioManager audio = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (mode == 0)
+            audio.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+        else if (mode == 1)
+            audio.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+        else if (mode == 2)
+            audio.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+    }
+
+    /**
+     * Get Rounded cornered bitmap
+     *
+     * @param bitmap
+     * @param roundPixels
+     * @return
+     */
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int roundPixels) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                .getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = roundPixels;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
     }
 
 }

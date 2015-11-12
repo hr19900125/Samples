@@ -49,6 +49,14 @@ public class ViewDemoHomeActivity extends Activity{
                 "Postfix for number",/* 19 */
                 "Music ON OFF",/* 20 */
                 "Apply blur bffect on image",/* 21 */
+                "Set and get image from preferences",/* 22 */
+                "Application version",/* 23 */
+                "Vertical text views",/* 24 */
+                "Is SDCard available?",/* 25 */
+                "Show share dialog",/* 26 */
+                "Change device profile",/* 27 */
+                "Change bitmap to rounded cornered",/* 28 */
+                "Prevent double click",/* 29 */
         };
         sdkFunctionalityList = (ListView) findViewById(R.id.demo_list);
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sdkFunctionalityListValue);
@@ -136,6 +144,33 @@ public class ViewDemoHomeActivity extends Activity{
                 break;
             case 21:
                 intent = new Intent(mContext, BlurEffectActivity.class);
+                break;
+            case 22:
+                intent = new Intent(mContext, SaveImageInPreferenceAct.class);
+                break;
+            case 23:
+                Common.showAlertDialog(this, getString(R.string.app_name), "Your application version is: " + Common.getAppVersionCode(mContext) + ".", false);
+                break;
+            case 24:
+                intent = new Intent(mContext, VerticalTextViewsAct.class);
+                break;
+            case 25:
+                if (Common.isSDCardAvailable(mContext))
+                    Common.showAlertDialog(this, getString(R.string.app_name), "SDCard is available.", false);
+                else
+                    Common.showAlertDialog(this, getString(R.string.app_name), "SDCard is not available.", false);
+                break;
+            case 26:
+                Common.openShareDialog(mContext, "Share title", "", "Share text", "Share subject");
+                break;
+            case 27:
+                intent = new Intent(mContext, ChooseProfileActivity.class);
+                break;
+            case 28:
+                intent = new Intent(mContext, RoundedBitmapActivity.class);
+                break;
+            case 29:
+                intent = new Intent(mContext, PreventClickActivity.class);
                 break;
         }
         if(intent != null)startActivity(intent);
