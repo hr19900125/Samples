@@ -3,6 +3,10 @@ package com.ryan.java.classloader;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 转自 http://blog.csdn.net/jiangwei0910410003/article/details/17733153 
+ *
+ */
 public class ClassLoaderTest2 {
 
 	@SuppressWarnings("rawtypes")  
