@@ -1,7 +1,9 @@
 package com.ryan.java.annotation;
 
 import java.lang.reflect.Method;
-
+/**
+ * @Inherited 测试
+ */
 public class AnnotationInheritedTest {
 
 	@InheritedAnnotation

@@ -3,6 +3,9 @@ package com.ryan.java.annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * @Retention 测试
+ */
 public class AnnotationRetentionTest {
 
 	@RetentionAnnotation

@@ -1,7 +1,9 @@
 package com.ryan.java.annotation;
 
 import com.ryan.java.annotation.test.A;
-
+/**
+ * @Target 测试
+ */
 @TypeAnnotation
 public class AnnotationTargetTest {
 
