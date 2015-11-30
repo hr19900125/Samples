@@ -3,6 +3,8 @@ package com.ryan.java.reflect;
 import java.lang.reflect.Constructor;
 
 /**
+ * Class getEnclosingConstructor 方法实例
+ * 
  * 如果类是一个构造函数中的本地或匿名类，返回这个构造函数对象
  *
  */

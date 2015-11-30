@@ -2,6 +2,10 @@ package com.ryan.java.reflect;
 
 import java.lang.reflect.Method;
 
+/**
+ * Method isSynthetic 方法实例 
+ *
+ */
 public class SyntheticSample {
 
 	public static void main(String args[]) {

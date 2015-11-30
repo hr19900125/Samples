@@ -127,8 +127,6 @@ public class Reflection {
         //http://blog.csdn.net/feier7501/article/details/19088361
         System.out.println("clazz.isSynthetic() = " + clazz.isSynthetic());
         
-        clazz.isAssignableFrom(cls)
-        
         System.out.println("-----------------------------------------------------------------------");
 		/**
 		 * 使用Constructor来实例化对象
@@ -137,6 +135,7 @@ public class Reflection {
 		Constructor constructor = clazz.getConstructor();
 		Huangrui h = (Huangrui) constructor.newInstance();
 		System.out.println("name = " + h.name + ", age = "+h.age + ", enjoy = " + h.enjoy);
+//		constructor.getExceptionTypes()
 		
 		//带参数的构造函数
 		Class[] paramTypes = new Class[]{String.class, int.class, String.class};
@@ -219,8 +218,6 @@ public class Reflection {
         System.out.println("field2 enumField.isEnumConstant() = " + field2.isEnumConstant() + " field2.getType() = " + field2.getType());
 	    
         System.out.println("LANGUAGE.JAVA.getClass().getName() = " + LANGUAGE.JAVA.getClass().getName() + ", " + LANGUAGE.JAVA.getClass().isEnum());
-        
-        
         
 	    System.out.println("-----------------------------------------------------------------------");
 //	    birthdayField.getType().getComponentType()

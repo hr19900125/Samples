@@ -2,6 +2,10 @@ package com.ryan.java.reflect;
 
 import java.lang.reflect.Method;
 
+/**
+ * Class getEnclosingMethod 方法实例
+ *
+ */
 public class EnclosingMethodSample {
 
 	public static class EnclosingMethod {
