@@ -5,5 +5,4 @@
  * @author huangrui
  *
  */
-
-package com.ryan.java.guava;
+package com.ryan.sample;
