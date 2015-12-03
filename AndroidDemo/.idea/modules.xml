@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" filepath="$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" filepath="$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoaderSample/LoaderSample.iml" filepath="$PROJECT_DIR$/LoaderSample/LoaderSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/NetworkTest/NetworkTest.iml" filepath="$PROJECT_DIR$/NetworkTest/NetworkTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" filepath="$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />

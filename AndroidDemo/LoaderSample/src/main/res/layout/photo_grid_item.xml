@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/photo_thumbnail"
+        android:layout_width="@dimen/photo_item_width"
+        android:layout_height="@dimen/photo_item_height"
+        android:layout_marginRight="@dimen/photo_item_padding"
+        android:layout_marginTop="@dimen/photo_item_padding"
+        android:background="@color/photo_bucket_default_color"
+        android:scaleType="centerCrop" />
+
+</FrameLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:meizu="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<flyme.support.v7.widget.MzRecyclerView-->
+    <!--android:id="@+id/photo_recycler_view"-->
+    <!--style="@style/FileListStyle"-->
+    <!--android:visibility="gone" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/photo_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/photo_grid_margin"
+        android:layout_marginRight="@dimen/photo_item_padding" />
+
+    <TextView
+        android:id="@+id/no_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textColor="@color/no_result_text_color"
+        android:textSize="@dimen/no_result_text_size"
+        android:visibility="gone" />
+    <!--
+    <RelativeLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone">
+
+        <com.meizu.common.widget.LoadingView
+            android:id="@+id/refresh_bar"
+            style="@style/Widget.MeizuCommon.LoadingView.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/refresh_text"
+            style="@style/LoadingViewTextStyle.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:text="@string/loading_text" />
+    </RelativeLayout>
+    -->
+</FrameLayout>
