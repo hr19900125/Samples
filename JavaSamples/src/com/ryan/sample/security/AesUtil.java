@@ -1,4 +1,4 @@
-package com.ryan.java.util.crypter;
+package com.ryan.sample.security;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -11,7 +11,12 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-
+/**
+ * AES 加密/解密 工具类
+ * 由于DES的不安全性以及DESede算法的低效,于是催生了AES算法(Advanced Encryption Standard)
+ * AES 为对称加密算法
+ * 该类使用长度16的密钥
+ */
 public class AesUtil {
 
     private static final String ALGORITHM_AES = "AES/ECB/PKCS5Padding";
@@ -59,5 +64,13 @@ public class AesUtil {
         }
         return null;
     }
+    
+    public static void main(String[] args) {
+		String str = "abcdefghijk";
+		String password = "!\"#$%&'()*+,-./0";
+		String encryptStr = encrypt(str, password);
+		System.out.println("encryptStr = " + encryptStr);
+		
+	}
     
 }

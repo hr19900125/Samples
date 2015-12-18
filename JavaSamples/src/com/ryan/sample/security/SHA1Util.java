@@ -1,17 +1,20 @@
-package com.ryan.java.util.crypter;
+package com.ryan.sample.security;
 
 import java.io.FileInputStream;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 
+/**
+ * SHA1 对文件进行加密 
+ */
 public class SHA1Util {
 	public final static int bufferSize = 1024;
 
-	public static String SHA1EncodeHex(byte[] data) {
+	private static String SHA1EncodeHex(byte[] data) {
 		return byteArrayToHexString(SHA1Encode(data));
 	}
 
-	public static String SHA1EncodeFileHex(String fileName) {
+	private static String SHA1EncodeFileHex(String fileName) {
 		return byteArrayToHexString(SHA1EncodeFile(fileName));
 	}
 
@@ -45,7 +48,7 @@ public class SHA1Util {
 		}
 	}
 
-	public static byte[] SHA1Encode(byte[] data) {
+	private static byte[] SHA1Encode(byte[] data) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA1");
 			return md.digest(data);
@@ -58,7 +61,7 @@ public class SHA1Util {
 	private static final String hexDigits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
 			"e", "f" };
 
-	public static String byteArrayToHexString(byte data[]) {
+	private static String byteArrayToHexString(byte data[]) {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < data.length; i++) {
 			sb.append(byteToHexString(data[i]));
@@ -66,7 +69,7 @@ public class SHA1Util {
 		return sb.toString();
 	}
 
-	public static String byteToHexString(byte b) {
+	private static String byteToHexString(byte b) {
 		int n = b;
 		if (n < 0) {
 			n += 256;
