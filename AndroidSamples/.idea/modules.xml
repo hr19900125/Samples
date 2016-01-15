@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidSamples.iml" filepath="$PROJECT_DIR$/AndroidSamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" filepath="$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" filepath="$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/NetworkTest/NetworkTest.iml" filepath="$PROJECT_DIR$/NetworkTest/NetworkTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" filepath="$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" filepath="$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/Toolbox/Toolbox.iml" filepath="$PROJECT_DIR$/Toolbox/Toolbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" filepath="$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
