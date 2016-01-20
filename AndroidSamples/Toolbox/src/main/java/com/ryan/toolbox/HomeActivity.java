@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ryan.toolbox.camera.CameraSamplesActivity;
 import com.ryan.toolbox.codesnippet.CodeSnippetHomeActivity;
 import com.ryan.toolbox.material.MaterialLibrariesHomeActivity;
 import com.ryan.toolbox.viewdemo.ViewDemoHomeActivity;
@@ -16,7 +17,7 @@ public class HomeActivity extends Activity {
 
     Context mContext;
     Activity mActivity;
-    TextView txtDemo, txtCodeSnip, txtMaterialLibrary;
+    TextView txtDemo, txtCodeSnip, txtMaterialLibrary, txtCameraSamples;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class HomeActivity extends Activity {
         txtDemo = (TextView) findViewById(R.id.txtDemo);
         txtCodeSnip = (TextView) findViewById(R.id.txtCodeSnip);
         txtMaterialLibrary = (TextView) findViewById(R.id.txtMaterialLibrary);
+        txtCameraSamples = (TextView) findViewById(R.id.txtCameraSamples);
 
         txtDemo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,5 +55,14 @@ public class HomeActivity extends Activity {
                 startActivity(intcode);
             }
         });
+
+        txtCameraSamples.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent(mContext, CameraSamplesActivity.class);
+                startActivity(cameraIntent);
+            }
+        });
+
     }
 }

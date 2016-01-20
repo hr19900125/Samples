@@ -12,6 +12,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <!-- auto lock -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
 
@@ -39,6 +42,11 @@
         <activity android:name=".material.MaterialLibrariesHomeActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".camera.CameraSamplesActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".viewdemo.ValidationsAct"
             android:screenOrientation="portrait">
         </activity>
@@ -102,6 +110,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".viewdemo.BluetoothOrWifiOnOffAct"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".camera.LiveCameraActivity"
             android:screenOrientation="portrait">
         </activity>
     </application>
