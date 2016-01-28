@@ -9,7 +9,7 @@ import android.view.TextureView;
 import java.io.IOException;
 
 /**
- *
+ * 简单的TextureView的使用
  */
 public class LiveCameraActivity extends Activity implements TextureView.SurfaceTextureListener{
 

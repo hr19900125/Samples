@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.ryan.toolbox.R;
+import com.ryan.toolbox.camera.surfaceview.CameraActivity;
 
 /**
  *
@@ -27,7 +28,9 @@ public class CameraSamplesActivity extends Activity{
         mContext = this;
 
         String[] samplesValues = new String[] {
-                "TextureView Simple sample"
+                "TextureView Simple sample",
+                "SurfaceView预览Camera,拍照功能",
+                "TextureView预览Camera,拍照功能"
         };
 
         mSamplesListView = (ListView) findViewById(R.id.demo_list);
@@ -46,6 +49,14 @@ public class CameraSamplesActivity extends Activity{
         switch (position) {
             case 0:
                 intent = new Intent(mContext, LiveCameraActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(mContext, CameraActivity.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent = new Intent(mContext, com.ryan.toolbox.camera.textureview.CameraActivity.class);
                 startActivity(intent);
                 break;
         }

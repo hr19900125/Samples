@@ -1,119 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ryan.toolbox" >
+    package="com.ryan.toolbox">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_GPS"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- auto lock -->
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".HomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".viewdemo.ViewDemoHomeActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".codesnippet.CodeSnippetHomeActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".material.MaterialLibrariesHomeActivity"
-            android:screenOrientation="portrait">
-        </activity>
 
-        <activity android:name=".camera.CameraSamplesActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".viewdemo.ViewDemoHomeActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".codesnippet.CodeSnippetHomeActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".material.MaterialLibrariesHomeActivity"
+            android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".viewdemo.ValidationsAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.DateFormateAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.GetPrefAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.SetPrefAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.GetCurrentLocationAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.PinchZoomImageViewAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.AppIconAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.SendLocatoNotificationAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.ScreenModeDis_Ean_Act"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.OpenUrlINBrowserAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.AddressOnMapActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.DownloadImageFromUrlAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.PostFixForNumberAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.BackGroundMusicStartStopAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <service android:name=".viewdemo.service.BackgroundMusicService">
-        </service>
-        <activity android:name=".viewdemo.BlurEffectActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.SaveImageInPreferenceAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.VerticalTextViewsAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.ChooseProfileActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.RoundedBitmapActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.PreventClickActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".viewdemo.BluetoothOrWifiOnOffAct"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".camera.LiveCameraActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".camera.CameraSamplesActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".viewdemo.ValidationsAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.DateFormateAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.GetPrefAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.SetPrefAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.GetCurrentLocationAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.PinchZoomImageViewAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.AppIconAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.SendLocatoNotificationAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.ScreenModeDis_Ean_Act"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.OpenUrlINBrowserAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.AddressOnMapActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.DownloadImageFromUrlAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.PostFixForNumberAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.BackGroundMusicStartStopAct"
+            android:screenOrientation="portrait"></activity>
+
+        <service android:name=".viewdemo.service.BackgroundMusicService"></service>
+
+        <activity
+            android:name=".viewdemo.BlurEffectActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.SaveImageInPreferenceAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.VerticalTextViewsAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.ChooseProfileActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.RoundedBitmapActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.PreventClickActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".viewdemo.BluetoothOrWifiOnOffAct"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".camera.LiveCameraActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".camera.surfaceview.CameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" ></activity>
+        <activity android:name=".camera.textureview.CameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
     </application>
 
