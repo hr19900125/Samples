@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.PrivilegeDao">
+    <resultMap type="Privilege" id="PrivilegeResult">
+      <result column="privilege_id" property="ID"/>
+      <result column="privilege_type" property="privilegeType"/>
+      <result column="privilege_descr" property="privilegeDescr"/>
+      <result column="action_url" property="privilegeAction"/>
+    </resultMap>
+    
+	<select id="selectAllPrivilege" resultMap="PrivilegeResult">
+	  <![CDATA[
+		select * from privilege
+	  ]]>
+	</select>
+	
+	<select id="selectPrivilege" parameterType="long" resultMap="PrivilegeResult">
+	  <![CDATA[
+	    select * from privilege
+	    where privilege_id = #{value}
+	  ]]>
+	</select>
+	
+	<delete id="deletePrivilege" parameterType="long">
+	  <![CDATA[
+	    delete from privilege
+	    where privilege_id = #{value}
+	  ]]>
+	</delete>
+	
+	<insert id="insertPrivilege" parameterType="Privilege">
+	  <![CDATA[
+	    insert into privilege(privilege_type,privilege_descr,action_url)
+	    values(#{privilegeType},#{privilegeDescr},#{privilegeAction})
+	  ]]>
+	  <selectKey keyProperty="ID" resultType="long">
+         <![CDATA[ 
+            select LAST_INSERT_ID() 
+         ]]>
+       </selectKey> 
+	</insert>
+	
+	<update id="updatePrivilege" parameterType="Privilege">
+	   <![CDATA[
+	      update privilege
+	   ]]>
+	   <set>
+	     <if test="privilegeType != null">
+	       privilege_type = #{privilegeType},
+	     </if>
+	     <if test="privilegeDescr != null">
+	       privilege_descr = #{privilegeDescr},
+	     </if>
+	     <if test="privilegeAction != null">
+	       action_url = #{privilegeAction},
+	     </if>
+	   </set>
+	   <where>
+	      privilege_id = #{ID}
+	   </where>
+	</update>
+	
+</mapper >

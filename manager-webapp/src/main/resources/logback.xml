@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{80} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>${logback.file}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+            <FileNamePattern>${logback.log.timestampfile}</FileNamePattern>  
+        </rollingPolicy>
+        <encoder>  
+            <!-- %-40(%-35logger{35}:%-4line) -->  
+            <Pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%-5level] [%logger:%line] --%mdc{client} %msg%n</Pattern>  
+        </encoder>  
+    </appender> 
+    
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+	<!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+
+	<logger name="org.springframework" level="DEBUG" />
+
+</configuration>

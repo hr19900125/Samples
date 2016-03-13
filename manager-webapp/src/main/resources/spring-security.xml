@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:oauth2="http://www.springframework.org/schema/security/oauth2"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+            http://www.springframework.org/schema/security   
+            http://www.springframework.org/schema/security/spring-security-3.1.xsd
+            http://www.springframework.org/schema/security/oauth2 
+            http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler />         
+		
+    <!-- oauth2.0 配置  开始-->
+    
+    <bean id="oauthDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://${mysql.jdbc.url}:3306/oauth2?characterEncoding=utf8"></property>
+		<property name="username" value="${mysql.jdbc.username}"></property>
+		<property name="password" value="${mysql.jdbc.password}"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+	
+	<!-- Oauth service 配置 -->
+	<bean id="oauthTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="oauthDataSource" />
+	</bean>
+
+	<bean id="oauthTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="oauthTransactionManager"></property>
+	</bean>
+	<!-- mybatis 配置 -->
+	<bean id="oauthSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation">
+		   <value>classpath:oauth-sqlmap-config.xml</value>
+		</property>
+		<property name="dataSource" ref="oauthDataSource" />
+	</bean>
+	
+	<bean id="oauthDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ryan.oauth2.OauthDao"></property>
+		<property name="sqlSessionFactory" ref="oauthSqlSessionFactory"></property>
+	</bean>
+
+	<bean id="oauthService" class="com.ryan.oauth2.OauthServiceImpl">
+		<property name="oauthDao" ref="oauthDao"></property>
+	</bean>
+	
+    
+    <bean id="clientCredentialsTokenEndpointFilter" class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+        <property name="authenticationManager" ref="oauth2AuthenticationManager"/>
+    </bean>
+    
+    <!--mobile resource server filter-->
+    <oauth2:resource-server id="mobileResourceServer" resource-id="mobile-resource" token-services-ref="tokenServices"/>
+    
+    <!--Config ClientDetailsService-->
+    <bean id="clientDetailsService" class="com.ryan.oauth2.CustomJdbcClientDetailsService">
+        <constructor-arg index="0" ref="oauthDataSource"/>
+    </bean>
+    
+    <!--Config token services-->
+    <bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.JdbcTokenStore">
+        <constructor-arg index="0" ref="oauthDataSource"/>
+    </bean>
+    
+    <bean id="tokenServices" class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
+        <property name="tokenStore" ref="tokenStore"/>
+        <property name="supportRefreshToken" value="true"/>
+    </bean>
+    
+    <bean id="oauthUserApprovalHandler" class="com.ryan.oauth2.OauthUserApprovalHandler">
+        <property name="tokenServices" ref="tokenServices"/>
+        <property name="oauthService" ref="oauthService"/>
+    </bean>
+    
+    <oauth2:authorization-server client-details-service-ref="clientDetailsService" token-services-ref="tokenServices"
+                                 user-approval-handler-ref="oauthUserApprovalHandler"
+                                 user-approval-page="oauth_approval"
+                                 error-page="oauth_error">
+        <oauth2:authorization-code/>
+        <oauth2:implicit/>
+        <oauth2:refresh-token/>
+        <oauth2:client-credentials/>
+        <oauth2:password/>
+    </oauth2:authorization-server>
+    
+    <bean id="oauth2AuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint"/>
+     
+    <bean id="oauth2ClientDetailsUserService" class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
+        <constructor-arg ref="clientDetailsService"/>
+    </bean>           
+    
+    <bean id="oauth2AccessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.oauth2.provider.vote.ScopeVoter"/>
+                <bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="oauth2AccessDeniedHandler" class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler"/>
+    
+    <security:authentication-manager id="oauth2AuthenticationManager">
+        <security:authentication-provider user-service-ref="oauth2ClientDetailsUserService">
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+    <!-- oauth2.0 配置  结束-->
+    
+    <!-- Oauth service end  -->
+    
+    <security:http pattern="/auth/login.htm" security="none"/>
+    
+    <security:http pattern="/oauth/token" create-session="stateless" authentication-manager-ref="oauth2AuthenticationManager"
+          entry-point-ref="oauth2AuthenticationEntryPoint">
+        <security:intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_FULLY"/>
+        <security:anonymous enabled="false"/>
+        <security:http-basic entry-point-ref="oauth2AuthenticationEntryPoint"/>
+
+        <security:custom-filter ref="clientCredentialsTokenEndpointFilter" before="BASIC_AUTH_FILTER"/>
+        <security:custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+        <security:access-denied-handler ref="oauth2AccessDeniedHandler"/>
+    </security:http>
+    
+    <!--mobile http configuration -->
+    <security:http pattern="/open/**" create-session="never" entry-point-ref="oauth2AuthenticationEntryPoint"
+          access-decision-manager-ref="oauth2AccessDecisionManager">
+        <security:anonymous enabled="false"/>
+        <security:intercept-url pattern="/open/**" access="ROLE_USER"/>
+        <security:custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>
+        <security:access-denied-handler ref="oauth2AccessDeniedHandler"/>
+    </security:http>
+    
+    <security:http auto-config="true" 
+		access-denied-page="/auth/login.htm?authorization_error=2"
+		>
+		<security:intercept-url pattern="/oauth/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		
+		<security:form-login login-page="/auth/login.htm"
+			authentication-failure-url="/auth/login.htm?authentication_error=1" login-processing-url="/auth/j_security_check.do"
+			default-target-url="/users.htm" />
+		<security:logout invalidate-session="true"
+			logout-success-url="/auth/login.htm" logout-url="/auth/j_spring_security_logout.do" />
+		<!-- 实现免登陆验证 -->
+		<security:remember-me user-service-ref="userDetailServiceImpl"/>
+		<security:session-management
+			invalid-session-url="/auth/login.htm">
+			<security:concurrency-control
+				max-sessions="10" error-if-maximum-exceeded="true" />
+		</security:session-management>
+		<security:custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+	</security:http>
+	<!-- 配置过滤器 -->
+	<bean id="myFilter" class="com.ryan.web.security.MySecurityFilter">
+		<!-- 用户拥有的权限 -->
+		<property name="authenticationManager" ref="authenticationManager" />
+		<!-- 用户是否拥有所请求资源的权限 -->
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<!-- 资源与权限对应关系 -->
+		<property name="securityMetadataSource" ref="securityMetadataSource" />
+	</bean>
+	<!-- 实现了UserDetailsService的Bean -->
+	<security:authentication-manager alias="authenticationManager" erase-credentials="false">
+		<security:authentication-provider
+			user-service-ref="userDetailServiceImpl">
+			<security:password-encoder ref="passwordEncoder">
+				<!-- 用户名做为盐值 -->
+				<security:salt-source system-wide="51d4e728-01bc-4160-a9cd-ab81a1e6cf81" />
+			</security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	<bean id="accessDecisionManager" class="com.ryan.web.security.MyAccessDecisionManager"></bean>
+	<bean id="securityMetadataSource" class="com.ryan.web.security.MySecurityMetadataSource">
+		<constructor-arg name="privilegeService" ref="privilegeService" index="0"></constructor-arg>
+		<constructor-arg name="rolePrivilegeService" ref="rolePrivilegeService" index="1"></constructor-arg>
+	</bean>
+	<bean id="userDetailServiceImpl" class="com.ryan.web.security.MyUserDetailServiceImpl">
+		<property name="teacherService" ref="teacherService"></property>
+		<property name="parentAccountService" ref="parentAccountService"></property>
+	</bean>
+	<!-- 用户的密码加密或解密 -->
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+</beans>  

@@ -1,0 +1,121 @@
+<table width="165" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="28" background="../static/images/main_40.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="19%">&nbsp;</td>
+        <td width="81%" height="20"><span class="MENU_STYLE1">管理菜单</span></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top"><table width="151" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="23" background="../static/images/main_47.gif" id="imgmenu1" class="menu_title" style="cursor:pointer"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="18%">&nbsp;</td>
+                <td width="82%" class="MENU_STYLE1">后台管理</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td background="../static/images/main_51.gif" id="submenu1">
+			 <div class="sec_menu" >  
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="16%" height="25"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                    <td width="84%" height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="20" style="cursor:pointer"><span class="MENU_STYLE3"><a href="users.htm">学生信息管理</a></span></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td height="23"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                    <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="20" style="cursor:pointer" ><span class="MENU_STYLE3"><a href="classes.htm">班级信息管理</a></span></span></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td height="23"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                    <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="20" style="cursor:pointer" ><span class="MENU_STYLE3"><a href="schools.htm">学校信息管理</a></span></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td height="23"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                    <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="20" style="cursor:pointer" ><span class="MENU_STYLE3"><a href="notices.htm">消息通知管理</a></span></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                </table>
+			   </td>
+              </tr>
+              <tr>
+                <td height="5"><img src="../static/images/main_52.gif" width="151" height="5" /></td>
+              </tr>
+            </table></div></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="23" background="../static/images/main_47.gif" id="imgmenu2" class="menu_title" style="cursor:pointer"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="18%">&nbsp;</td>
+                  <td width="82%" class="MENU_STYLE1">系统管理</td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td background="../static/images/main_51.gif" id="submenu2"><div class="sec_menu" >
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="16%" height="25"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                          <td width="84%" height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td height="20" style="cursor:pointer" ><span class="MENU_STYLE3"><a href="permissions.htm">系统权限管理</a></span></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        <tr>
+                          <td height="23"><div align="center"><img src="../static/images/left.gif" width="10" height="10" /></div></td>
+                          <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td height="20" style="cursor:pointer"><span class="MENU_STYLE3"><a href="roles.htm">角色管理</a></span></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td height="5"><img src="../static/images/main_52.gif" width="151" height="5" /></td>
+                  </tr>
+                </table>
+            </div></td>
+          </tr>
+        </table>          </td>
+      </tr>
+      
+    </table></td>
+  </tr>
+  <tr>
+    <td height="18" background="../static/images/main_58.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="18" valign="bottom"><div align="center" class="MENU_STYLE3">版本：2008V1.0</div></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>

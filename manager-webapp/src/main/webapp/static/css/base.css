@@ -1,0 +1,38 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	height: 100%;
+	font-size: 62.5%;
+}
+
+input.text {
+	width: 95%;
+	padding: .4em;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none
+}
+
+a:hover {
+	color: #ff7f24;
+	text-decoration: none;
+}
+
+a:active {
+	color: #ff7f24;
+	text-decoration: none;
+}

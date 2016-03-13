@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+       <typeAlias alias="User" type="com.ryan.model.User"/>
+       <typeAlias alias="UserQuery" type="com.ryan.model.UserQuery"/>
+       <typeAlias alias="Role" type="com.ryan.model.Role"/>
+       <typeAlias alias="Privilege" type="com.ryan.model.Privilege"/>
+       <typeAlias alias="RolePrivilege" type="com.ryan.model.RolePrivilege"/>
+       <typeAlias alias="School" type="com.ryan.model.School"/>
+       <typeAlias alias="SchoolQuery" type="com.ryan.model.SchoolQuery"/>
+       <typeAlias alias="Class" type="com.ryan.model.Class"/>
+       <typeAlias alias="ClassQuery" type="com.ryan.model.ClassQuery"/>
+       <typeAlias alias="Teacher" type="com.ryan.model.Teacher"/>
+       <typeAlias alias="TeacherAccount" type="com.ryan.model.TeacherAccount"/>
+       <typeAlias alias="ParentAccount" type="com.ryan.model.ParentAccount"/>
+       <typeAlias alias="Notice" type="com.ryan.model.Notice"/>
+       <typeAlias alias="InOutRecord" type="com.ryan.model.InOutRecord"/>
+       <typeAlias alias="Homework" type="com.ryan.model.Homework"/>
+       <typeAlias alias="NoticeTarget" type="com.ryan.model.NoticeTarget"/>
+       <typeAlias alias="Location" type="com.ryan.model.Location"/>
+    </typeAliases>
+	<mappers>
+		<mapper resource="com/ryan/dao/TestMapper.xml" />
+		<mapper resource="com/ryan/dao/RoleMapper.xml"/>
+		<mapper resource="com/ryan/dao/PrivilegeMapper.xml"/>
+		<mapper resource="com/ryan/dao/RolePrivilegeMapper.xml"/>
+		<mapper resource="com/ryan/dao/UserMapper.xml"/>
+		<mapper resource="com/ryan/dao/SchoolMapper.xml"/>
+		<mapper resource="com/ryan/dao/ClassMapper.xml"/>
+		<mapper resource="com/ryan/dao/TeacherMapper.xml"/>
+		<mapper resource="com/ryan/dao/ParentAccountMapper.xml"/>
+		<mapper resource="com/ryan/dao/NoticeMapper.xml"/>
+		<mapper resource="com/ryan/dao/InOutRecordMapper.xml"/>
+		<mapper resource="com/ryan/dao/HomeworkMapper.xml"/>
+		<mapper resource="com/ryan/dao/LocationMapper.xml"/>
+	</mappers>
+</configuration>

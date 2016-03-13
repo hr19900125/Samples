@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.TeacherDao">
+    <resultMap type="Teacher" id="TeacherResult">
+       <result column="telephone" property="telephone"/>
+       <result column="teacher_name" property="teacherName"/>
+       <result column="school_name" property="schoolName"/>
+       <result column="school_id" property="schoolID"/>
+       <result column="department" property="department"/>
+       <result column="birthday" property="birthday"/>
+       <result column="sex" property="sex"/>
+       <result column="education" property="education"/>
+       <result column="level_name" property="levelName"/>
+       <result column="address" property="address"/>
+       <result column="entry_time" property="entryTime"/>
+       <result column="leave_time" property="leaveTime"/>
+       <result column="status" property="status"/>
+    </resultMap>
+    
+    <resultMap type="TeacherAccount" id="TeacherAccountResult">
+        <result column="telephone" property="telephone"/>
+        <result column="password" property="password"/>
+        <result column="school_id" property="schoolID"/>
+        <result column="school_name" property="schoolName"/>
+        <result column="teacher_name" property="teacherName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+    
+    <resultMap type="Privilege" id="PrivilegeResult">
+      <result column="privilege_id" property="ID"/>
+      <result column="privilege_type" property="privilegeType"/>
+      <result column="privilege_descr" property="privilegeDescr"/>
+      <result column="action_url" property="privilegeAction"/>
+    </resultMap>
+	
+	<select id="selectTeacherByTelephone" parameterType="string" resultMap="TeacherResult">
+	    <![CDATA[
+	       select *
+	       from teacher
+	       where teacher.telephone = #{value}
+	    ]]>
+	</select>
+	
+	<select id="selectTeacherAccountByTelephone" parameterType="string" resultMap="TeacherAccountResult">
+	    <![CDATA[
+	       select *
+	       from teacher_account
+	       where teacher_account.telephone = #{value}
+	    ]]>
+	</select>
+	
+	<update id="updateTeacher" parameterType="Teacher">
+	    <![CDATA[
+	       update teacher
+	    ]]>
+	    <set>
+	       <if test="teacherName != null">
+	          teacher_name = #{teacherName},
+	       </if>
+	       <if test="schoolName != null">
+	          school_name = #{schoolName},
+	       </if>
+	       <if test="schoolID > 0">
+	          school_id = #{schoolID},
+	       </if>
+	       <if test="department != null">
+	          department = #{department},
+	       </if>
+	       <if test="birthday != null">
+	          birthday = #{birthday},
+	       </if>
+	       <if test="sex != null">
+	          sex = #{sex},
+	       </if>
+	       <if test="education != null">
+	          education = #{education},
+	       </if>
+	       <if test="levelName != null">
+	          level_name = #{levelName},
+	       </if>
+	       <if test="address != null">
+	          address = #{address},
+	       </if>
+	       <if test="entryTime != null">
+	          entry_time = #{entryTime},
+	       </if>
+	       <if test="leaveTime != null">
+	          leave_time = #{leaveTime},
+	       </if>
+	       <if test="createTime != null">
+	          create_time = #{createTime},
+	       </if>
+	       <if test="modifyTime != null">
+	          modify_time = #{modifyTime}
+	       </if>
+	    </set>
+	    <![CDATA[
+	        where telephone = #{telephone}
+	    ]]>
+	</update>
+	
+	<update id="updateTeacherAccount" parameterType="TeacherAccount">
+	    <![CDATA[
+	        update teacher_account
+	    ]]>
+	    <set>
+	       <if test="password != null">
+	          password = #{password},
+	       </if>
+	       <if test="schoolID > 0">
+	          school_id = #{schoolID},
+	       </if>
+	       <if test="schoolName != null">
+	          school_name = #{schoolName},
+	       </if>
+	       <if test="teacherName != null">
+	          teacher_name = #{teacherName}
+	       </if>
+	       <if test="createTime != null">
+	          create_time = #{createTime},
+	       </if>
+	       <if test="modifyTime != null">
+	          modify_time = #{modifyTime}
+	       </if>
+	    </set>
+	    <![CDATA[
+	        where telephone = #{telephone}
+	    ]]>
+	</update>
+	
+	<!-- 软删除教师 -->
+	<update id="updateTeacherDeleted" parameterType="string">
+	    <![CDATA[
+	        update teacher
+            set status = 1
+            where telephone = #{value}
+	    ]]>
+	</update>
+	
+	<!-- 新增教师账户 -->
+	<insert id="insertTeacherAccount" parameterType="TeacherAccount">
+	    <![CDATA[
+	        insert into teacher_account (telephone,password,school_id,school_name,teacher_name,create_time,modify_time)
+	        values(#{telephone},#{password},#{schoolID},#{schoolName},#{teacherName},#{createTime},#{modifyTime})
+	    ]]>
+	</insert>
+	
+	<!-- 新增教师 -->
+	<insert id="insertTeacher" parameterType="Teacher">
+	    <![CDATA[
+	        insert into teacher (teacher_name,school_name,school_id,department,birthday,sex,education,telephone,level_name,address,entry_time,leave_time,create_time,modify_time)
+	        values(#{teacherName},#{schoolName},#{schoolID},#{department},#{birthday},#{sex},#{education},#{telephone},#{levelName},#{address},#{entryTime},#{leaveTime},#{createTime},#{modifyTime})
+	    ]]>
+	</insert>
+	
+	<delete id="deleteTeacherAccount" parameterType="string">
+	    <![CDATA[
+	       delete from teacher_account where telephone = #{value}
+	    ]]>
+	</delete>
+	
+	<delete id="deleteTeacher" parameterType="string">
+	    <![CDATA[
+	       delete from teacher where telephone = #{value}
+	    ]]>
+	</delete>
+	
+	<!-- 根据teacherId获取 -->
+	<select id="selectTeacherPrivilege" parameterType="string" resultMap="PrivilegeResult">
+	     <![CDATA[
+	         select privilege.*
+	         from teacher_role,role_privilege,privilege
+	         where teacher_role.telephone = #{value}
+	         and teacher_role.role_id = role_privilege.role_id
+	         and role_privilege.privilege_id = privilege.privilege_id
+	     ]]>
+	</select>
+	
+	<!-- 获取teacher的role ids -->
+	<select id="selectTeacherRoleIDs" parameterType="string" resultType="long">
+	     <![CDATA[
+	         select teacher_role.role_id
+	         from teacher_role
+	         where teacher_role.telephone = #{value}
+	         order by teacher_role.role_id
+	     ]]>
+	</select>
+	
+</mapper >

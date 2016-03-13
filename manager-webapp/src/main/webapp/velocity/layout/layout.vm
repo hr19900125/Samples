@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>
+<head >
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../static/css/base.css" type="text/css" />
+<link rel="stylesheet" href="../static/css/menu.css" type="text/css" />
+<link rel="stylesheet" href="../static/css/pagination.css" type="text/css" />
+<link rel="stylesheet" href="../static/js/jquery/themes/base/jquery.ui.all.css"/>
+<link rel="stylesheet" href="../static/css/button.css" type="text/css"/>
+<link rel="stylesheet" href="../static/css/validator.css"  type="text/css" /><!--表单验证样式表-->
+<script src="../static/js/utils.js" type="text/javascript"></script>
+<script src="../static/js/jquery/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="../static/js/jquery/jquery-migrate-1.1.1.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.core.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.mouse.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.button.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.draggable.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.position.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.resizable.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.button.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.dialog.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.effect.js" type="text/javascript"></script>
+<script src="../static/js/jquery/ui/jquery.ui.datepicker.js" type="text/javascript"></script>
+<script src="../static/js/jquery/jquery-datepicker-zh.js" type="text/javascript"></script>
+<script src="../static/js/jquery/formValidator-4.0.1.js" type="text/javascript"></script> <!--表单验证必须库-->
+<script src="../static/js/jquery/formValidatorRegex.js" type="text/javascript"></script> <!--表单验证扩展库-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>学校安全管理系统</title>
+</head>
+
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+  <tr >
+	<td >
+	  #parse('layout/header.vm')
+    </td>
+  </tr>
+  <tr height="100%">
+   <td >
+	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+      <tr>
+        <td>
+		  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+           <tr>
+             <td width="171" id=frmTitle noWrap name="fmTitle" align="center" valign="top">
+		       <table width="171" height="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+                 <tr>
+                   <td bgcolor="#1873aa" style="width:6px;">&nbsp;</td>
+                   <td width="165">
+			          #parse('layout/menu.vm')
+		           </td>
+                 </tr>
+               </table>
+	         </td>
+             <td width="6"  style="width:6px;"valign="middle" bgcolor="1873aa" >
+			   <SPAN class=navPoint id=switchPoint title=关闭/打开左栏><img src="../static/images/main_55.gif" name="img1" width=6 height=40 id=img1></SPAN>
+             </td>
+             <td width="100%" height="100%" align="center" valign="top">
+			    $screen_content
+		     </td>
+          </tr>
+         </table>
+		</td>
+        <td width="6" bgcolor="#1873aa" style=" width:6px;">&nbsp;</td>
+      </tr>
+    </table>
+	</td>
+  </tr>
+  <tr >
+	<td >
+	  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="6" background="../static/images/main_59.gif" style="line-height:6px;"><img src="../static/images/main_59.gif" width="6" height="6" ></td>
+        <td background="../static/images/main_61.gif" style="line-height:6px;">&nbsp;</td>
+        <td width="6" background="../static/images/main_61.gif" style="line-height:6px;"><img src="../static/images/main_62.gif" width="6" height="6" ></td>
+      </tr>
+      </table>
+    </td>
+  </tr>
+  ##<div id="footer">This is the footer<span style="display:none"><script language="javascript" type="text/javascript" src="http://js.users.51.la/1967272.js"></script></span></div>
+</table>
+</body>
+</html>

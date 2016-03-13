@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.HomeworkDao">
+    <resultMap type="Homework" id="HomeworkResult">
+      <result column="homework_id" property="ID"/>
+      <result column="class_id" property="classID"/>
+      <result column="title" property="title"/>
+      <result column="content" property="content"/>
+      <result column="creator_name" property="creatorName"/>
+      <result column="modify_time" property="modifyTime"/>
+      <result column="create_time" property="createTime"/>
+    </resultMap>
+    
+	<select id="selectHomeworkByClassId" parameterType="int" resultMap="HomeworkResult">
+	  <![CDATA[
+		select homework.*
+		from homework
+		where homework.class_id = #{value}
+		order by homework.create_time desc
+	  ]]>
+	</select>
+	
+</mapper >

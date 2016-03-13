@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://${mysql.jdbc.url}:3306/campus_security?characterEncoding=utf8"></property>
+		<property name="username" value="${mysql.jdbc.username}"></property>
+		<property name="password" value="${mysql.jdbc.password}"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager"></property>
+	</bean>
+	<!-- mybatis 配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation">
+		   <value>classpath:sqlmap-config.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="testDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ryan.dao.TestMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<bean id="testService" class="com.ryan.service.TestServiceImpl">
+		<property name="testDao" ref="testDao"></property>
+	</bean>
+	
+	<bean id="roleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.RoleDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="roleService" class="com.ryan.service.RoleServiceImpl">
+	    <property name="roleDao" ref="roleDao"></property>
+	</bean>
+	
+	<bean id="privilegeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.PrivilegeDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="privilegeService" class="com.ryan.service.PrivilegeServiceImpl">
+	    <property name="privilegeDao" ref="privilegeDao"></property>
+	</bean>
+	
+	<bean id="rolePrivilegeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.RolePrivilegeDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="rolePrivilegeService" class="com.ryan.service.RolePrivilegeServiceImpl">
+	    <property name="rolePrivilegeDao" ref="rolePrivilegeDao"></property>
+	</bean>
+	
+	<bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.UserDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="userService" class="com.ryan.service.UserServiceImpl">
+	    <property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="schoolDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.SchoolDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="schoolService" class="com.ryan.service.SchoolServiceImpl">
+	    <property name="schoolDao" ref="schoolDao"></property>
+	</bean>
+	
+	<bean id="classDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.ClassDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="classService" class="com.ryan.service.ClassServiceImpl">
+	    <property name="classDao" ref="classDao"></property>
+	</bean>
+	
+	<bean id="teacherDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.TeacherDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="teacherService" class="com.ryan.service.TeacherServiceImpl">
+	    <property name="teacherDao" ref="teacherDao"></property>
+	</bean>
+	
+	<bean id="parentAccountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.ParentAccountDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="parentAccountService" class="com.ryan.service.ParentAccountServiceImpl">
+	    <property name="parentAccountDao" ref="parentAccountDao"></property>
+	</bean>
+	
+	<bean id="noticeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.NoticeDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="noticeService" class="com.ryan.service.NoticeServiceImpl">
+	    <property name="noticeDao" ref="noticeDao"></property>
+	</bean>
+	
+	<bean id="inOutRecordDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.InOutRecordDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="inOutRecordService" class="com.ryan.service.InOutRecordServiceImpl">
+	    <property name="inOutRecordDao" ref="inOutRecordDao"></property>
+	</bean>
+	
+	<bean id="homeworkDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.HomeworkDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="homeworkService" class="com.ryan.service.HomeworkServiceImpl">
+	    <property name="homeworkDao" ref="homeworkDao"></property>
+	</bean>
+	
+	<bean id="locationDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.ryan.dao.LocationDao"></property>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="locationService" class="com.ryan.service.LocationServiceImpl">
+	    <property name="locationDao" ref="locationDao"></property>
+	</bean>
+	
+</beans>

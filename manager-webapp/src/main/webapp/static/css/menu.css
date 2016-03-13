@@ -1,0 +1,17 @@
+
+.MENU_STYLE1 {
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.MENU_STYLE3 {
+	font-size: 12px;
+	color: #033d61;
+}
+
+.menu_title SPAN {
+	FONT-WEIGHT: bold; LEFT: 3px; COLOR: #ffffff; POSITION: relative; TOP: 2px 
+}
+.menu_title2 SPAN {
+	FONT-WEIGHT: bold; LEFT: 3px; COLOR: #FFCC00; POSITION: relative; TOP: 2px
+}

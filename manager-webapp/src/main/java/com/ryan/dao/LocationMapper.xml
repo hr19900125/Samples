@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.LocationDao">
+    <resultMap type="Location" id="LocationResult">
+       <result column="lat" property="lat"/>
+       <result column="lng" property="lng"/>
+       <result column="height" property="height"/>
+       <result column="speed" property="speed"/>
+       <result column="direction" property="direction"/>
+       <result column="time" property="time"/>
+       <result column="accept_time" property="acceptTime"/>
+       <result column="type" property="type"/>
+       <result column="location_range" property="locationRange"/>
+       <result column="imei" property="imei"/>
+    </resultMap>
+    
+    <!-- 只获取上一次的location -->
+    <select id="selectLastLocation" parameterType="string" resultMap="LocationResult">
+       <![CDATA[
+          select location.*
+          from location
+          where location.imei = #{value}
+          order by location.accept_time desc
+          limit 1
+       ]]>
+    </select>
+    
+    <select id="selectLocationListByDate" parameterType="java.util.Map" resultMap="LocationResult">
+       <![CDATA[
+          select location.*
+          from location
+          where location.imei = #{imei}
+          and location.accept_time >= #{beginTime}
+          and location.accept_time < #{endTime}
+          order by location.accept_time desc
+       ]]>
+    </select>
+	
+</mapper >

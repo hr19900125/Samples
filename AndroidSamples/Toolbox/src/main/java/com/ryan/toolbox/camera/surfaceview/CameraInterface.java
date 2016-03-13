@@ -41,6 +41,10 @@ public class CameraInterface {
         return mCameraInterface;
     }
 
+    public boolean isPreviewing() {
+        return isPreviewing;
+    }
+
     /**
      * 打开Camera
      * @param callback

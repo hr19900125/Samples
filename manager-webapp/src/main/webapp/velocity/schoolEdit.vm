@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="../static/css/location/css/cityLayout.css" type="text/css" />
+<input type="hidden" id="isEdit" value="$isEdit"/>
+<input type="hidden" id="schoolID" value="$schoolID"/>
+<input type="hidden" id="school_region" value="$!{school.region}"/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="30" background="../static/images/tab/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="12" height="30"><img src="../static/images/tab/tab_03.gif" width="12" height="30" /></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="5%"><div align="center"><img src="../static/images/tab/tb.gif" width="16" height="16" /></div></td>
+                <td width="95%" class="STYLE1"><span class="STYLE3">你当前的位置</span>：[后台管理]-[学校信息管理]-[新增学校信息]</td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+        <td width="16"><img src="../static/images/tab/tab_07.gif" width="16" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="8" background="../static/images/tab/tab_12.gif">&nbsp;</td>
+        <td >
+		   ##添加表单
+		   ##开始
+		   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			     <tr >
+                   <td height="30" align="right"></td>
+                   <td>&nbsp;</td>
+                   <td height="30" >
+                      
+                   </td>
+                   <td height="30"></td>
+                 </tr>
+                 <tr>
+                   <td width="10%" height="30" align="right">学校名称</td>
+                   <td width="3%">&nbsp;</td>
+                   <td width="32%" height="30" align="left">
+					  <input name="name" type="text" id="s_name" size="30" #if($isEdit) value="$!{school.schoolName}" #end  class="text ui-widget-content ui-corner-all"/>
+				   </td>
+                   <td width="55%" height="30"></td>
+                 </tr>
+				 <tr >
+                   <td height="30" align="right"></td>
+                   <td>&nbsp;</td>
+                   <td height="30" >
+                      
+                   </td>
+                   <td height="30"></td>
+                </tr>
+				 <tr>
+                   <td height="30" align="right">选择城市</td>
+                   <td>&nbsp;</td>
+                   <td height="30" align="left" >
+					  <input name="" id="city_select" autocomplete="off" type="text" value="请选择/输入城市名称" class="city_input  inputFocus proCityQueryAll proCitySelAll" ov="请选择/输入城市名称">
+				   </td>
+                   <td height="30"></td>
+                </tr>
+				<tr>
+                   <td height="17" align="right" >&nbsp;</td>
+                </tr>
+                
+				<tr >
+                   <td height="30" align="right"></td>
+                   <td>&nbsp;</td>
+                   <td height="30" >
+                      
+                   </td>
+                   <td height="30"></td>
+                </tr>
+				<tr >
+                   <td height="30" align="right"></td>
+                   <td>&nbsp;</td>
+                   <td height="30" >
+                      <button id="submit_school" type="button" class="button blue">创建</button>   
+                   </td>
+                   <td height="30"></td>
+                </tr>
+                <tr>
+                   <td height="17" colspan="4" align="right">&nbsp;</td>
+                </tr>
+              </table>
+		   ##结束
+        </td>
+        <td width="8" background="../static/images/tab/tab_15.gif">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="35" background="../static/images/tab/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="12" height="35"><img src="../static/images/tab/tab_18.gif" width="12" height="35" /></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            ##<td class="STYLE4">&nbsp;&nbsp;共有 120 条记录，当前第 1/10 页</td>
+          </tr>
+        </table></td>
+        <td width="16"><img src="../static/images/tab/tab_20.gif" width="16" height="35" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<!--弹出省省市-->
+<div class="provinceCityAll">
+  <div class="tabs clearfix">
+    <ul class="">
+      <li><a href="javascript:" class="current" tb="hotCityAll">热门城市</a></li>
+      <li><a href="javascript:" tb="provinceAll">省份</a></li>
+      <li><a href="javascript:" tb="cityAll" id="cityAll">城市</a></li>
+      <li><a href="javascript:" tb="countyAll" id="countyAll">区县</a></li>
+    </ul>
+  </div>
+  <div class="con">
+    <div class="hotCityAll invis">
+      <div class="pre"><a></a></div>
+      <div class="list">
+        <ul>
+          <!-- 					<li><a href="javascript:"  class="current">南京</a></li> -->
+        </ul>
+      </div>
+      <div class="next"><a class="can"></a></div>
+    </div>
+    <div class="provinceAll invis">
+      <div class="pre"><a></a></div>
+      <div class="list">
+        <ul>
+          <!-- 					<li><a href="javascript:"  class="current">江西省</a></li> -->
+        </ul>
+      </div>
+      <div class="next"><a class="can"></a></div>
+    </div>
+    <div class="cityAll invis">
+      <div class="pre"><a></a></div>
+      <div class="list">
+        <ul>
+          <!-- 					<li><a href="javascript:"  class="current">南京</a></li> -->
+        </ul>
+      </div>
+      <div class="next"><a class="can"></a></div>
+    </div>
+    <div class="countyAll invis">
+      <div class="pre"><a></a></div>
+      <div class="list">
+        <ul>
+        </ul>
+      </div>
+      <div class="next"><a class="can"></a></div>
+    </div>
+  </div>
+</div>
+<script src="../static/js/location/public.js" type="text/javascript"></script>
+<script src="../static/js/schoolEdit.js" type="text/javascript"></script>

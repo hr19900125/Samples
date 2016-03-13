@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.ClassDao">
+    <resultMap type="Class" id="ClassResult">
+      <result column="class_id" property="ID"/>
+      <result column="class_name" property="className"/>
+      <result column="school_name" property="schoolName"/>
+      <result column="school_id" property="schoolID"/>
+      <result column="modify_time" property="modifyTime"/>
+      <result column="create_time" property="createTime"/>
+      <result column="status" property="status"/>
+    </resultMap>
+    
+	<select id="selectClassPage" parameterType="ClassQuery" resultMap="ClassResult">
+	  <![CDATA[
+	     select *
+	     from class
+	     where status = 0
+	     limit #{index},#{count} 
+	  ]]>
+	</select>
+	
+	<select id="selectAllClassCount" resultType="int">
+	   <![CDATA[
+	      select count(class.class_id)
+	      from class
+	      where status = 0
+	   ]]>
+	</select>
+	
+	<select id="selectClassById" parameterType="long" resultMap="ClassResult">
+	   <![CDATA[
+	      select *
+	      from class
+	      where class.class_id = #{value}
+	   ]]>
+	</select>
+	
+	<select id="selectClassesBySchoolId" parameterType="long" resultMap="ClassResult">
+	   <![CDATA[
+	      select *
+	      from class 
+	      where class.school_id = #{value}
+	   ]]>
+	</select>
+	
+	<insert id="insertClass" parameterType="Class">
+	  <![CDATA[
+	      insert into class(class_name,school_name,school_id,modify_time,create_time)
+	      values(#{className},#{schoolName},#{schoolID},#{modifyTime},#{createTime}) 
+	  ]]>
+	  <selectKey keyProperty="ID" resultType="long">
+         <![CDATA[ 
+            select LAST_INSERT_ID() 
+         ]]>
+      </selectKey>
+	</insert>
+	
+	<update id="updateClass" parameterType="Class">
+	   <![CDATA[
+	      update class
+	   ]]>
+	   <set>
+	      <if test="className != null">
+	         class_name = #{className},
+	      </if>
+	      <if test="schoolName != null">
+	         school_name = #{schoolName},
+	      </if>
+	      <if test="schoolID != null">
+	         school_id = #{schoolID},
+	      </if>
+	      <if test="modifyTime != null">
+	         modify_time = #{modifyTime}
+	      </if>
+	      <if test="createTime != null">
+	         create_time = #{createTime}
+	      </if>
+	   </set>
+	   <![CDATA[
+	      where class_id = #{ID}
+	   ]]>
+	</update>
+	
+	<update id="updateClassDeletedBySchoolId" parameterType="long">
+       <![CDATA[
+          update class
+          set status = 1
+          where school_id = #{value}
+       ]]>
+	</update>
+	
+	<update id="updateClassDeletedByClassId" parameterType="long">
+	   <![CDATA[
+	       update class
+	       set status = 1
+	       where class_id = #{value}
+	   ]]>
+	</update>
+	
+	<delete id="deleteClass" parameterType="long">
+	   <![CDATA[
+          delete from class where class_id = #{value}	       
+	   ]]>
+	</delete>
+	
+	<select id="selectClassesByTeacherId" parameterType="string" resultMap="ClassResult">
+	   <![CDATA[
+	      select class.*
+	      from teacher_class,class
+	      where teacher_class.teacher_id = #{value} 
+	      and teacher_class.class_id = class.class_id
+	      and class.status = 0
+	   ]]>
+	</select>
+	
+</mapper >

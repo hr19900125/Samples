@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.UserDao">
+    
+    <resultMap type="User" id="UserResult">
+       <result column="telephone" property="telephone"/>
+       <result column="user_name" property="username"/>
+       <result column="birthday" property="birthday"/>
+       <result column="sex" property="sex"/>
+       <result column="email" property="email"/>
+       <result column="qq" property="qq"/>
+       <result column="device_id" property="deviceID"/>
+       <result column="rfid" property="rfID"/>
+       <result column="create_time" property="createTime"/>
+       <result column="modify_time" property="modifyTime"/>
+       <result column="first_guardian_phone" property="firstGuardianPhone"/>
+       <result column="second_guardian_phone" property="secondGuardianPhone"/>
+       <result column="third_guardian_phone" property="thirdGuardianPhone"/>
+       <result column="school_id" property="schoolID"/>
+       <result column="school_name" property="schoolName"/>
+       <result column="class_id" property="classID"/>
+       <result column="class_name" property="className"/>
+    </resultMap>
+    
+    <insert id="insertUser" parameterType="User">
+       <![CDATA[
+           insert into user(telephone,user_name,birthday,sex,email,qq,device_id,rfid,create_time,modify_time,first_guardian_phone,second_guardian_phone,third_guardian_phone,school_id,school_name,class_id,class_name)
+           values(#{telephone},#{username},#{birthday},#{sex},#{email},#{qq},#{deviceID},#{rfID},#{createTime},#{modifyTime},#{firstGuardianPhone},#{secondGuardianPhone},#{thirdGuardianPhone},#{schoolID},#{schoolName},#{classID},#{className})
+	   ]]>
+    </insert>
+    
+    <update id="updateUser" parameterType="User">
+       <![CDATA[
+           update user
+       ]]>
+       <set>
+          <if test="username != null">
+             user_name = #{username},
+          </if>
+          <if test="birthday != null">
+             birthday = #{birthday},
+          </if>
+          <if test="sex != null">
+             sex = #{sex},
+          </if>
+          <if test="email != null">
+             email = #{email},
+          </if>
+          <if test="qq != null">
+             qq = #{qq},
+          </if>
+          <if test="deviceID != null">
+             device_id = #{deviceID},
+          </if>
+          <if test="rfID != null">
+             rfid = #{rfID},
+          </if>
+          <if test="createTime != null">
+             create_time = #{createTime},
+          </if>
+          <if test="modifyTime != null">
+             modify_time = #{modifyTime},
+          </if>
+          <if test="firstGuardianPhone != null">
+             first_guardian_phone = #{firstGuardianPhone},
+          </if>
+          <if test="secondGuardianPhone != null">
+             second_guardian_phone = #{secondGuardianPhone},
+          </if>
+          <if test="thirdGuardianPhone != null">
+             third_guardian_phone = #{thirdGuardianPhone},
+          </if>
+          <if test="schoolID > 0">
+             school_id = #{schoolID},
+          </if>
+          <if test="schoolName != null">
+             school_name = #{schoolName},
+          </if>
+          <if test="classID > 0">
+             class_id = #{classID},
+          </if>
+          <if test="className != null">
+             class_name = #{className}
+          </if>
+       </set>
+       <![CDATA[
+           where telephone = #{telephone}
+       ]]>
+    </update>
+    
+    <update id="updateUserStatusDeleted" parameterType="string">
+       <![CDATA[
+          update user
+          set status = 1
+          where telephone = #{value}
+       ]]>
+    </update>
+    
+    <delete id="deleteUser" parameterType="string">
+       <![CDATA[
+          delete from user where telephone = #{value}
+       ]]>
+    </delete>
+    
+    <select id="selectUser" parameterType="string" resultMap="UserResult">
+       <![CDATA[
+          select * from user where telephone = #{value}
+       ]]>
+    </select>
+    
+    <select id="selectUserList" parameterType="UserQuery" resultMap="UserResult">
+       <![CDATA[
+          select * from user
+       ]]>
+       where status = 0
+       <choose>
+          <when test="orderType = 1">
+            order by user_name
+          </when>
+          <when test="orderType = 2">
+            order by user_id
+          </when>
+          <when test="orderType = 3">
+            order by create_time desc
+          </when>
+          <when test="orderType = 4">
+            order by modify_time desc
+          </when>
+       </choose>
+       limit #{index},#{count}
+    </select>
+    
+    <select id="selectAllUsersCount" resultType="int">
+       <![CDATA[
+          select count(user.telephone)
+          from user
+          where status = 0
+       ]]>
+    </select>
+    
+    <select id="selectUserByTelephone" parameterType="string" resultMap="UserResult">
+       <![CDATA[
+          select user.*
+          from user
+          where user.telephone = #{value}
+       ]]>
+    </select>
+    
+    <select id="selectUserByFirstGuardianPhone" parameterType="string" resultMap="UserResult">
+       <![CDATA[
+          select user.*
+          from user
+          where user.first_guardian_phone = #{value}
+       ]]>
+    </select>
+</mapper >

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.RoleDao">
+    <resultMap type="Role" id="RoleResult">
+      <result column="role_id" property="roleID"/>
+      <result column="role_name" property="roleName"/>
+      <result column="role_descr" property="roleDescr"/>
+      <result column="create_time" property="createTime"/>
+      <result column="modify_time" property="modifyTime"/>
+      <result column="create_user" property="createUserName"/>
+    </resultMap>
+	<select id="selectRoles" parameterType="Map" resultMap="RoleResult">
+	  <![CDATA[
+	     select * 
+	     from role
+	  ]]>
+	     <if test="searchName != null">
+	        where searchName like '%${searchName}%'
+	     </if>
+	  <![CDATA[
+	     limit #{index},#{count}
+	  ]]>
+	</select>
+	
+	<select id="selectAllRoles" resultMap="RoleResult">
+	  <![CDATA[
+	    select *
+	    from role
+	  ]]>
+	</select>
+	
+	<select id="selectRolesCount" resultType="int">
+	  <![CDATA[
+	     select count(role_id)
+	     from role
+	  ]]>
+	</select>
+	
+	<select id="selectRole" parameterType="long" resultMap="RoleResult">
+	   <![CDATA[
+	     select *
+	     from role
+	     where role_id=#{value}
+	   ]]>
+	</select>
+	
+	<insert id="insertRole" parameterType="Role">
+	   <![CDATA[
+	     insert into role(role_name,role_descr,create_time,modify_time,create_user)
+	     values(#{roleName},#{roleDescr},#{createTime},#{modifyTime},#{createUserName})
+	   ]]>
+	   <selectKey keyProperty="roleID" resultType="long">
+         <![CDATA[ 
+            select LAST_INSERT_ID() 
+         ]]>
+       </selectKey> 
+	</insert>
+	
+	<update id="updateRole" parameterType="Role">
+	   <![CDATA[
+	     update role
+	   ]]>
+	   <set>
+	     <if test="roleName != null">
+	        role_name = #{roleName},
+	     </if>
+	     <if test="roleDescr != null">
+	        role_descr = #{roleDescr},
+	     </if>
+	     <if test="modifyTime != null">
+	        modify_time = #{modifyTime},
+	     </if>
+	     <if test="createUserName != null">
+	        create_user = #{createUserName},
+	     </if>
+	   </set>
+	   <where>
+	      role_id = #{roleID}
+	   </where>
+	</update>
+	
+	<delete id="deleteRole" parameterType="long">
+	   <![CDATA[
+	      delete from role where role_id = #{value}
+	   ]]>
+	</delete>
+	
+	<delete id="deleteRoles" parameterType="list">
+	   <![CDATA[
+	      delete from role 
+	      where role_id in 
+	   ]]>
+	   <foreach collection="list" item="id" open="(" separator="," close=")">  
+            #{id}         
+       </foreach>  
+	</delete>
+	
+</mapper >

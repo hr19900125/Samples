@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.ParentAccountDao">
+    <resultMap type="ParentAccount" id="ParentAccountResult">
+       <result column="telephone" property="telephone"/>
+       <result column="password" property="password"/>
+       <result column="parent_name" property="parentName"/>
+       <result column="create_time" property="createTime"/>
+       <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+    
+    <resultMap type="Privilege" id="PrivilegeResult">
+      <result column="privilege_id" property="ID"/>
+      <result column="privilege_type" property="privilegeType"/>
+      <result column="privilege_descr" property="privilegeDescr"/>
+      <result column="action_url" property="privilegeAction"/>
+    </resultMap>
+
+    <select id="selectParentAccountByUsername" parameterType="string" resultMap="ParentAccountResult">
+        <![CDATA[
+           select *
+           from parent_account
+           where telephone = #{value}
+        ]]>
+    </select>
+    
+    <update id="updateParentAccount" parameterType="ParentAccount" >
+        <![CDATA[
+           update parent_account
+        ]]>
+        <set>
+           <if test="password != null">
+              password = #{password},
+           </if>
+           <if test="parentName != null">
+              parent_name = #{parentName},
+           </if>
+           <if test="createTime != null">
+              create_time = #{createTime},
+           </if>
+           <if test="modifyTime != null">
+              modify_time = #{modifyTime},
+           </if>
+        </set>
+        <![CDATA[
+            where telephone = #{value}
+        ]]>
+    </update>
+    
+    <delete id="deleteParentAccount" parameterType="string">
+        <![CDATA[
+            delete from parent_account where telephone = #{value}
+        ]]>
+    </delete>
+    
+    <!-- 获取家长权限 -->
+    <select id="selectParentPrivileges" parameterType="string" resultMap="PrivilegeResult">
+        <![CDATA[
+            select privilege.*
+            from parent_role,role_privilege,privilege
+            where parent_role.parent_telephone = #{value}
+            and parent_role.role_id = role_privilege.role_id
+            and role_privilege.privilege_id = privilege.privilege_id
+        ]]>
+    </select>
+    
+    <!-- 获取家长角色ID列表 -->
+    <select id="selectParentRoleIDs" parameterType="string" resultType="long">
+        <![CDATA[
+            select parent_role.role_id
+            from parent_role
+            where parent_role.parent_telephone = #{value}
+            order by parent_role.role_id
+        ]]>
+    </select>
+</mapper >

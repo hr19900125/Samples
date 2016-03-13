@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.InOutRecordDao">
+    <resultMap type="InOutRecord" id="InOutRecordResult">
+      <result column="rfid" property="rfid"/>
+      <result column="direction" property="direction"/>
+      <result column="time" property="time"/>
+    </resultMap>
+    
+	<select id="getInOutRecordByTelephone" parameterType="string" resultMap="InOutRecordResult">
+	  <![CDATA[
+		  select inOutRecord.*
+		  from inOutRecord,user
+		  where user.telephone = #{value}
+		  and user.rfid = inOutRecord.rfid
+	  ]]>
+	</select>
+	
+	
+	
+</mapper >

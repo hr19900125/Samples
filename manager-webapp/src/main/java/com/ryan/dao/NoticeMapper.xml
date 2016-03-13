@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.NoticeDao">
+    <resultMap type="Notice" id="NoticeResult">
+      <result column="notice_id" property="ID"/>
+      <result column="notice_title" property="title"/>
+      <result column="notice_content" property="content"/>
+      <result column="notice_type" property="type"/>
+      <result column="creator_name" property="creatorName"/>
+      <result column="create_time" property="createTime"/>
+      <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+    
+    <resultMap type="NoticeTarget" id="NoticeTargetResult">
+      <result column="notice_id" property="noticeID"/>
+      <result column="target_type" property="targetType"/>
+      <result column="target_id" property="targetID"/>
+    </resultMap>
+    
+    <select id="selectNotice" parameterType="long" resultMap="NoticeResult">
+       <![CDATA[
+          select notice.*
+          from notice
+          where notice.notice_id = #{value}
+       ]]>
+    </select>
+    
+    <insert id="insertNotice" parameterType="Notice">
+       <![CDATA[
+          insert into notice (notice_title,notice_content,notice_type,create_time,modify_time,creator_name)
+          values (#{title},#{content},#{type},#{createTime},#{modifyTime},#{creatorName})
+       ]]>
+    </insert>
+    
+    <delete id="deleteNotice" parameterType="long">
+       <![CDATA[
+          delete from notice where notice_id = #{value}
+       ]]>
+    </delete>
+    
+    <update id="updateNotice" parameterType="Notice">
+       <![CDATA[
+           update notice
+       ]]>
+       <set>
+           <if test="title != null">
+              notice_title = #{title},
+           </if>
+           <if test="content != null">
+              notice_content = #{content},
+           </if>
+           <if test="type > 0">
+              notice_type = #{type},
+           </if>
+           <if test="createTime != null">
+              create_time = #{createTime},
+           </if>
+           <if test="modifyTime != null">
+              modify_time = #{modifyTime},
+           </if>
+           <if test="creatorName != null">
+              creator_name = #{creatorName}
+           </if>
+       </set>
+       <![CDATA[
+           where notice_id = #{ID}
+       ]]>
+    </update>
+    
+    <insert id="insertNoticeTarget" parameterType="NoticeTarget">
+       <![CDATA[
+          insert into notice_target (notice_id,target_id,target_type)
+          values (#{noticeID},#{targetID},#{targetType})
+       ]]>
+    </insert>
+    
+    <delete id="deleteNoticeTargets" parameterType="java.util.Map">
+       <![CDATA[
+          delete from notice_target where notice_id = #{noticeID} and target_type = #{targetType}
+       ]]>
+    </delete>
+    
+	<select id="getNoticeByTypeForTarget" parameterType="java.util.Map" resultMap="NoticeResult">
+	  <![CDATA[
+		  select notice.*
+		  from notice,notice_target
+		  where notice_target.target_type = #{type}
+		  and target_id = #{targetID}
+		  and notice_target.notice_id = notice.notice_id
+		  order by notice.create_time desc 
+	  ]]>
+	</select>
+	
+	<select id="getNoticeListByPage" parameterType="java.util.Map" resultMap="NoticeResult">
+	  <![CDATA[
+	      select notice.*
+	      from notice
+	      order by notice.create_time desc
+	      limit #{index},#{count} 
+	  ]]>
+	</select>
+	
+	<select id="getNoticeListCount" resultType="int">
+	   <![CDATA[
+	      select count(notice.notice_id)
+	      from notice
+	   ]]>
+	</select>
+	
+</mapper >

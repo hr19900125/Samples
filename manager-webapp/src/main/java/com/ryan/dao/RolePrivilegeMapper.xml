@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.RolePrivilegeDao">
+    <resultMap type="RolePrivilege" id="RolePrivilegeResult">
+      <result column="privilege_id" property="privilegeID"/>
+      <result column="role_id" property="roleID"/>
+    </resultMap>
+    
+    <resultMap type="Privilege" id="PrivilegeResult">
+      <result column="privilege_id" property="ID"/>
+      <result column="privilege_type" property="privilegeType"/>
+      <result column="privilege_descr" property="privilegeDescr"/>
+      <result column="action_url" property="privilegeAction"/>
+    </resultMap>
+    
+	<insert id="insertPrivilegeRole" parameterType="RolePrivilege">
+	  <![CDATA[
+		 insert into role_privilege(role_id,privilege_id)
+		 values(#{roleID},#{privilegeID})
+	  ]]>
+	</insert>
+	
+	<!-- 获取角色所拥有的权限 -->
+	<select id="selectPrivileges" parameterType="long" resultMap="PrivilegeResult">
+	  <![CDATA[
+	     select privilege.*
+	     from privilege,role_privilege
+	     where role_privilege.role_id = #{value}
+	     and role_privilege.privilege_id = privilege.privilege_id
+	     order by privilege.privilege_id
+	  ]]>
+	</select>
+	
+	<select id="selectRolePrivilegesByPid" parameterType="long" resultMap="RolePrivilegeResult">
+	   <![CDATA[
+	      select role_privilege.*
+	      from role_privilege
+	      where role_privilege.privilege_id = #{value}
+	      order by role_privilege.role_id
+	   ]]>
+	</select>
+	
+	<delete id="deleteRolePrivilegeByPid" parameterType="long">
+	  <![CDATA[
+	     delete from role_privilege
+	     where role_privilege.privilege_id = #{value}
+	  ]]>
+	</delete>
+	
+	<delete id="deleteRolePrivilegeByRid" parameterType="long">
+	  <![CDATA[
+	     delete from role_privilege
+	     where role_privilege.role_id = #{value}
+	  ]]>
+	</delete>
+	<!-- 根究roleid获取所有权限列表
+	<select id="selectPrivilegeListByRid" parameterType="long" resultMap="PrivilegeResult">
+	   <![CDATA[
+	      select privilege.*
+	      from role_privilege,privilege
+	      where role_privilege.role_id = #{value}
+	      and role_privilege.privilege_id = privilege.privilege_id
+	   ]]>
+	</select> -->
+
+</mapper >

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <context:annotation-config/> 
+	<!-- 对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+	<context:component-scan base-package="com.ryan.web" />
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="order" value="2"/>
+    </bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="velocity" />
+		<!-- Velocity属性配置 -->
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop><!-- 指定模板引擎进行模板处理的编码 -->
+				<prop key="output.encoding">UTF-8</prop><!-- 指定输出流的编码 -->
+				<prop key="contentType">text/html;charset=UTF-8</prop><!-- contentType -->
+				<!--<prop key="velocimacro.library">macros.vm</prop> Velocimacro 模板库的列表 -->
+				<!--  <prop key="eventhandler.referenceinsertion.class">org.apache.velocity.app.event.implement.EscapeHtmlReference</prop> -->
+				<prop key="eventhandler.noescape.html.match">/(?:screen_content)|(?:noescape_.*)/</prop>
+			</props>
+		</property>
+	</bean>
+
+    <bean id ="currentUser" class ="com.ryan.web.service.CurrentUser"/>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="cache" value="false" /><!--是否缓存模板 -->
+		<property name="suffix" value=".vm" />
+		<property name="toolboxConfigLocation">
+		  <value>WEB-INF/toolbox.xml</value>
+		</property>
+		<!--toolbox配置文件路径 -->
+		<property name="dateToolAttribute" value="date" /><!--日期函数名称 -->
+		<property name="numberToolAttribute" value="number" /><!--数字函数名称 -->
+		<property name="contentType" value="text/html;charset=UTF-8"/>
+		<property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持 -->
+		<property name="exposeRequestAttributes" value="true" /><!--是否开放request属性 -->
+		<property name="exposeSessionAttributes" value="true"/>
+		<property name="requestContextAttribute" value="rc" /><!--request属性引用名称 -->
+		<property name="layoutUrl" value="layout/layout.vm"/> <!--指定layout文件 -->
+		<property name="attributesMap">
+            <map>
+               <entry key="sec"><ref bean="currentUser"/></entry>
+            </map>
+        </property> 
+	</bean>
+	
+	
+</beans>

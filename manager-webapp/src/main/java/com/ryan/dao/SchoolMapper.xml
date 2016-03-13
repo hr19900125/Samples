@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryan.dao.SchoolDao">
+    <resultMap type="School" id="SchoolResult">
+      <result column="school_id" property="ID"/>
+      <result column="school_name" property="schoolName"/>
+      <result column="province_id" property="provinceID"/>
+      <result column="city_id" property="cityID"/>
+      <result column="county_id" property="countyID"/>
+      <result column="region" property="region"/>
+      <result column="modify_time" property="modifyTime"/>
+      <result column="create_time" property="createTime"/>
+    </resultMap>
+	<select id="selectSchoolPage" parameterType="SchoolQuery" resultMap="SchoolResult">
+	  <![CDATA[
+	      select * 
+	      from school
+	      where status = 0
+	      limit #{index},#{count} 
+	  ]]>
+	</select>
+	
+	<select id="selectAllSchool" resultMap="SchoolResult">
+	   <![CDATA[
+	      select *
+	      from school
+	      where status = 0
+	   ]]>
+	</select>
+	
+	<select id="selectAllSchoolCount" resultType="int">
+	   <![CDATA[
+	      select count(school.school_id)
+	      from school
+	      where status = 0
+	   ]]>
+	</select>
+	
+	<select id="selectSchoolById" parameterType="long" resultMap="SchoolResult">
+	   <![CDATA[
+	      select *
+	      from school
+	      where school.school_id = #{value}
+	   ]]>
+	</select>
+	
+	<insert id="insertSchool" parameterType="School">
+	  <![CDATA[
+	      insert into school(school_name,province_id,city_id,county_id,region,modify_time,create_time)
+	      values(#{schoolName},#{provinceID},#{cityID},#{countyID},#{region},#{modifyTime},#{createTime}) 
+	  ]]>
+	  <selectKey keyProperty="ID" resultType="long">
+         <![CDATA[ 
+            select LAST_INSERT_ID() 
+         ]]>
+      </selectKey>
+	</insert>
+	
+	<update id="updateSchool" parameterType="School">
+	   <![CDATA[
+	      update school
+	   ]]>
+	   <set>
+	      <if test="schoolName != null">
+	         school_name = #{schoolName},
+	      </if>
+	      <if test="provinceID != null">
+	         province_id = #{provinceID},
+	      </if>
+	      <if test="cityID != null">
+	         city_id = #{cityID},
+	      </if>
+	      <if test="countyID != null">
+	         county_id = #{countyID},
+	      </if>
+	      <if test="region != null">
+	         region = #{region},
+	      </if>
+	      <if test="modifyTime != null">
+	         modify_time = #{modifyTime}
+	      </if>
+	      <if test="createTime != null">
+	         create_time = #{createTime}
+	      </if>
+	   </set>
+	   <![CDATA[
+	      where school_id = #{ID}
+	   ]]>
+	</update>
+	
+	<update id="updateSchoolDeleted" parameterType="long">
+	   <![CDATA[
+	      update school
+	      set status = 1
+	      where school_id = #{value}
+	   ]]>
+	</update>
+	
+	<delete id="deleteSchool" parameterType="long">
+	   <![CDATA[
+          delete from school where school_id = #{value}	       
+	   ]]>
+	</delete>
+	
+	
+</mapper >
