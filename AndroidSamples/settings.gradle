@@ -1,1 +1,1 @@
-include ':app', ':NetworkTest', ':JobQueueDemo', ':RecyclerViewDemo', ':SlidingDrawerDemo', ':demo', ':myapplication', ':CustomDrawableState', ':CustomWidgetDemo', ':TouchEventDeliver', ':Toolbox', ':fragmentargument', ':LoaderSample', ':SurfaceViewSample', ':RecyclerViewGridQuickreturn'
+include ':JobQueueDemo', ':RecyclerViewDemo', ':SlidingDrawerDemo', ':CustomDrawableState', ':CustomWidgetDemo', ':TouchEventDeliver', ':Toolbox', ':fragmentargument', ':LoaderSample', ':SurfaceViewSample', ':RecyclerViewGridQuickreturn', ':Hellsing'

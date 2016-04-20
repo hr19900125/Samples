@@ -5,25 +5,22 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="1.7" />
+        <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CustomDrawableState" />
             <option value="$PROJECT_DIR$/CustomWidgetDemo" />
+            <option value="$PROJECT_DIR$/Hellsing" />
             <option value="$PROJECT_DIR$/JobQueueDemo" />
             <option value="$PROJECT_DIR$/LoaderSample" />
-            <option value="$PROJECT_DIR$/NetworkTest" />
             <option value="$PROJECT_DIR$/RecyclerViewDemo" />
             <option value="$PROJECT_DIR$/RecyclerViewGridQuickreturn" />
             <option value="$PROJECT_DIR$/SlidingDrawerDemo" />
             <option value="$PROJECT_DIR$/SurfaceViewSample" />
             <option value="$PROJECT_DIR$/Toolbox" />
             <option value="$PROJECT_DIR$/TouchEventDeliver" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/demo" />
             <option value="$PROJECT_DIR$/fragmentargument" />
-            <option value="$PROJECT_DIR$/myapplication" />
           </set>
         </option>
       </GradleProjectSettings>
