@@ -3,20 +3,24 @@ package com.sc.samples;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSelectedFragmentDelegate{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar mToolbar;
     private NavigationView mNavigationView;
+    private BaseFragment mSelectedFragment;
 
     private static final int ANIM_DURATION_TOOLBAR = 300;
 
@@ -129,4 +133,32 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void setupSelectedFragment(BaseFragment fragment) {
+        mSelectedFragment = fragment;
+    }
+
+    private long exitTime = 0;
+
+    public void doExitApp() {
+        long time = System.currentTimeMillis();
+        if ((time - exitTime) > 2000) {
+            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            exitTime = time;
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mSelectedFragment == null || !mSelectedFragment.onBackPressed()) {
+            if(mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            } else {
+                doExitApp();
+            }
+        }
+//        super.onBackPressed();
+    }
 }

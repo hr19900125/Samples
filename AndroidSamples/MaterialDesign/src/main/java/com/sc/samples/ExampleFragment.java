@@ -14,7 +14,7 @@ import android.widget.ListView;
 /**
  *
  */
-public class ExampleFragment extends Fragment{
+public class ExampleFragment extends BaseFragment{
 
     private View mFragmentLayout;
     private ListView mListView;
