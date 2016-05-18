@@ -1,5 +1,6 @@
 package com.sc.samples;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.sc.samples.example.ActLifeCycleActivity;
+import com.sc.samples.example.FragLifeCycleActivity;
+
 /**
  *
  */
@@ -19,7 +23,8 @@ public class ExampleFragment extends BaseFragment{
     private View mFragmentLayout;
     private ListView mListView;
     private String[] mExampleArray = new String[] {
-            "Activity生命周期1",
+            "Activity生命周期",
+            "Fragment生命周期",
             "Book"
     };
 
@@ -56,11 +61,21 @@ public class ExampleFragment extends BaseFragment{
     }
 
     private void selectItem(int position) {
+        Intent intent = null;
         switch (position) {
             case 0:
+                intent = new Intent();
+                intent.setClass(getActivity(), ActLifeCycleActivity.class);
                 break;
             case 1:
+                intent = new Intent();
+                intent.setClass(getActivity(), FragLifeCycleActivity.class);
                 break;
+            case 2:
+                break;
+        }
+        if(intent != null) {
+            getActivity().startActivity(intent);
         }
     }
 
