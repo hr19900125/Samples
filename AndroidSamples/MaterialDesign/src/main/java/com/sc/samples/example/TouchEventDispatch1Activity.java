@@ -12,12 +12,16 @@ import com.sc.samples.R;
 
 /**
  *
+ * Android 触摸事件分发机制
+ * http://blog.csdn.net/yanbober/article/details/45887547
+ *
  */
 public class TouchEventDispatch1Activity extends Activity implements View.OnTouchListener, View.OnClickListener{
 
+    private static final String TAG = "TouchEventDispatch";
+
     private LinearLayout mLayout;
     private Button mButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +41,14 @@ public class TouchEventDispatch1Activity extends Activity implements View.OnTouc
 
     @Override
     public void onClick(View v) {
-        Log.i(null, "OnClickListener--onClick--"+v);
+        Log.e(TAG, "OnClickListener--onClick--"+v);
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Log.i(null, "OnTouchListener--onTouch-- action="+event.getAction()+" --"+v);
+        Log.e(TAG, "OnTouchListener--onTouch-- action="+event.getAction()+" --"+v);
+        //假如onTouch 返回false， 事件会继续传递到onTouchEvent，所以onClick能够执行
+        //假如onTouch 返回true， 事件不会继续传递了，onClick不会执行
         return false;
     }
 }

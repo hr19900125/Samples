@@ -3,13 +3,12 @@ package com.sc.samples.example;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Scroller;
 
 /**
- *
+ * Android View 滑动的实现
+ * http://blog.csdn.net/itachi85/article/details/50724558
  */
 public class MoveView extends View{
 

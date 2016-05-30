@@ -28,7 +28,7 @@ public class ExampleFragment extends BaseFragment{
             "Activity生命周期",
             "Fragment生命周期",
             "View的滑动(layout)",
-            "Android 事件传递机制1",
+            "Android 事件传递机制(1)",
             "Book"
     };
 
