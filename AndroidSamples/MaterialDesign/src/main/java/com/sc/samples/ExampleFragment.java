@@ -14,6 +14,8 @@ import android.widget.ListView;
 
 import com.sc.samples.example.ActLifeCycleActivity;
 import com.sc.samples.example.FragLifeCycleActivity;
+import com.sc.samples.example.MoveViewActivity;
+import com.sc.samples.example.TouchEventDispatch1Activity;
 
 /**
  *
@@ -25,6 +27,8 @@ public class ExampleFragment extends BaseFragment{
     private String[] mExampleArray = new String[] {
             "Activity生命周期",
             "Fragment生命周期",
+            "View的滑动(layout)",
+            "Android 事件传递机制1",
             "Book"
     };
 
@@ -72,6 +76,12 @@ public class ExampleFragment extends BaseFragment{
                 intent.setClass(getActivity(), FragLifeCycleActivity.class);
                 break;
             case 2:
+                intent = new Intent();
+                intent.setClass(getActivity(), MoveViewActivity.class);
+                break;
+            case 3:
+                intent = new Intent();
+                intent.setClass(getActivity(), TouchEventDispatch1Activity.class);
                 break;
         }
         if(intent != null) {

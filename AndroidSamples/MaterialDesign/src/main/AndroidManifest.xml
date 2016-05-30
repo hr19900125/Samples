@@ -22,6 +22,8 @@
         <activity android:name=".example.ActLifeCycleActivity" />
         <activity android:name=".example.ActLifeCycle2Activity" />
         <activity android:name=".example.FragLifeCycleActivity" />
+        <activity android:name=".example.MoveViewActivity"/>
+        <activity android:name=".example.TouchEventDispatch1Activity"/>
     </application>
 
 </manifest>
