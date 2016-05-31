@@ -48,6 +48,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_example);
     }
 
+    private void switchToRxJavaExample() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new RxJavaExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_rxjava);
+    }
+
     private void switchToWidget() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WidgetFragment()).commit();
         mToolbar.setTitle(R.string.navigation_widget);
@@ -70,6 +75,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                 switch (item.getItemId()) {
                     case R.id.navigation_item_example:
                         switchToExample();
+                        break;
+                    case R.id.navigation_item_RxJava:
+                        switchToRxJavaExample();
                         break;
                     case R.id.navigation_item_widget:
                         switchToWidget();

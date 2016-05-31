@@ -94,6 +94,7 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="navigation_example">例子</string>
+    <string name="navigation_rxjava">RxJava</string>
     <string name="navigation_widget">控件</string>
     <string name="navigation_blog">博客</string>
     <string name="navigation_about">关于</string>

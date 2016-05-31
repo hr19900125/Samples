@@ -6,6 +6,10 @@
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_example" />
 
+        <item android:id="@+id/navigation_item_RxJava"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_rxjava"/>
+
         <item android:id="@+id/navigation_item_widget"
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_widget"/>
