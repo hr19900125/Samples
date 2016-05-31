@@ -26,6 +26,7 @@
         <activity android:name=".example.TouchEventDispatch1Activity"/>
         <activity android:name=".example.TouchEventDispatch2Activity"/>
         <activity android:name=".example.TouchEventDispatch3Activity"/>
+        <activity android:name=".example.AndroidMessageActivity"/>
     </application>
 
 </manifest>

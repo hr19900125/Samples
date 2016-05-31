@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.sc.samples.example.ActLifeCycleActivity;
+import com.sc.samples.example.AndroidMessageActivity;
 import com.sc.samples.example.FragLifeCycleActivity;
 import com.sc.samples.example.MoveViewActivity;
 import com.sc.samples.example.TouchEventDispatch1Activity;
@@ -33,6 +34,7 @@ public class ExampleFragment extends BaseFragment{
             "Android 事件传递机制(1)",
             "Android 事件传递机制(2)",
             "Android 事件传递机制(3)",
+            "Android异步消息处理机制(1)",
             "Book"
     };
 
@@ -94,6 +96,10 @@ public class ExampleFragment extends BaseFragment{
             case 5:
                 intent = new Intent();
                 intent.setClass(getActivity(), TouchEventDispatch3Activity.class);
+                break;
+            case 6:
+                intent = new Intent();
+                intent.setClass(getActivity(), AndroidMessageActivity.class);
                 break;
         }
         if(intent != null) {
