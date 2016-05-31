@@ -16,6 +16,8 @@ import com.sc.samples.example.ActLifeCycleActivity;
 import com.sc.samples.example.FragLifeCycleActivity;
 import com.sc.samples.example.MoveViewActivity;
 import com.sc.samples.example.TouchEventDispatch1Activity;
+import com.sc.samples.example.TouchEventDispatch2Activity;
+import com.sc.samples.example.TouchEventDispatch3Activity;
 
 /**
  *
@@ -29,6 +31,8 @@ public class ExampleFragment extends BaseFragment{
             "Fragment生命周期",
             "View的滑动(layout)",
             "Android 事件传递机制(1)",
+            "Android 事件传递机制(2)",
+            "Android 事件传递机制(3)",
             "Book"
     };
 
@@ -82,6 +86,14 @@ public class ExampleFragment extends BaseFragment{
             case 3:
                 intent = new Intent();
                 intent.setClass(getActivity(), TouchEventDispatch1Activity.class);
+                break;
+            case 4:
+                intent = new Intent();
+                intent.setClass(getActivity(), TouchEventDispatch2Activity.class);
+                break;
+            case 5:
+                intent = new Intent();
+                intent.setClass(getActivity(), TouchEventDispatch3Activity.class);
                 break;
         }
         if(intent != null) {

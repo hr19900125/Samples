@@ -9,7 +9,8 @@ import android.view.View;
 import com.sc.samples.R;
 
 /**
- *
+ * Android 触摸事件分发机制 ViewGroup
+ * http://blog.csdn.net/yanbober/article/details/45912661
  */
 public class TouchEventDispatch2Activity extends Activity implements View.OnTouchListener, View.OnClickListener {
 

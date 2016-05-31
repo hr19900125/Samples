@@ -12,7 +12,7 @@ import com.sc.samples.R;
 
 /**
  *
- * Android 触摸事件分发机制
+ * Android 触摸事件分发机制 View
  * http://blog.csdn.net/yanbober/article/details/45887547
  *
  */
