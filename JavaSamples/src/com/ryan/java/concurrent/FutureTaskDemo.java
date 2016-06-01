@@ -22,7 +22,7 @@ public class FutureTaskDemo {
             protected void done() {
                 try {
                     MyCall.Result r = (MyCall.Result) get();
-                    System.out.println(r.getFlag() + " about callable");
+                    System.out.println(r.getFlag() + " about callable;ThreadId = " + Thread.currentThread().getId());
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -41,7 +41,7 @@ public class FutureTaskDemo {
 
                     MyCall.Result r = (MyCall.Result) get();
 
-                    System.out.println(r.getFlag() + " about runnable");
+                    System.out.println(r.getFlag() + " about runnable;ThreadId = " + Thread.currentThread().getId());
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -70,7 +70,7 @@ public class FutureTaskDemo {
 
         @Override
         public Result call() throws Exception {
-            System.out.println("this is MyCall call");
+            System.out.println("this is MyCall call;ThreadId = " + Thread.currentThread().getId());
             r = new Result();
             r.setFlag(j);
             return r;
@@ -93,7 +93,7 @@ public class FutureTaskDemo {
 
         @Override
         public void run() {
-            System.out.println("this is MyRun run");
+            System.out.println("this is MyRun run;ThreadId = " + Thread.currentThread().getId());
 
         }
 
