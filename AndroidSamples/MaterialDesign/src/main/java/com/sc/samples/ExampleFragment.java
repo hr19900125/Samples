@@ -14,7 +14,9 @@ import android.widget.ListView;
 
 import com.sc.samples.example.ActLifeCycleActivity;
 import com.sc.samples.example.AndroidMessageActivity;
+import com.sc.samples.example.AsyncTaskActivity;
 import com.sc.samples.example.FragLifeCycleActivity;
+import com.sc.samples.example.HandlerThreadActivity;
 import com.sc.samples.example.MoveViewActivity;
 import com.sc.samples.example.TouchEventDispatch1Activity;
 import com.sc.samples.example.TouchEventDispatch2Activity;
@@ -34,7 +36,9 @@ public class ExampleFragment extends BaseFragment{
             "Android 事件传递机制(1)",
             "Android 事件传递机制(2)",
             "Android 事件传递机制(3)",
-            "Android异步消息处理机制(1)",
+            "Android 异步消息处理机制(1)",
+            "Android 异步消息处理机制(HandlerThread)",
+            "Android AsyncTask",
             "Book"
     };
 
@@ -100,6 +104,14 @@ public class ExampleFragment extends BaseFragment{
             case 6:
                 intent = new Intent();
                 intent.setClass(getActivity(), AndroidMessageActivity.class);
+                break;
+            case 7:
+                intent = new Intent();
+                intent.setClass(getActivity(), HandlerThreadActivity.class);
+                break;
+            case 8:
+                intent = new Intent();
+                intent.setClass(getActivity(), AsyncTaskActivity.class);
                 break;
         }
         if(intent != null) {

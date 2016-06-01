@@ -22,11 +22,13 @@
         <activity android:name=".example.ActLifeCycleActivity" />
         <activity android:name=".example.ActLifeCycle2Activity" />
         <activity android:name=".example.FragLifeCycleActivity" />
-        <activity android:name=".example.MoveViewActivity"/>
-        <activity android:name=".example.TouchEventDispatch1Activity"/>
-        <activity android:name=".example.TouchEventDispatch2Activity"/>
-        <activity android:name=".example.TouchEventDispatch3Activity"/>
-        <activity android:name=".example.AndroidMessageActivity"/>
+        <activity android:name=".example.MoveViewActivity" />
+        <activity android:name=".example.TouchEventDispatch1Activity" />
+        <activity android:name=".example.TouchEventDispatch2Activity" />
+        <activity android:name=".example.TouchEventDispatch3Activity" />
+        <activity android:name=".example.AndroidMessageActivity" />
+        <activity android:name=".example.HandlerThreadActivity" />
+        <activity android:name=".example.AsyncTaskActivity" />
     </application>
 
 </manifest>
