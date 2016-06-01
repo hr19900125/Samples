@@ -6,20 +6,34 @@
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_example" />
 
-        <item android:id="@+id/navigation_item_RxJava"
+        <item
+            android:id="@+id/navigation_item_concurrent"
             android:icon="@drawable/ic_favorite"
-            android:title="@string/navigation_rxjava"/>
+            android:title="@string/navigation_concurrent" />
 
-        <item android:id="@+id/navigation_item_widget"
+        <item
+            android:id="@+id/navigation_item_design_pattern"
             android:icon="@drawable/ic_favorite"
-            android:title="@string/navigation_widget"/>
+            android:title="@string/navigation_design_pattern" />
 
-        <item android:id="@+id/navigation_item_blog"
+        <item
+            android:id="@+id/navigation_item_RxJava"
             android:icon="@drawable/ic_favorite"
-            android:title="@string/navigation_blog"/>
+            android:title="@string/navigation_rxjava" />
 
-        <item android:id="@+id/navigation_item_about"
+        <item
+            android:id="@+id/navigation_item_widget"
             android:icon="@drawable/ic_favorite"
-            android:title="@string/navigation_about"/>
+            android:title="@string/navigation_widget" />
+
+        <item
+            android:id="@+id/navigation_item_blog"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_blog" />
+
+        <item
+            android:id="@+id/navigation_item_about"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_about" />
     </group>
 </menu>

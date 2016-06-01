@@ -43,9 +43,22 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         switchToExample();
     }
 
+    /**
+     *
+     */
     private void switchToExample() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new ExampleFragment()).commit();
         mToolbar.setTitle(R.string.navigation_example);
+    }
+
+    private void switchToDesignPattern() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new DesignPatternExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_design_pattern);
+    }
+
+    private void switchToJavaConcurrent() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new JavaConcurrentExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_concurrent);
     }
 
     private void switchToRxJavaExample() {
@@ -75,6 +88,12 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                 switch (item.getItemId()) {
                     case R.id.navigation_item_example:
                         switchToExample();
+                        break;
+                    case R.id.navigation_item_design_pattern:
+                        switchToDesignPattern();
+                        break;
+                    case R.id.navigation_item_concurrent:
+                        switchToJavaConcurrent();
                         break;
                     case R.id.navigation_item_RxJava:
                         switchToRxJavaExample();
