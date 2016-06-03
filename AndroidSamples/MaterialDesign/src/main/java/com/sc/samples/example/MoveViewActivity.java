@@ -1,6 +1,5 @@
 package com.sc.samples.example;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,7 @@ import android.view.View;
 import com.sc.samples.R;
 
 /**
- *
+ * Android View 滑动的实现
  */
 public class MoveViewActivity extends Activity{
 
