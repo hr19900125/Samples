@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.sc.samples.rxjava.HelloWorldActivity;
 import com.sc.samples.rxjava.ObservableCreateActivity;
+import com.sc.samples.rxjava.ObservableJustActivity;
 
 /**
  *
@@ -23,7 +24,8 @@ public class RxJavaExampleFragment extends BaseFragment {
     private ListView mListView;
     private String[] mData = new String[]{
             "RxJava :Hello world",
-            "RxJava :Creating an Observable"
+            "RxJava :Creating an Observable via create",
+            "RxJava :creating an Observable via just"
     };
 
     @Override
@@ -68,6 +70,10 @@ public class RxJavaExampleFragment extends BaseFragment {
             case 1:
                 intent = new Intent();
                 intent.setClass(getActivity(), ObservableCreateActivity.class);
+                break;
+            case 2:
+                intent = new Intent();
+                intent.setClass(getActivity(), ObservableJustActivity.class);
                 break;
         }
 

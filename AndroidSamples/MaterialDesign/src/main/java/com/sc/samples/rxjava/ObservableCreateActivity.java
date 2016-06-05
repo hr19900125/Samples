@@ -1,11 +1,11 @@
 package com.sc.samples.rxjava;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sc.samples.BaseActivity;
 import com.sc.samples.R;
 
 import rx.Observable;
@@ -14,7 +14,7 @@ import rx.Subscriber;
 /**
  * Creating an Observable via the create( ) method
  */
-public class ObservableCreateActivity extends Activity {
+public class ObservableCreateActivity extends BaseActivity {
 
     private Button mButton;
     private TextView mResultTextView;
@@ -48,7 +48,7 @@ public class ObservableCreateActivity extends Activity {
                 //下面用来测试onError被调用之后，之后的方法会不会执行，经测试之执行了1，2，并且会执行sub的onError方法
 //                subscriber.onError(new RuntimeException()); //3
                 subscriber.onNext("hello world! 3"); //4
-                subscriber.onCompleted(); //5
+                subscriber.onCompleted(); //5 onCompleted方法假如不调用的话，下面的还会执行，问题：不调用onCompleted的后果？
                 //下面用来测试onCompleted 调用之后，onNext是否还生效, 经测试验证是不生效的，下面的onNext没有执行。
                 subscriber.onNext("hello world! 4"); //6
             }
@@ -57,28 +57,21 @@ public class ObservableCreateActivity extends Activity {
         Subscriber<String> sub = new Subscriber<String>() {
             @Override
             public void onCompleted() {
-                printlnToTextView("Subscriber call onCompleted");
+                printlnToTextView(mResultTextView, "Subscriber call onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                printlnToTextView("Subscriber call onError");
+                printlnToTextView(mResultTextView, "Subscriber call onError");
             }
 
             @Override
             public void onNext(String s) {
-                printlnToTextView(s);
+                printlnToTextView(mResultTextView, s);
             }
         };
-        ob.subscribe(sub);
-    }
 
-    private void printlnToTextView(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mResultTextView.append(text + "\n");
-            }
-        });
+        //当Observable 与Subscriber通过subscribe完成订阅之后，Observable里面的call方法马上就会执行
+        ob.subscribe(sub);
     }
 }

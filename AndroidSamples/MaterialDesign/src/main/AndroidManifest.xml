@@ -34,6 +34,7 @@
 
         <activity android:name=".rxjava.HelloWorldActivity" />
         <activity android:name=".rxjava.ObservableCreateActivity" />
+        <activity android:name=".rxjava.ObservableJustActivity" />
     </application>
 
 </manifest>

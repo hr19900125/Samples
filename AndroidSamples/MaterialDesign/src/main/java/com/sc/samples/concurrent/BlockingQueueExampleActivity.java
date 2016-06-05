@@ -1,13 +1,11 @@
 package com.sc.samples.concurrent;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sc.samples.BaseActivity;
 import com.sc.samples.R;
 
 import java.util.concurrent.BlockingQueue;
@@ -18,9 +16,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * BlockingQueue 使用example
  */
-public class BlockingQueueExampleActivity extends Activity {
+public class BlockingQueueExampleActivity extends BaseActivity {
 
-    private static final String TAG = "BlockingQueue";
     private Button mBeginButton;
     private TextView mResultTextView;
 
@@ -58,15 +55,6 @@ public class BlockingQueueExampleActivity extends Activity {
         executor.shutdown();
     }
 
-    private void printlnToTextView(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mResultTextView.append(text + "\n");
-            }
-        });
-    }
-
     private class PutRunnable implements Runnable {
 
         private BlockingQueue<String> queue;
@@ -81,7 +69,7 @@ public class BlockingQueueExampleActivity extends Activity {
         public void run() {
             try {
                 queue.put(String.valueOf(id));
-                printlnToTextView("[" + id + "] put into queue");
+                printlnToTextView(mResultTextView, "[" + id + "] put into queue");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -98,12 +86,12 @@ public class BlockingQueueExampleActivity extends Activity {
 
         @Override
         public void run() {
-            while(true) {
+            while (true) {
                 try {
                     Thread.sleep((long) (Math.random() * 1000));
-                    if(queue.isEmpty()) break;
+                    if (queue.isEmpty()) break;
                     String str = queue.take();
-                    printlnToTextView(str + " has take!");
+                    printlnToTextView(mResultTextView, str + " has take!");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

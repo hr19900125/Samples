@@ -9,13 +9,12 @@ import com.sc.samples.BaseActivity;
 import com.sc.samples.R;
 
 import rx.Observable;
-import rx.functions.Action1;
-
+import rx.Subscriber;
 
 /**
- * RxJava Hello world
+ * 使用Observable.just可以用来创建只发出一个事件就结束的Observable对象
  */
-public class HelloWorldActivity extends BaseActivity {
+public class ObservableJustActivity extends BaseActivity {
 
     private Button mButton;
     private TextView mResultTextView;
@@ -24,28 +23,40 @@ public class HelloWorldActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_btn_and_textview);
-
         initView();
     }
 
     private void initView() {
         mButton = (Button) findViewById(R.id.btn);
         mResultTextView = (TextView) findViewById(R.id.textview);
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hello("hello world! 1", "hello world! 2", "hello world! 3");
+                just();
             }
         });
     }
 
-    private void hello(String... names) {
-        Observable.from(names).subscribe(new Action1<String>() {
+    private void just() {
+        Observable<String> ob = Observable.just("hello world");
+        Subscriber<String> sub = new Subscriber<String>() {
             @Override
-            public void call(String s) {
+            public void onCompleted() {
+                printlnToTextView(mResultTextView, "Subscriber call onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                printlnToTextView(mResultTextView, "Subscriber call onError");
+            }
+
+            @Override
+            public void onNext(String s) {
                 printlnToTextView(mResultTextView, s);
             }
-        });
+        };
+        ob.subscribe(sub);
     }
+
+
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sc.samples.BaseActivity;
 import com.sc.samples.R;
 
 import java.util.concurrent.ExecutorService;
@@ -16,9 +17,8 @@ import java.util.concurrent.Executors;
 /**
  * ExecutorService Example
  */
-public class ExecutorServiceExampleActivity extends Activity {
+public class ExecutorServiceExampleActivity extends BaseActivity {
 
-    private static final int MSG_PRINT = 1;
     private Button mBeginButton;
     private TextView mResultTextView;
 
@@ -75,21 +75,12 @@ public class ExecutorServiceExampleActivity extends Activity {
 
     private void begin() {
         mResultTextView.setText("");
-        printlnToTextView("Test begin");
+        printlnToTextView(mResultTextView, "Test begin");
         for (int i = 0; i < 15; i++) {
 //            mSingleThreadPool.execute(new TestRunnable(i));
             mFixedThreadPool.execute(new TestRunnable(i));
         }
-        printlnToTextView("execute over");
-    }
-
-    private void printlnToTextView(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mResultTextView.append(text + "\n");
-            }
-        });
+        printlnToTextView(mResultTextView, "execute over");
     }
 
     private class TestRunnable implements Runnable {
@@ -103,9 +94,9 @@ public class ExecutorServiceExampleActivity extends Activity {
         @Override
         public void run() {
             try {
-                printlnToTextView("Work[" + mId + "] start...");
+                printlnToTextView(mResultTextView, "Work[" + mId + "] start...");
                 Thread.sleep((int) (Math.random() * 5000));
-                printlnToTextView("Work[" + mId + "] end");
+                printlnToTextView(mResultTextView, "Work[" + mId + "] end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
