@@ -21,16 +21,6 @@ public class ExecutorServiceExampleActivity extends Activity {
     private static final int MSG_PRINT = 1;
     private Button mBeginButton;
     private TextView mResultTextView;
-    private Handler mUiHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == MSG_PRINT) {
-                String text = (String) msg.obj;
-                mResultTextView.append(text + "\n");
-            }
-        }
-    };
 
     /**
      * 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
@@ -93,8 +83,13 @@ public class ExecutorServiceExampleActivity extends Activity {
         printlnToTextView("execute over");
     }
 
-    private void printlnToTextView(String text) {
-        mUiHandler.obtainMessage(MSG_PRINT, text).sendToTarget();
+    private void printlnToTextView(final String text) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mResultTextView.append(text + "\n");
+            }
+        });
     }
 
     private class TestRunnable implements Runnable {

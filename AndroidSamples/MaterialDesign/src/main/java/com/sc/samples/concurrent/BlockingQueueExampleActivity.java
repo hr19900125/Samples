@@ -21,19 +21,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class BlockingQueueExampleActivity extends Activity {
 
     private static final String TAG = "BlockingQueue";
-    private static final int MSG_PRINT = 1;
     private Button mBeginButton;
     private TextView mResultTextView;
-    private Handler mUiHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == MSG_PRINT) {
-                String text = (String) msg.obj;
-                mResultTextView.append(text + "\n");
-            }
-        }
-    };
 
     private BlockingQueue<String> mQueue = new LinkedBlockingQueue<>(3);
 
@@ -69,8 +58,13 @@ public class BlockingQueueExampleActivity extends Activity {
         executor.shutdown();
     }
 
-    private void printlnToTextView(String text) {
-        mUiHandler.obtainMessage(MSG_PRINT, text).sendToTarget();
+    private void printlnToTextView(final String text) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mResultTextView.append(text + "\n");
+            }
+        });
     }
 
     private class PutRunnable implements Runnable {

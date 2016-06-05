@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.sc.samples.rxjava.HelloWorldActivity;
+import com.sc.samples.rxjava.ObservableCreateActivity;
+
 /**
  *
  */
@@ -19,7 +22,8 @@ public class RxJavaExampleFragment extends BaseFragment {
     private View mFragmentView;
     private ListView mListView;
     private String[] mData = new String[]{
-            "RxJava Sample(1)"
+            "RxJava :Hello world",
+            "RxJava :Creating an Observable"
     };
 
     @Override
@@ -58,6 +62,12 @@ public class RxJavaExampleFragment extends BaseFragment {
         Intent intent = null;
         switch (position) {
             case 0:
+                intent = new Intent();
+                intent.setClass(getActivity(), HelloWorldActivity.class);
+                break;
+            case 1:
+                intent = new Intent();
+                intent.setClass(getActivity(), ObservableCreateActivity.class);
                 break;
         }
 
