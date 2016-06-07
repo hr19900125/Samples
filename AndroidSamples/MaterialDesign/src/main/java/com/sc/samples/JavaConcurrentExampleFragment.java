@@ -3,6 +3,7 @@ package com.sc.samples;
 import android.content.Intent;
 
 import com.sc.samples.concurrent.BlockingQueueExampleActivity;
+import com.sc.samples.concurrent.CallableAndFutureExampleActivity;
 import com.sc.samples.concurrent.ExecutorServiceExampleActivity;
 
 /**
@@ -12,7 +13,7 @@ public class JavaConcurrentExampleFragment extends BaseExampleFragment {
 
     @Override
     protected String[] initData() {
-        return new String[]{"Java Concurrent : ExecutorService (SingleThreadExecutor)", "Java Concurrent : BlockingQueue"};
+        return new String[]{"Java Concurrent : ExecutorService (SingleThreadExecutor)", "Java Concurrent : BlockingQueue", "Java Concurrent : Callable and Future"};
     }
 
     @Override
@@ -27,9 +28,13 @@ public class JavaConcurrentExampleFragment extends BaseExampleFragment {
                 intent = new Intent();
                 intent.setClass(getActivity(), BlockingQueueExampleActivity.class);
                 break;
+            case 2:
+                intent = new Intent();
+                intent.setClass(getActivity(), CallableAndFutureExampleActivity.class);
+                break;
         }
 
-        if(intent != null) {
+        if (intent != null) {
             getActivity().startActivity(intent);
         }
     }

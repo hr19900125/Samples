@@ -29,12 +29,15 @@
         <activity android:name=".example.AndroidMessageActivity" />
         <activity android:name=".example.HandlerThreadActivity" />
         <activity android:name=".example.AsyncTaskActivity" />
+
         <activity android:name=".concurrent.ExecutorServiceExampleActivity" />
         <activity android:name=".concurrent.BlockingQueueExampleActivity" />
+        <activity android:name=".concurrent.CallableAndFutureExampleActivity" />
 
         <activity android:name=".rxjava.HelloWorldActivity" />
         <activity android:name=".rxjava.ObservableCreateActivity" />
         <activity android:name=".rxjava.ObservableJustActivity" />
+
     </application>
 
 </manifest>
