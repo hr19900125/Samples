@@ -34,6 +34,7 @@
         <activity android:name=".concurrent.BlockingQueueExampleActivity" />
         <activity android:name=".concurrent.CallableAndFutureExampleActivity" />
         <activity android:name=".concurrent.FutureTaskExampleActivity" />
+        <activity android:name=".concurrent.ExecutorCompletionServiceExampleActivity" />
 
         <activity android:name=".rxjava.HelloWorldActivity" />
         <activity android:name=".rxjava.ObservableCreateActivity" />
