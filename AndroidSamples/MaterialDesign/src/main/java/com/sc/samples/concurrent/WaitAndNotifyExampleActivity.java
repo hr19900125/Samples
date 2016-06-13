@@ -1,12 +1,6 @@
 package com.sc.samples.concurrent;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.sc.samples.BaseActivity;
-import com.sc.samples.R;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,6 +10,14 @@ import java.util.Set;
 
 /**
  * 这里使用运动员起跑的例子来说明
+ * wait()、notify()、notifyAll()是三个定义在Object类里的方法，可以用来控制线程的状态。
+ * <p/>
+ * 这三个方法最终调用的都是jvm级的native方法。随着jvm运行平台的不同可能有些许差异。
+ * 如果对象调用了wait方法就会使持有该对象的线程把该对象的控制权交出去，然后处于等待状态。
+ * 如果对象调用了notify方法就会通知某个正在等待这个对象的控制权的线程可以继续运行。
+ * 如果对象调用了notifyAll方法就会通知所有等待这个对象控制权的线程继续运行。
+ * <p/>
+ * wait notify notifyAll 这几个方法必须在synchronized的代码块或方法中调用，否则会抛异常
  */
 public class WaitAndNotifyExampleActivity extends BaseActivity {
 
