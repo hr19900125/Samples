@@ -19,9 +19,6 @@ import java.util.concurrent.Executors;
  */
 public class ExecutorServiceExampleActivity extends BaseActivity {
 
-    private Button mBeginButton;
-    private TextView mResultTextView;
-
     /**
      * 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
      */
@@ -34,14 +31,6 @@ public class ExecutorServiceExampleActivity extends BaseActivity {
      * 创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
      */
     private ExecutorService mCachedThreadPool = Executors.newCachedThreadPool();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-
-        initView();
-    }
 
     @Override
     protected void onDestroy() {
@@ -61,18 +50,6 @@ public class ExecutorServiceExampleActivity extends BaseActivity {
         mFixedThreadPool.shutdownNow();
     }
 
-    private void initView() {
-        mBeginButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-
-        mBeginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                begin();
-            }
-        });
-    }
-
     private void begin() {
         mResultTextView.setText("");
         printlnToTextView(mResultTextView, "Test begin");
@@ -81,6 +58,11 @@ public class ExecutorServiceExampleActivity extends BaseActivity {
             mFixedThreadPool.execute(new TestRunnable(i));
         }
         printlnToTextView(mResultTextView, "execute over");
+    }
+
+    @Override
+    protected void click() {
+        begin();
     }
 
     private class TestRunnable implements Runnable {

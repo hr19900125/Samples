@@ -31,25 +31,9 @@ import java.util.concurrent.FutureTask;
  */
 public class FutureTaskExampleActivity extends BaseActivity {
 
-    private Button mButton;
-    private TextView mResultTextView;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-        initView();
-    }
-
-    private void initView() {
-        mButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test();
-            }
-        });
+    protected void click() {
+        test();
     }
 
     private void test() {

@@ -1,12 +1,6 @@
 package com.sc.samples.concurrent;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.sc.samples.BaseActivity;
-import com.sc.samples.R;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -18,29 +12,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class BlockingQueueExampleActivity extends BaseActivity {
 
-    private Button mBeginButton;
-    private TextView mResultTextView;
-
     private BlockingQueue<String> mQueue = new LinkedBlockingQueue<>(3);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-
-        initView();
-    }
-
-    private void initView() {
-        mBeginButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-
-        mBeginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                begin();
-            }
-        });
+    protected void click() {
+        begin();
     }
 
     private void begin() {

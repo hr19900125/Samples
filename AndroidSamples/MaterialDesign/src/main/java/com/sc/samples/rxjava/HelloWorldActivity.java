@@ -17,34 +17,16 @@ import rx.functions.Action1;
  */
 public class HelloWorldActivity extends BaseActivity {
 
-    private Button mButton;
-    private TextView mResultTextView;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-
-        initView();
-    }
-
-    private void initView() {
-        mButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hello("hello world! 1", "hello world! 2", "hello world! 3");
-            }
-        });
+    protected void click() {
+        hello("hello world! 1", "hello world! 2", "hello world! 3");
     }
 
     private void hello(String... names) {
         Observable.from(names).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                printlnToTextView(mResultTextView, s);
+                printlnToTextView(s);
             }
         });
     }

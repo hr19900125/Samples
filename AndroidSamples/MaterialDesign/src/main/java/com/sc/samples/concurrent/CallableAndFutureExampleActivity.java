@@ -21,25 +21,9 @@ import java.util.concurrent.Future;
  */
 public class CallableAndFutureExampleActivity extends BaseActivity {
 
-    private Button mButton;
-    private TextView mResultTextView;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-        initView();
-    }
-
-    private void initView() {
-        mButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                begin();
-            }
-        });
+    protected void click() {
+        begin();
     }
 
     private void begin() {

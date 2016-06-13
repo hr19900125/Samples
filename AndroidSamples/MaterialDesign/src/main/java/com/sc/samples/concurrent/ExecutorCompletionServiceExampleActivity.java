@@ -22,25 +22,9 @@ import java.util.concurrent.Executors;
  */
 public class ExecutorCompletionServiceExampleActivity extends BaseActivity {
 
-    private Button mButton;
-    private TextView mResultTextView;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one_btn_and_textview);
-        initView();
-    }
-
-    private void initView() {
-        mButton = (Button) findViewById(R.id.btn);
-        mResultTextView = (TextView) findViewById(R.id.textview);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test();
-            }
-        });
+    protected void click() {
+        test();
     }
 
     private void test() {
@@ -52,7 +36,7 @@ public class ExecutorCompletionServiceExampleActivity extends BaseActivity {
                 @Override
                 public String call() throws Exception {
                     printlnToTextView(mResultTextView, "call Thread name[" + Thread.currentThread().getName() + "]");
-                    Thread.currentThread().sleep((long) (Math.random()*1000));
+                    Thread.currentThread().sleep((long) (Math.random() * 1000));
                     return Thread.currentThread().getName();
                 }
             });

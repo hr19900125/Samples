@@ -7,6 +7,8 @@ import com.sc.samples.concurrent.CallableAndFutureExampleActivity;
 import com.sc.samples.concurrent.ExecutorCompletionServiceExampleActivity;
 import com.sc.samples.concurrent.ExecutorServiceExampleActivity;
 import com.sc.samples.concurrent.FutureTaskExampleActivity;
+import com.sc.samples.concurrent.JoinExampleActivity;
+import com.sc.samples.concurrent.WaitAndNotifyExampleActivity;
 
 /**
  * Java 并发
@@ -20,7 +22,9 @@ public class JavaConcurrentExampleFragment extends BaseExampleFragment {
                 "Java Concurrent : BlockingQueue",
                 "Java Concurrent : Callable and Future",
                 "Java Concurrent : FutureTask",
-                "Java Concurrent : ExecutorCompletionService"
+                "Java Concurrent : ExecutorCompletionService",
+                "Java Concurrent : join",
+                "Java Concurrent : Wait and notify"
         };
     }
 
@@ -47,6 +51,14 @@ public class JavaConcurrentExampleFragment extends BaseExampleFragment {
             case 4:
                 intent = new Intent();
                 intent.setClass(getActivity(), ExecutorCompletionServiceExampleActivity.class);
+                break;
+            case 5:
+                intent = new Intent();
+                intent.setClass(getActivity(), JoinExampleActivity.class);
+                break;
+            case 6:
+                intent = new Intent();
+                intent.setClass(getActivity(), WaitAndNotifyExampleActivity.class);
                 break;
         }
 
