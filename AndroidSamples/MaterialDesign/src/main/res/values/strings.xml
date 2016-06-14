@@ -98,6 +98,7 @@
     <string name="navigation_design_pattern">设计模式</string>
     <string name="navigation_rxjava">RxJava</string>
     <string name="navigation_widget">控件</string>
+    <string name="navigation_animation">动画</string>
     <string name="navigation_blog">博客</string>
     <string name="navigation_about">关于</string>
 </resources>

@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSelectedFragmentDelegate{
+public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSelectedFragmentDelegate {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -71,6 +71,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_widget);
     }
 
+    private void switchToAnimation() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AnimationExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_animation);
+    }
+
     private void switchToBlog() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new BlogFragment()).commit();
         mToolbar.setTitle(R.string.navigation_blog);
@@ -100,6 +105,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_widget:
                         switchToWidget();
+                        break;
+                    case R.id.navigation_item_animation:
+                        switchToAnimation();
                         break;
                     case R.id.navigation_item_blog:
                         switchToBlog();
@@ -180,7 +188,7 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
     @Override
     public void onBackPressed() {
         if (mSelectedFragment == null || !mSelectedFragment.onBackPressed()) {
-            if(mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
             } else {
                 doExitApp();

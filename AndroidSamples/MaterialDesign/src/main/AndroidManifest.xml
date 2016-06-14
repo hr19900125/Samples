@@ -42,6 +42,7 @@
         <activity android:name=".rxjava.ObservableCreateActivity" />
         <activity android:name=".rxjava.ObservableJustActivity" />
         <activity android:name=".rxjava.SubscribeActionActivity" />
+        <activity android:name=".rxjava.ObservableOperatorsActivity" />
 
     </application>
 
