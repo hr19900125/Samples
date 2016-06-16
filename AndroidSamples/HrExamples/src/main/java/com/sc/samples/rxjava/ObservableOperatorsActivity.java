@@ -9,6 +9,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.functions.Func0;
 import rx.functions.Func1;
 
 /**
@@ -180,7 +181,8 @@ public class ObservableOperatorsActivity extends BaseActivity {
         //defer 保证回调中的方法在订阅之后才开始执行，这样可以保证代码中的值都是最新的
         //而just()，from()都是先执行了方法中的代码，已经存储了事件列表
         //而Observable.create()和just，from不同
-        printlnToTextView("defer-------------------------------");
+        printlnToTextView("defer-just------------------------------");
+        //结果为null
         class SomeType {
             private String value;
 
@@ -188,15 +190,57 @@ public class ObservableOperatorsActivity extends BaseActivity {
                 this.value = value;
             }
 
-            public Observable<String> valueObservable() {
+            public Observable<String> valueObservableWithJust() {
                 return Observable.just(value);
+            }
+
+            public Observable<String> valueObservableWithCreate() {
+                return Observable.create(new Observable.OnSubscribe<String>() {
+                    @Override
+                    public void call(Subscriber<? super String> subscriber) {
+                        subscriber.onNext(value);
+                        subscriber.onCompleted();
+                    }
+                });
+            }
+
+            public Observable<String> valueObservableWithDefer() {
+                return Observable.defer(new Func0<Observable<String>>() {
+                    @Override
+                    public Observable<String> call() {
+                        return Observable.just(value);
+                    }
+                });
             }
         }
 
         SomeType someType = new SomeType();
-        Observable<String> value = someType.valueObservable();
+        Observable<String> value = someType.valueObservableWithJust();
         someType.setValue("hi");
         value.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                printlnToTextView(s);
+            }
+        });
+
+        printlnToTextView("defer-create------------------------------");
+        //结果为aaaaa,所以可以得出结果是create并不会保存值
+        SomeType someType1 = new SomeType();
+        Observable<String> value1 = someType1.valueObservableWithCreate();
+        someType1.setValue("aaaaa");
+        value1.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                printlnToTextView(s);
+            }
+        });
+
+        printlnToTextView("defer------------------------------");
+        SomeType someType2 = new SomeType();
+        Observable<String> value2 = someType2.valueObservableWithDefer();
+        someType2.setValue("bbbb");
+        value2.subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
                 printlnToTextView(s);
