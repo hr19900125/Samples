@@ -7,6 +7,7 @@ import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -41,13 +42,19 @@ public class ObservableOperatorsActivity extends BaseActivity {
         filter();
         take();
         doOnNext();
+        defer();
     }
 
+    /**
+     * create方法默认不在任何特定的调度器上执行，默认在当前线程执行
+     */
     private void create() {
         printlnToTextView("create-------------------------------");
+        printlnToTextView("create threadId : " + Thread.currentThread().getId());
         Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
+                printlnToTextView("call threadId : " + Thread.currentThread().getId());
                 try {
                     if (!subscriber.isUnsubscribed()) {
                         for (int i = 0; i < 5; i++) {
@@ -62,16 +69,19 @@ public class ObservableOperatorsActivity extends BaseActivity {
         }).subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
+                printlnToTextView("onCompleted threadId : " + Thread.currentThread().getId());
                 printlnToTextView("Sequence complete.");
             }
 
             @Override
             public void onError(Throwable e) {
+                printlnToTextView("onError threadId : " + Thread.currentThread().getId());
                 printlnToTextView("Error: " + e.getMessage());
             }
 
             @Override
             public void onNext(Integer integer) {
+                printlnToTextView("onNext threadId : " + Thread.currentThread().getId());
                 printlnToTextView("Next: " + integer);
             }
         });
@@ -159,6 +169,37 @@ public class ObservableOperatorsActivity extends BaseActivity {
             @Override
             public void call(Integer integer) {
                 printlnToTextView(String.valueOf(integer));
+            }
+        });
+    }
+
+    /**
+     * http://www.jianshu.com/p/c83996149f5b
+     */
+    private void defer() {
+        //defer 保证回调中的方法在订阅之后才开始执行，这样可以保证代码中的值都是最新的
+        //而just()，from()都是先执行了方法中的代码，已经存储了事件列表
+        //而Observable.create()和just，from不同
+        printlnToTextView("defer-------------------------------");
+        class SomeType {
+            private String value;
+
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            public Observable<String> valueObservable() {
+                return Observable.just(value);
+            }
+        }
+
+        SomeType someType = new SomeType();
+        Observable<String> value = someType.valueObservable();
+        someType.setValue("hi");
+        value.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                printlnToTextView(s);
             }
         });
     }

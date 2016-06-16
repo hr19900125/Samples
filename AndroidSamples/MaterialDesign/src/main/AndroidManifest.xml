@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sc.samples">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,6 +45,8 @@
         <activity android:name=".rxjava.ObservableJustActivity" />
         <activity android:name=".rxjava.SubscribeActionActivity" />
         <activity android:name=".rxjava.ObservableOperatorsActivity" />
+
+        <activity android:name=".wiki.ArticleActivity" />
 
     </application>
 

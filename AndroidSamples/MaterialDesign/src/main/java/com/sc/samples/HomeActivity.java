@@ -66,6 +66,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_rxjava);
     }
 
+    private void switchToWiki() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WikiFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_wiki);
+    }
+
     private void switchToWidget() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WidgetFragment()).commit();
         mToolbar.setTitle(R.string.navigation_widget);
@@ -102,6 +107,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_RxJava:
                         switchToRxJavaExample();
+                        break;
+                    case R.id.navigation_item_wiki:
+                        switchToWiki();
                         break;
                     case R.id.navigation_item_widget:
                         switchToWidget();
