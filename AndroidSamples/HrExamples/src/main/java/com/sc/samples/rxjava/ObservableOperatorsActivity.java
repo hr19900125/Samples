@@ -4,6 +4,7 @@ import com.sc.samples.BaseActivity;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -44,6 +45,8 @@ public class ObservableOperatorsActivity extends BaseActivity {
         take();
         doOnNext();
         defer();
+        interval();
+        range();
     }
 
     /**
@@ -246,5 +249,39 @@ public class ObservableOperatorsActivity extends BaseActivity {
                 printlnToTextView(s);
             }
         });
+    }
+
+    /**
+     * 创建一个按固定时间间隔发射整数序列的Observable
+     * Interval操作符返回一个Observable，它按固定的时间间隔发射一个无限递增的整数序列
+     * <p/>
+     * 就是隔段时间就发送一个整数事件
+     */
+    private void interval() {
+        printlnToTextView("interval------------------------------");
+        Observable.interval(1, TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                printlnToTextView("CurrentTime:" + System.currentTimeMillis() + ", value: " + aLong);
+            }
+        });
+    }
+
+    /**
+     * 发送一个[n,n+m-1]范围内的整数序列
+     */
+    private void range() {
+        printlnToTextView("range------------------------------");
+        Observable.range(5, 10).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                printlnToTextView("CurrentTime:" + System.currentTimeMillis() + ", value: " + integer);
+            }
+        });
+    }
+
+    private void repeat() {
+        printlnToTextView("repeat------------------------------");
+//        Observable.
     }
 }
