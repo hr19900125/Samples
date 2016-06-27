@@ -1,7 +1,8 @@
-package com.sc.samples;
+package com.sc.samples.wiki;
 
 import android.content.Intent;
 
+import com.sc.samples.BaseExampleFragment;
 import com.sc.samples.wiki.ArticleActivity;
 
 /**

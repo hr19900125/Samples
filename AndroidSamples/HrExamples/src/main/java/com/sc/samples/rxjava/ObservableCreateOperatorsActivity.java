@@ -8,45 +8,29 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.functions.Func1;
 
 /**
- * https://www.gitbook.com/book/mcxiaoke/rxdocs
- * <p/>
- * Observable Operators
- * 0.create
- * create方法默认不在任何特定的调度器上执行。
- * <p/>
- * 1.map
- * 将一个事件转化为另外一个事件，即映射
- * <p/>
- * 2.flatMap
- * flatMap()接收一个Observable的输出作为输入，同时输出另外一个Observable，可以认为是处理上一个Observable的结果并做处理，处理的结果作为新的Observable供Subscribe订阅
- * <p/>
- * http://www.jianshu.com/p/88779bda6691 map和flatMap的区别就是返回值，相对来说flatMap可以做更多的事情
- * 3.filter
- * 把不符合条件的过滤掉,留下符合条件的事件
- * 4.take
- * 取前面几个事件
- * 5.doOnNext
- * 可以认为就是一个回调方法
+ * RxJava 创建操作
  */
-public class ObservableOperatorsActivity extends BaseActivity {
+public class ObservableCreateOperatorsActivity extends BaseActivity {
 
     @Override
     protected void click() {
         create();
-        map();
-        flatMap();
+//        map();
+//        flatMap();
         filter();
         take();
         doOnNext();
         defer();
-        interval();
-        range();
+//        interval();
+//        range();
+        repeat();
+        repeatWhen();
+        timer();
     }
 
     /**
@@ -91,52 +75,9 @@ public class ObservableOperatorsActivity extends BaseActivity {
         });
     }
 
-    private void map() {
-        printlnToTextView("map-------------------------------");
-        Observable.just("hello world").map(new Func1<String, Integer>() {
-            @Override
-            public Integer call(String s) {
-                printlnToTextView(s);
-                return 5428;
-            }
-        }).map(new Func1<Integer, String>() {
-            @Override
-            public String call(Integer integer) {
-                printlnToTextView(String.valueOf(integer));
-                return String.valueOf(integer);
-            }
-        }).subscribe(new Action1<String>() {
-            @Override
-            public void call(String s) {
-                printlnToTextView(s);
-            }
-        });
-    }
-
-    private void flatMap() {
-        printlnToTextView("flatMap-------------------------------");
-        List<String> s = Arrays.asList("hello world 1", "hello world 2", "hello world 3");
-        Observable.just(s).flatMap(new Func1<List<String>, Observable<String>>() {
-            @Override
-            public Observable<String> call(List<String> strings) {
-                return Observable.from(strings);
-            }
-        }).flatMap(new Func1<String, Observable<String>>() {
-            @Override
-            public Observable<String> call(String s) {
-                printlnToTextView("---");
-                printlnToTextView(s);
-                return Observable.just("hi !" + s);
-            }
-        }).subscribe(new Action1<String>() {
-            @Override
-            public void call(String s) {
-                printlnToTextView("---");
-                printlnToTextView(s);
-            }
-        });
-    }
-
+    /**
+     * 把不符合条件的过滤掉,留下符合条件的事件
+     */
     private void filter() {
         printlnToTextView("filter-------------------------------");
         Observable.from(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}).filter(new Func1<Integer, Boolean>() {
@@ -152,6 +93,9 @@ public class ObservableOperatorsActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 取前面几个事件
+     */
     private void take() {
         printlnToTextView("take-------------------------------");
         Observable.from(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}).take(4).subscribe(new Action1<Integer>() {
@@ -162,6 +106,9 @@ public class ObservableOperatorsActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 可以认为就是一个回调方法
+     */
     private void doOnNext() {
         printlnToTextView("doOnNext-------------------------------");
         Observable.from(new Integer[]{1, 2, 3, 4}).doOnNext(new Action1<Integer>() {
@@ -280,8 +227,47 @@ public class ObservableOperatorsActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 创建一个发射特定数据重复多次的Observable
+     */
     private void repeat() {
-        printlnToTextView("repeat------------------------------");
-//        Observable.
+        printlnToTextView("repeat------------------------------thread id:" + Thread.currentThread().getId());
+        Observable.range(2, 5).repeat(2).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                printlnToTextView("repeat : value = " + integer);
+            }
+        });
+    }
+
+    /**
+     * 创建一个重复发射指定数据或数据序列的Observable，它依赖于另一个Observable发射的数据
+     */
+    private void repeatWhen() {
+        printlnToTextView("repeatWhen------------------------------");
+        Observable.range(2, 3).repeatWhen(new Func1<Observable<? extends Void>, Observable<?>>() {
+            @Override
+            public Observable<?> call(Observable<? extends Void> observable) {
+                return Observable.timer(5, TimeUnit.SECONDS);
+            }
+        }).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                printlnToTextView("repeatWhen : value = " + integer);
+            }
+        });
+    }
+
+    /**
+     * timer 返回一个Observable，它在延迟一段给定的时间后发射一个简单的数字0。
+     */
+    private void timer() {
+        printlnToTextView("timer------------------------------");
+        Observable.timer(3, TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                printlnToTextView("time value " + aLong);
+            }
+        });
     }
 }

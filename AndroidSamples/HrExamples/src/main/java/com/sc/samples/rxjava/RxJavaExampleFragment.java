@@ -1,4 +1,4 @@
-package com.sc.samples;
+package com.sc.samples.rxjava;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.sc.samples.rxjava.HelloWorldActivity;
-import com.sc.samples.rxjava.ObservableCreateActivity;
-import com.sc.samples.rxjava.ObservableJustActivity;
-import com.sc.samples.rxjava.ObservableOperatorsActivity;
-import com.sc.samples.rxjava.SubscribeActionActivity;
+import com.sc.samples.BaseFragment;
+import com.sc.samples.R;
 
 /**
  *
@@ -29,7 +26,8 @@ public class RxJavaExampleFragment extends BaseFragment {
             "RxJava :Creating an Observable via create",
             "RxJava :Creating an Observable via just",
             "RxJava :Subscribe Action",
-            "RxJava :Operators"
+            "RxJava :Create Operators(创建操作)",
+            "RxJava :Transform Operators(变换操作)"
     };
 
     @Override
@@ -85,7 +83,7 @@ public class RxJavaExampleFragment extends BaseFragment {
                 break;
             case 4:
                 intent = new Intent();
-                intent.setClass(getActivity(), ObservableOperatorsActivity.class);
+                intent.setClass(getActivity(), ObservableCreateOperatorsActivity.class);
                 break;
         }
 

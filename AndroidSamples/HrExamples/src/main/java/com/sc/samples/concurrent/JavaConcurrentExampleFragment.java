@@ -1,7 +1,8 @@
-package com.sc.samples;
+package com.sc.samples.concurrent;
 
 import android.content.Intent;
 
+import com.sc.samples.BaseExampleFragment;
 import com.sc.samples.concurrent.BlockingQueueExampleActivity;
 import com.sc.samples.concurrent.CallableAndFutureExampleActivity;
 import com.sc.samples.concurrent.ExecutorCompletionServiceExampleActivity;

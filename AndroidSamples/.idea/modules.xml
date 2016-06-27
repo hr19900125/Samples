@@ -6,11 +6,11 @@
       <module fileurl="file://$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" filepath="$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" filepath="$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" filepath="$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FileScanner/FileScanner.iml" filepath="$PROJECT_DIR$/FileScanner/FileScanner.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hellsing/Hellsing.iml" filepath="$PROJECT_DIR$/Hellsing/Hellsing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HrExamples/MaterialDesign.iml" filepath="$PROJECT_DIR$/HrExamples/MaterialDesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HrExamples/HrExamples.iml" filepath="$PROJECT_DIR$/HrExamples/HrExamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/LoaderSample/LoaderSample.iml" filepath="$PROJECT_DIR$/LoaderSample/LoaderSample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HrExamples/MaterialDesign.iml" filepath="$PROJECT_DIR$/HrExamples/MaterialDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" filepath="$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewGridQuickreturn/RecyclerViewGridQuickreturn.iml" filepath="$PROJECT_DIR$/RecyclerViewGridQuickreturn/RecyclerViewGridQuickreturn.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />

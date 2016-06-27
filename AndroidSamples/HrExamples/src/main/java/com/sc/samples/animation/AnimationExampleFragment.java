@@ -1,4 +1,6 @@
-package com.sc.samples;
+package com.sc.samples.animation;
+
+import com.sc.samples.BaseExampleFragment;
 
 /**
  * Android Animation Examples

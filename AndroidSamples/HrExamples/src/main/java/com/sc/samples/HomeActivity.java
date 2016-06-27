@@ -3,7 +3,6 @@ package com.sc.samples;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.sc.samples.animation.AnimationExampleFragment;
+import com.sc.samples.blog.BlogFragment;
+import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
+import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
+import com.sc.samples.example.ExampleFragment;
+import com.sc.samples.rxjava.RxJavaExampleFragment;
+import com.sc.samples.wiki.WikiFragment;
 
 public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSelectedFragmentDelegate {
 
@@ -41,6 +48,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         setUpProfileImage();
 
         switchToExample();
+    }
+
+    private void switchToCodeSnippet() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new CodeSnippetExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_codesnippet);
     }
 
     /**
@@ -96,6 +108,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.navigation_codesnippet:
+                        switchToCodeSnippet();
+                        break;
                     case R.id.navigation_item_example:
                         switchToExample();
                         break;

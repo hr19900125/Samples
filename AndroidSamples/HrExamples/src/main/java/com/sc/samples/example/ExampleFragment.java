@@ -1,4 +1,4 @@
-package com.sc.samples;
+package com.sc.samples.example;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.sc.samples.BaseExampleFragment;
 import com.sc.samples.example.ActLifeCycleActivity;
 import com.sc.samples.example.AndroidMessageActivity;
 import com.sc.samples.example.AsyncTaskActivity;
