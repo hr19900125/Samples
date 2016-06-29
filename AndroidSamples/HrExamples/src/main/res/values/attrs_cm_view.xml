@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="customText" format="string" />
+    <attr name="customColor" format="color" />
+    <attr name="customFontSize" format="dimension"/>
+
+    <declare-styleable name="CmView2">
+        <attr name="customText2" format="string"/>
+        <attr name="customColor2" format="color"/>
+        <attr name="customFontSize2" format="dimension"/>
+    </declare-styleable>
+</resources>

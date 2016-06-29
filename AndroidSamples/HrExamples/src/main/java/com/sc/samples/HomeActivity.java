@@ -19,6 +19,7 @@ import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
 import com.sc.samples.example.ExampleFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
+import com.sc.samples.widget.WidgetFragment;
 import com.sc.samples.wiki.WikiFragment;
 
 public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSelectedFragmentDelegate {

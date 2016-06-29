@@ -3,7 +3,6 @@ package com.sc.samples.wiki;
 import android.content.Intent;
 
 import com.sc.samples.BaseExampleFragment;
-import com.sc.samples.wiki.ArticleActivity;
 
 /**
  * 收集一些好的网上的文章，组织成wiki
@@ -12,7 +11,7 @@ public class WikiFragment extends BaseExampleFragment {
 
     @Override
     protected String[] initData() {
-        return new String[]{"EventLog日志分析", "dumpsys命令用法", "RxJava操作符：defer", "ReactiveX文档中文翻译", "adb logcat查看日志", "Android内存分析命令"};
+        return new String[]{"EventLog日志分析", "dumpsys命令用法", "RxJava操作符：defer", "ReactiveX文档中文翻译", "adb logcat查看日志", "Android内存分析命令", " Android中View自定义XML属性详解以及R.attr与R.styleable的区别", "Android开发之Theme、Style探索及源码浅析"};
     }
 
     @Override
@@ -53,6 +52,18 @@ public class WikiFragment extends BaseExampleFragment {
                 intent = new Intent();
                 //Android内存分析命令
                 intent.putExtra(ArticleActivity.EXTRA_URL, "http://gityuan.com/2016/01/02/memory-analysis-command/");
+                intent.setClass(getActivity(), ArticleActivity.class);
+                break;
+            case 6:
+                intent = new Intent();
+                //Android中View自定义XML属性详解以及R.attr与R.styleable的区别
+                intent.putExtra(ArticleActivity.EXTRA_URL, "http://blog.csdn.net/iispring/article/details/50708044");
+                intent.setClass(getActivity(), ArticleActivity.class);
+                break;
+            case 7:
+                intent = new Intent();
+                //Android开发之Theme、Style探索及源码浅析
+                intent.putExtra(ArticleActivity.EXTRA_URL, "http://blog.csdn.net/yanbober/article/details/51015630");
                 intent.setClass(getActivity(), ArticleActivity.class);
                 break;
         }

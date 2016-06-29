@@ -54,6 +54,8 @@
 
         <activity android:name=".codesnippet.FileObserverActivity" />
 
+        <activity android:name=".widget.custom.CustomViewActivity" />
+        <activity android:name=".widget.custom.CustomViewActivity2" />
     </application>
 
 </manifest>
