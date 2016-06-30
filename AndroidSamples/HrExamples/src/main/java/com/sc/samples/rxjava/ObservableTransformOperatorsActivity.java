@@ -1,13 +1,19 @@
 package com.sc.samples.rxjava;
 
+import android.os.SystemClock;
+
 import com.sc.samples.BaseActivity;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * RxJava 变换操作
@@ -17,6 +23,7 @@ public class ObservableTransformOperatorsActivity extends BaseActivity {
     protected void click() {
         map();
         flatMap();
+        buffer();
     }
 
     /**
@@ -75,7 +82,67 @@ public class ObservableTransformOperatorsActivity extends BaseActivity {
      *
      */
     private void buffer(){
-        printlnToTextView("buffer-------------------------------");
-//        Observable.
+        printlnToTextView("buffer(int)-------------------------------");
+        Observable.range(1, 10).buffer(3).subscribe(new Action1<List<Integer>>() {
+            @Override
+            public void call(List<Integer> integers) {
+                printlnToTextView("####");
+                for (int i = 0; i < integers.size(); i++) {
+                    printlnToTextView("" + integers.get(i));
+                }
+            }
+        });
+
+        printlnToTextView("buffer(int, int) count > skip-------------------------------");
+        Observable.range(1, 10).buffer(3, 2).subscribe(new Action1<List<Integer>>() {
+            @Override
+            public void call(List<Integer> integers) {
+                printlnToTextView("####");
+                for (int i = 0; i < integers.size(); i++) {
+                    printlnToTextView("" + integers.get(i));
+                }
+            }
+        });
+
+        printlnToTextView("buffer(int, int) count < skip-------------------------------");
+        Observable.range(1, 10).buffer(2, 3).subscribe(new Action1<List<Integer>>() {
+            @Override
+            public void call(List<Integer> integers) {
+                printlnToTextView("####");
+                for (int i = 0; i < integers.size(); i++) {
+                    printlnToTextView("" + integers.get(i));
+                }
+            }
+        });
+
+        printlnToTextView("buffer(int, TimeUnit) 周期性发送buffer-------------------------------");
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                if (subscriber.isUnsubscribed()) return;
+                while (true) {
+                    subscriber.onNext("消息" + SystemClock.elapsedRealtime());
+                    SystemClock.sleep(2000);//每隔2s发送消息
+                }
+
+            }
+        }).subscribeOn(Schedulers.io()).
+                buffer(3, TimeUnit.SECONDS).//每隔3秒 取出消息
+                subscribe(new Observer<List<String>>() {
+            @Override
+            public void onCompleted() {
+                printlnToTextView("-----------------onCompleted:");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                printlnToTextView("----------------->onError:");
+            }
+
+            @Override
+            public void onNext(List<String> strings) {
+                printlnToTextView("----------------->onNext:" + strings);
+            }
+        });
     }
 }

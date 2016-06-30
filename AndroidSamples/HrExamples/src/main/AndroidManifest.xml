@@ -49,6 +49,7 @@
         <activity android:name=".rxjava.ObservableJustActivity" />
         <activity android:name=".rxjava.SubscribeActionActivity" />
         <activity android:name=".rxjava.ObservableCreateOperatorsActivity" />
+        <activity android:name=".rxjava.ObservableTransformOperatorsActivity" />
 
         <activity android:name=".wiki.ArticleActivity" />
 

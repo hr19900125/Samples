@@ -85,6 +85,10 @@ public class RxJavaExampleFragment extends BaseFragment {
                 intent = new Intent();
                 intent.setClass(getActivity(), ObservableCreateOperatorsActivity.class);
                 break;
+            case 5:
+                intent = new Intent();
+                intent.setClass(getActivity(), ObservableTransformOperatorsActivity.class);
+                break;
         }
 
         if (intent != null) {
