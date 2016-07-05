@@ -50,6 +50,7 @@
         <activity android:name=".rxjava.SubscribeActionActivity" />
         <activity android:name=".rxjava.ObservableCreateOperatorsActivity" />
         <activity android:name=".rxjava.ObservableTransformOperatorsActivity" />
+        <activity android:name=".rxjava.ObservableFilteringOperatorsActivity" />
 
         <activity android:name=".wiki.ArticleActivity" />
 
@@ -57,6 +58,7 @@
 
         <activity android:name=".widget.custom.CustomViewActivity" />
         <activity android:name=".widget.custom.CustomViewActivity2" />
+        <activity android:name=".widget.RecyclerViewBug1Activity" />
     </application>
 
 </manifest>

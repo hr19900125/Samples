@@ -13,6 +13,8 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.functions.Func2;
+import rx.observables.GroupedObservable;
 import rx.schedulers.Schedulers;
 
 /**
@@ -21,9 +23,12 @@ import rx.schedulers.Schedulers;
 public class ObservableTransformOperatorsActivity extends BaseActivity {
     @Override
     protected void click() {
-        map();
-        flatMap();
-        buffer();
+//        map();
+//        flatMap();
+//        buffer();
+//        groupBy();
+//        scan();
+        window();
     }
 
     /**
@@ -81,7 +86,7 @@ public class ObservableTransformOperatorsActivity extends BaseActivity {
     /**
      *
      */
-    private void buffer(){
+    private void buffer() {
         printlnToTextView("buffer(int)-------------------------------");
         Observable.range(1, 10).buffer(3).subscribe(new Action1<List<Integer>>() {
             @Override
@@ -142,6 +147,63 @@ public class ObservableTransformOperatorsActivity extends BaseActivity {
             @Override
             public void onNext(List<String> strings) {
                 printlnToTextView("----------------->onNext:" + strings);
+            }
+        });
+    }
+
+    private void groupBy() {
+        printlnToTextView("groupBy-------------------------------");
+        Observable.interval(1, TimeUnit.SECONDS).take(10).groupBy(new Func1<Long, Long>() {
+            @Override
+            public Long call(Long aLong) {
+                return aLong % 4;
+            }
+        }).subscribe(new Action1<GroupedObservable<Long, Long>>() {
+            @Override
+            public void call(final GroupedObservable<Long, Long> result) {
+                result.subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        printlnToTextView("key:" + result.getKey() + ",value:" + aLong);
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * Scan操作符对原始Observable发射的第一项数据应用一个函数，然后将那个函数的结果作为自己的第一项数据发射。它将函数的结果同第二项数据一起填充给这个函数来产生它自己的第二项数据。它持续进行这个过程来产生剩余的数据序列。这个操作符在某些情况下被叫做accumulator。
+     */
+    private void scan() {
+        printlnToTextView("scan-------------------------------");
+        Observable.just(1, 2, 3, 4, 5).scan(new Func2<Integer, Integer, Integer>() {
+            @Override
+            public Integer call(Integer sum, Integer item) {
+                return sum + item;
+            }
+        }).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer sum) {
+                printlnToTextView("sum = " + sum);
+            }
+        });
+    }
+
+    /**
+     * window操作符非常类似于buffer操作符，区别在于buffer操作符产生的结果是一个List缓存，而window操作符产生的结果是一个Observable，订阅者可以对这个结果Observable重新进行订阅处理。
+     */
+    private void window() {
+        printlnToTextView("window-------------------------------");
+        Observable.interval(1, TimeUnit.SECONDS).take(12).window(3).subscribe(new Action1<Observable<Long>>() {
+            @Override
+            public void call(Observable<Long> observable) {
+                printlnToTextView("divide ---");
+                observable.subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        printlnToTextView(String.valueOf(aLong));
+                    }
+                });
             }
         });
     }

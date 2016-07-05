@@ -1,12 +1,6 @@
 package com.sc.samples.rxjava;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.sc.samples.BaseActivity;
-import com.sc.samples.R;
 
 import rx.Observable;
 import rx.functions.Action1;

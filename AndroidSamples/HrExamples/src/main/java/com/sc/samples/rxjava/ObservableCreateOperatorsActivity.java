@@ -22,8 +22,6 @@ public class ObservableCreateOperatorsActivity extends BaseActivity {
         create();
 //        map();
 //        flatMap();
-        filter();
-        take();
         doOnNext();
         defer();
 //        interval();
@@ -71,37 +69,6 @@ public class ObservableCreateOperatorsActivity extends BaseActivity {
             public void onNext(Integer integer) {
                 printlnToTextView("onNext threadId : " + Thread.currentThread().getId());
                 printlnToTextView("Next: " + integer);
-            }
-        });
-    }
-
-    /**
-     * 把不符合条件的过滤掉,留下符合条件的事件
-     */
-    private void filter() {
-        printlnToTextView("filter-------------------------------");
-        Observable.from(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}).filter(new Func1<Integer, Boolean>() {
-            @Override
-            public Boolean call(Integer integer) {
-                return integer > 5;
-            }
-        }).subscribe(new Action1<Integer>() {
-            @Override
-            public void call(Integer integer) {
-                printlnToTextView(String.valueOf(integer));
-            }
-        });
-    }
-
-    /**
-     * 取前面几个事件
-     */
-    private void take() {
-        printlnToTextView("take-------------------------------");
-        Observable.from(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}).take(4).subscribe(new Action1<Integer>() {
-            @Override
-            public void call(Integer integer) {
-                printlnToTextView(String.valueOf(integer));
             }
         });
     }

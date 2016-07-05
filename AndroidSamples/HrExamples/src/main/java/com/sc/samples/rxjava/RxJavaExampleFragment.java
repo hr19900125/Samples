@@ -27,7 +27,9 @@ public class RxJavaExampleFragment extends BaseFragment {
             "RxJava :Creating an Observable via just",
             "RxJava :Subscribe Action",
             "RxJava :Create Operators(创建操作)",
-            "RxJava :Transform Operators(变换操作)"
+            "RxJava :Transform Operators(变换操作)",
+            "RxJava :Filtering Operators(过滤操作)",
+            "RxJava :Combinning Operators(结合操作)"
     };
 
     @Override
@@ -88,6 +90,14 @@ public class RxJavaExampleFragment extends BaseFragment {
             case 5:
                 intent = new Intent();
                 intent.setClass(getActivity(), ObservableTransformOperatorsActivity.class);
+                break;
+            case 6:
+                intent = new Intent();
+                intent.setClass(getActivity(), ObservableFilteringOperatorsActivity.class);
+                break;
+            case 7:
+                intent = new Intent();
+                intent.setClass(getActivity(), ObservableCombiningOperatorsActivity.class);
                 break;
         }
 

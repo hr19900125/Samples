@@ -33,7 +33,7 @@ public class FileObserverActivity extends BaseActivity {
     }
 
     private void initFileObserver() {
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Customize/Fonts";
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM";
         mFileObserver = new MyFileObserver(path, FileObserver.ALL_EVENTS);
         mFileObserver.startWatching();
         printlnToTextView("startWatching path = " + path);

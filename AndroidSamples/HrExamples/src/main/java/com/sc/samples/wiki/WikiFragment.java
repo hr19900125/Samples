@@ -11,7 +11,7 @@ public class WikiFragment extends BaseExampleFragment {
 
     @Override
     protected String[] initData() {
-        return new String[]{"EventLog日志分析", "dumpsys命令用法", "RxJava操作符：defer", "ReactiveX文档中文翻译", "adb logcat查看日志", "Android内存分析命令", " Android中View自定义XML属性详解以及R.attr与R.styleable的区别", "Android开发之Theme、Style探索及源码浅析"};
+        return new String[]{"EventLog日志分析", "dumpsys命令用法", "RxJava操作符：defer", "ReactiveX文档中文翻译", "adb logcat查看日志", "Android内存分析命令", " Android中View自定义XML属性详解以及R.attr与R.styleable的区别", "Android开发之Theme、Style探索及源码浅析", "Android5 Zygote 与 SystemServer 启动流程分析"};
     }
 
     @Override
@@ -64,6 +64,12 @@ public class WikiFragment extends BaseExampleFragment {
                 intent = new Intent();
                 //Android开发之Theme、Style探索及源码浅析
                 intent.putExtra(ArticleActivity.EXTRA_URL, "http://blog.csdn.net/yanbober/article/details/51015630");
+                intent.setClass(getActivity(), ArticleActivity.class);
+                break;
+            case 8:
+                intent = new Intent();
+                //Android5 Zygote 与 SystemServer 启动流程分析
+                intent.putExtra(ArticleActivity.EXTRA_URL, "http://blog.csdn.net/kesalin/article/details/50735920");
                 intent.setClass(getActivity(), ArticleActivity.class);
                 break;
         }
