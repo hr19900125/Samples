@@ -11,7 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/LoaderSample/LoaderSample.iml" filepath="$PROJECT_DIR$/LoaderSample/LoaderSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/HrExamples/MaterialDesign.iml" filepath="$PROJECT_DIR$/HrExamples/MaterialDesign.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" filepath="$PROJECT_DIR$/RecyclerViewDemo/RecyclerViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/RecyclerViewGridQuickreturn/RecyclerViewGridQuickreturn.iml" filepath="$PROJECT_DIR$/RecyclerViewGridQuickreturn/RecyclerViewGridQuickreturn.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" filepath="$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" />
