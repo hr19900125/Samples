@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ import java.util.List;
 /**
  *
  */
-public class RecyclerViewBug1Activity extends Activity {
+public class RecyclerViewBug1Activity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter mRecyclerAdapter;

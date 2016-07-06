@@ -11,7 +11,7 @@ public class CodeSnippetExampleFragment extends BaseExampleFragment {
 
     @Override
     protected String[] initData() {
-        return new String[]{"FileObserver"};
+        return new String[]{"FileObserver", "获取应用签名(Apk Sign)"};
     }
 
     @Override
@@ -21,6 +21,10 @@ public class CodeSnippetExampleFragment extends BaseExampleFragment {
             case 0:
                 intent = new Intent();
                 intent.setClass(getActivity(), FileObserverActivity.class);
+                break;
+            case 1:
+                intent = new Intent();
+                intent.setClass(getActivity(), ApkSignaturesActivity.class);
                 break;
         }
 

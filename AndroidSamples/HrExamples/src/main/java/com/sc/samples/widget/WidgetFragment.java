@@ -25,7 +25,8 @@ public class WidgetFragment extends BaseFragment {
     private String[] mData = new String[]{
             "Android自定义View属性(attr)",
             "Android自定义View属性(declare-styleable)",
-            "一个RecyclerView原生BUG的探讨"
+            "一个RecyclerView原生BUG的探讨",
+            "RecyclerView Example"
     };
 
     @Override
@@ -74,6 +75,10 @@ public class WidgetFragment extends BaseFragment {
             case 2:
                 intent = new Intent();
                 intent.setClass(getActivity(), RecyclerViewBug1Activity.class);
+                break;
+            case 3:
+                intent = new Intent();
+                intent.setClass(getActivity(), RecyclerViewExampleActivity.class);
                 break;
         }
 

@@ -3,10 +3,11 @@
     package="com.sc.samples">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--往sdcard中写入数据的权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <!--在sdcard中创建/删除文件的权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 允许读写外部存储设备 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -51,14 +52,17 @@
         <activity android:name=".rxjava.ObservableCreateOperatorsActivity" />
         <activity android:name=".rxjava.ObservableTransformOperatorsActivity" />
         <activity android:name=".rxjava.ObservableFilteringOperatorsActivity" />
+        <activity android:name=".rxjava.ObservableCombiningOperatorsActivity" />
 
         <activity android:name=".wiki.ArticleActivity" />
 
         <activity android:name=".codesnippet.FileObserverActivity" />
+        <activity android:name=".codesnippet.ApkSignaturesActivity" />
 
         <activity android:name=".widget.custom.CustomViewActivity" />
         <activity android:name=".widget.custom.CustomViewActivity2" />
         <activity android:name=".widget.RecyclerViewBug1Activity" />
+        <activity android:name=".widget.RecyclerViewExampleActivity" />
     </application>
 
 </manifest>
