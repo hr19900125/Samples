@@ -26,7 +26,9 @@ public class WidgetFragment extends BaseFragment {
             "Android自定义View属性(attr)",
             "Android自定义View属性(declare-styleable)",
             "一个RecyclerView原生BUG的探讨",
-            "RecyclerView Example"
+            "RecyclerView Example",
+            "RecyclerView Example(2)",
+            "SwipeRefreshLayout Example"
     };
 
     @Override
@@ -79,6 +81,14 @@ public class WidgetFragment extends BaseFragment {
             case 3:
                 intent = new Intent();
                 intent.setClass(getActivity(), RecyclerViewExampleActivity.class);
+                break;
+            case 4:
+                intent = new Intent();
+                intent.setClass(getActivity(), RecyclerViewExample2Activity.class);
+                break;
+            case 5:
+                intent = new Intent();
+                intent.setClass(getActivity(), SwipeRefreshLayoutExampleActivity.class);
                 break;
         }
 

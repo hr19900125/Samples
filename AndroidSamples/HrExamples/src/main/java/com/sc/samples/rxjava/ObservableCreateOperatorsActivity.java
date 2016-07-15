@@ -20,8 +20,6 @@ public class ObservableCreateOperatorsActivity extends BaseActivity {
     @Override
     protected void click() {
         create();
-//        map();
-//        flatMap();
         doOnNext();
         defer();
 //        interval();

@@ -63,6 +63,19 @@
         <activity android:name=".widget.custom.CustomViewActivity2" />
         <activity android:name=".widget.RecyclerViewBug1Activity" />
         <activity android:name=".widget.RecyclerViewExampleActivity" />
+        <activity android:name=".widget.RecyclerViewExample2Activity" />
+        <activity android:name=".widget.SwipeRefreshLayoutExampleActivity" />
+
+        <activity android:name=".animation.AlphaAnimationExampleActivity" />
+        <activity android:name=".animation.ScaleAnimationExampleActivity" />
+        <activity android:name=".animation.TranslateAnimationExampleActivity" />
+        <activity android:name=".animation.RotateAnimationExampleActivity" />
+        <activity android:name=".animation.SetAnimationExampleActivity" />
+        <activity android:name=".animation.ScaleAnimationInterpolatorActivity" />
+        <activity android:name=".animation.RotateAnimationInterpolatorActivity" />
+        <activity android:name=".animation.AlphaAnimationInterpolatorActivity" />
+        <activity android:name=".animation.TranslateAnimationInterpolatorActivity" />
+        <activity android:name=".animation.ValueAnimatorExample1Activity" />
     </application>
 
 </manifest>

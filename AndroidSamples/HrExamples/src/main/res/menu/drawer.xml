@@ -51,5 +51,10 @@
             android:id="@+id/navigation_item_about"
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_about" />
+
+        <item
+            android:id="@+id/navigation_item_filescan"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_filescan" />
     </group>
 </menu>

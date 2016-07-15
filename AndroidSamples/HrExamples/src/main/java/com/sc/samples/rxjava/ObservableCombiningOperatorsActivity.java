@@ -9,7 +9,7 @@ import rx.functions.Func3;
 import rx.schedulers.Schedulers;
 
 /**
- *
+ * http://blog.csdn.net/xmxkf/article/details/51656736
  */
 public class ObservableCombiningOperatorsActivity extends BaseActivity {
 
@@ -148,6 +148,4 @@ public class ObservableCombiningOperatorsActivity extends BaseActivity {
             }
         }).subscribeOn(Schedulers.newThread());
     }
-
-
 }

@@ -44,6 +44,14 @@ public class RecyclerViewBug1Activity extends AppCompatActivity {
             int size = searchDatas.size();
             for (int i = 0; i < 10; i++) {
                 searchDatas.add("这是第" + (size + i) + "个搜索");
+                if(i == 5) {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
             }
             mHandler.sendEmptyMessage(0);
         }
@@ -65,7 +73,7 @@ public class RecyclerViewBug1Activity extends AppCompatActivity {
                 if (!isLoading) {
                     isLoading = true;
                     searchDatas.clear();
-                    mRecyclerAdapter.notifyDataSetChanged();
+//                    mRecyclerAdapter.notifyDataSetChanged();
                     new Thread(searchTask).start();
                 }
             }

@@ -18,6 +18,7 @@ import com.sc.samples.blog.BlogFragment;
 import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
 import com.sc.samples.example.ExampleFragment;
+import com.sc.samples.filescan.FileScanFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
 import com.sc.samples.widget.WidgetFragment;
 import com.sc.samples.wiki.WikiFragment;
@@ -48,7 +49,8 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
 
         setUpProfileImage();
 
-        switchToExample();
+//        switchToExample();
+        switchToFileScan();
     }
 
     private void switchToCodeSnippet() {
@@ -104,6 +106,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_about);
     }
 
+    private void switchToFileScan() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new FileScanFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_filescan);
+    }
+
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -138,6 +145,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_about:
                         switchToAbout();
+                        break;
+                    case R.id.navigation_item_filescan:
+                        switchToFileScan();
                         break;
                 }
                 item.setChecked(true);
