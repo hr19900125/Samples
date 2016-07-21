@@ -13,6 +13,7 @@ import com.sc.samples.BaseFragment;
  */
 public class FileScanFragment extends BaseFragment {
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
