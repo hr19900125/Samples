@@ -77,6 +77,7 @@
         <activity android:name=".animation.TranslateAnimationInterpolatorActivity" />
         <activity android:name=".animation.ValueAnimatorExample1Activity" />
         <activity android:name=".animation.ValueAnimatorExample2Activity" />
+        <activity android:name=".animation.ValueAnimatorExample3Activity" />
     </application>
 
 </manifest>

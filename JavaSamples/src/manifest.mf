@@ -1,0 +1,4 @@
+Premain-class: com.ryan.java.size.SizeOfObject  
+Can-Redefine-Classes: false  
+Boot-Class-Path: 
+ 

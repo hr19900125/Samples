@@ -28,4 +28,11 @@
         android:padding="10dp"
         android:text="Hello Animator!" />
 
+    <com.sc.samples.animation.MyPointView
+        android:id="@+id/point_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text"
+        android:visibility="gone" />
+
 </RelativeLayout>

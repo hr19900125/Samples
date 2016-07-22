@@ -1,12 +1,13 @@
 package com.sc.samples.animation;
 
 import android.animation.Animator;
+import android.animation.TimeInterpolator;
+import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -82,9 +83,32 @@ public class ValueAnimatorExample2Activity extends AppCompatActivity {
         });
 //        animator.setRepeatMode(ValueAnimator.REVERSE);
 //        animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.setInterpolator(new BounceInterpolator());
+//        animator.setInterpolator(new MyInterploator());
+        animator.setEvaluator(new MyEvaluator());
         animator.setDuration(1000);
         animator.start();
         return animator;
+    }
+
+    /**
+     * 自定义Interploator
+     */
+    private static class MyInterploator implements TimeInterpolator {
+
+        @Override
+        public float getInterpolation(float input) {
+            return 1 - input;
+        }
+    }
+
+    /**
+     * 自定义Evaluator
+     */
+    private static class MyEvaluator implements TypeEvaluator<Integer> {
+
+        @Override
+        public Integer evaluate(float fraction, Integer startValue, Integer endValue) {
+            return (int) (200 + startValue + (endValue - startValue) * fraction);
+        }
     }
 }

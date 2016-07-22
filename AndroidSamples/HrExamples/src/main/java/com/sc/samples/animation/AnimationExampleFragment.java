@@ -35,7 +35,8 @@ public class AnimationExampleFragment extends BaseExampleFragment {
                 "Alpha Animation Interpolator",
                 "Translate Animation Interpolator",
                 "Value Animator(1)",
-                "Value Animator(2)"
+                "Value Animator(2)",
+                "Value Animator(3)"
         };
     }
 
@@ -86,6 +87,10 @@ public class AnimationExampleFragment extends BaseExampleFragment {
             case 10:
                 intent = new Intent();
                 intent.setClass(getActivity(), ValueAnimatorExample2Activity.class);
+                break;
+            case 11:
+                intent = new Intent();
+                intent.setClass(getActivity(), ValueAnimatorExample3Activity.class);
                 break;
         }
         if (intent != null) {
