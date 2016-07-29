@@ -28,7 +28,8 @@ public class WidgetFragment extends BaseFragment {
             "一个RecyclerView原生BUG的探讨",
             "RecyclerView Example",
             "RecyclerView Example(2)",
-            "SwipeRefreshLayout Example"
+            "SwipeRefreshLayout Example",
+            "StatusBarUtils(1)"
     };
 
     @Override
@@ -89,6 +90,10 @@ public class WidgetFragment extends BaseFragment {
             case 5:
                 intent = new Intent();
                 intent.setClass(getActivity(), SwipeRefreshLayoutExampleActivity.class);
+                break;
+            case 6:
+//                intent = new Intent();
+//                intent.setClass(getActivity(), );
                 break;
         }
 

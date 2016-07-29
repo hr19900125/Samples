@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.sc.samples.R;
 
 /**
- * ValueAnimator ofObject 使用
+ *
  */
-public class ValueAnimatorExample3Activity extends AppCompatActivity{
+public class ObjectAnimatorExample2Activity extends AppCompatActivity {
 
     private Button mButtonStart;
     private Button mButtonCancel;
@@ -29,11 +29,12 @@ public class ValueAnimatorExample3Activity extends AppCompatActivity{
         mButtonCancel = (Button) findViewById(R.id.btn_cancel);
         mPointView = (MyPointView) findViewById(R.id.point_view);
         mPointView.setVisibility(View.VISIBLE);
+        mTextView.setVisibility(View.GONE);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPointView.doPointAnim();
+                doObjectAnimator();
             }
         });
         mButtonCancel.setOnClickListener(new View.OnClickListener() {
@@ -43,4 +44,11 @@ public class ValueAnimatorExample3Activity extends AppCompatActivity{
             }
         });
     }
+
+    private void doObjectAnimator() {
+        ObjectAnimator animator = ObjectAnimator.ofInt(mPointView, "pointRadius", 0, 100, 0);
+        animator.setDuration(2000);
+        animator.start();
+    }
+
 }

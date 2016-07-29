@@ -31,7 +31,7 @@ public class FileScanFragment extends BaseFragment {
             public void run() {
                 long time1 = System.currentTimeMillis();
                 FileObserver ob = null;
-                for (int i = 0; i <= 10000; i++) {
+                for (int i = 0; i <= 20000; i++) {
                     ob = new MyFileObserver("filePath://" + i);
                     ob.startWatching();
                     mPathMap.put("filePath://" + i, ob);
@@ -48,27 +48,8 @@ public class FileScanFragment extends BaseFragment {
         });
     }
 
-    private static final Runtime s_runtime = Runtime.getRuntime();
-
-    private static long usedMemory() {
-        return s_runtime.totalMemory() - s_runtime.freeMemory();
-    }
-
-    private static void runGC() throws Exception {
-        long usedMem1 = usedMemory(), usedMem2 = Long.MAX_VALUE;
-        for (int i = 0; (usedMem1 < usedMem2) && (i < 500); ++i) {
-            s_runtime.runFinalization();
-            s_runtime.gc();
-            Thread.currentThread().yield();
-            usedMem2 = usedMem1;
-            usedMem1 = usedMemory();
-        }
-    }
-
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

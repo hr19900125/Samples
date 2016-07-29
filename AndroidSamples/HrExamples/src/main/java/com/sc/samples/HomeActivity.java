@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         setUpProfileImage();
 
 //        switchToExample();
-        switchToFileScan();
+
     }
 
     private void switchToCodeSnippet() {

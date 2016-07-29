@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 
 /**
- *
  */
 public class MyPointView extends View {
 
@@ -44,6 +43,14 @@ public class MyPointView extends View {
         animator.setDuration(1000);
         animator.setInterpolator(new BounceInterpolator());
         animator.start();
+    }
+
+    public void setPointRadius(int radius) {
+        if (mCurPoint == null) {
+            mCurPoint = new Point(0);
+        }
+        mCurPoint.setRadius(radius);
+        invalidate();
     }
 
 }

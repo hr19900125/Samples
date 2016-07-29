@@ -78,6 +78,10 @@
         <activity android:name=".animation.ValueAnimatorExample1Activity" />
         <activity android:name=".animation.ValueAnimatorExample2Activity" />
         <activity android:name=".animation.ValueAnimatorExample3Activity" />
+        <activity android:name=".animation.ObjectAnimatorExample1Activity" />
+        <activity android:name=".animation.ObjectAnimatorExample2Activity" />
+        <activity android:name=".animation.ObjectAnimatorExample3Activity" />
+
     </application>
 
 </manifest>
