@@ -23,6 +23,8 @@ public class RealmExampleFragment extends BaseExampleFragment {
         Intent intent = null;
         switch (position) {
             case 0:
+                intent = new Intent();
+                intent.setClass(getActivity(), RealmHelloWorldActivity.class);
                 break;
         }
         if (intent != null) {

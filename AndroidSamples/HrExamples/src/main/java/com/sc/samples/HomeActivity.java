@@ -19,6 +19,7 @@ import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
 import com.sc.samples.example.ExampleFragment;
 import com.sc.samples.filescan.FileScanFragment;
+import com.sc.samples.realm.RealmExampleFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
 import com.sc.samples.widget.WidgetFragment;
 import com.sc.samples.wiki.WikiFragment;
@@ -81,6 +82,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_rxjava);
     }
 
+    private void switchToRealm() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new RealmExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_realm);
+    }
+
     private void switchToWiki() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WikiFragment()).commit();
         mToolbar.setTitle(R.string.navigation_wiki);
@@ -130,6 +136,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_RxJava:
                         switchToRxJavaExample();
+                        break;
+                    case R.id.navigation_item_Realm:
+                        switchToRealm();
                         break;
                     case R.id.navigation_item_wiki:
                         switchToWiki();

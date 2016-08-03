@@ -98,6 +98,7 @@
     <string name="navigation_concurrent">Java 多线程</string>
     <string name="navigation_design_pattern">设计模式</string>
     <string name="navigation_rxjava">RxJava</string>
+    <string name="navigation_realm">Realm</string>
     <string name="navigation_wiki">收藏的文章</string>
     <string name="navigation_widget">控件</string>
     <string name="navigation_animation">动画</string>
