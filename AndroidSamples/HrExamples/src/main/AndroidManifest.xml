@@ -84,6 +84,7 @@
         <activity android:name=".animation.ObjectAnimatorExample3Activity" />
         <activity android:name=".animation.PropertyValuesHolderExampleActivity" />
         <activity android:name=".animation.AnimatorSetExampleActivity" />
+        <activity android:name=".animation.AnimatorSetExample2Activity" />
 
         <activity android:name=".realm.RealmHelloWorldActivity" />
 
