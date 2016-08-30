@@ -42,7 +42,8 @@ public class AnimationExampleFragment extends BaseExampleFragment {
                 "Object Animator(3)",
                 "PropertyValuesHolderExample",
                 "AnimatorSet Example",
-                "AnimatorSet Example(2)"
+                "AnimatorSet Example(2)",
+                "LayoutAnimation Example"
         };
     }
 
@@ -121,6 +122,10 @@ public class AnimationExampleFragment extends BaseExampleFragment {
             case 17:
                 intent = new Intent();
                 intent.setClass(getActivity(), AnimatorSetExample2Activity.class);
+                break;
+            case 18:
+                intent = new Intent();
+                intent.setClass(getActivity(), LayoutAnimationExampleActivity.class);
                 break;
         }
         if (intent != null) {
