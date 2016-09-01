@@ -86,12 +86,11 @@
         <activity android:name=".animation.AnimatorSetExampleActivity" />
         <activity android:name=".animation.AnimatorSetExample2Activity" />
         <activity android:name=".animation.LayoutAnimationExampleActivity" />
+        <activity android:name=".animation.LayoutAnimationExample2Activity" />
+
+        <activity android:name=".design.mvp.MvpMainActivity" />
 
         <activity android:name=".realm.RealmHelloWorldActivity" />
-
-        <service
-            android:name=".filescan.ScanService"
-            android:exported="false" />
 
     </application>
 

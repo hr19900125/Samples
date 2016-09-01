@@ -104,5 +104,4 @@
     <string name="navigation_animation">动画</string>
     <string name="navigation_blog">博客</string>
     <string name="navigation_about">关于</string>
-    <string name="navigation_filescan">文件扫描</string>
 </resources>

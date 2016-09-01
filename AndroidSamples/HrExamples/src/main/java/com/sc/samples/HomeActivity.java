@@ -17,8 +17,8 @@ import com.sc.samples.animation.AnimationExampleFragment;
 import com.sc.samples.blog.BlogFragment;
 import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
+import com.sc.samples.design.DesignExampleFragment;
 import com.sc.samples.example.ExampleFragment;
-import com.sc.samples.filescan.FileScanFragment;
 import com.sc.samples.realm.RealmExampleFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
 import com.sc.samples.widget.WidgetFragment;
@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
     }
 
     private void switchToDesignPattern() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new DesignPatternExampleFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new DesignExampleFragment()).commit();
         mToolbar.setTitle(R.string.navigation_design_pattern);
     }
 
@@ -112,11 +112,6 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_about);
     }
 
-    private void switchToFileScan() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new FileScanFragment()).commit();
-        mToolbar.setTitle(R.string.navigation_filescan);
-    }
-
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -154,9 +149,6 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_about:
                         switchToAbout();
-                        break;
-                    case R.id.navigation_item_filescan:
-                        switchToFileScan();
                         break;
                 }
                 item.setChecked(true);
