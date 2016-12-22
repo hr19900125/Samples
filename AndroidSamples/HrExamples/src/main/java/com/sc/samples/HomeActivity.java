@@ -19,6 +19,7 @@ import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
 import com.sc.samples.design.DesignExampleFragment;
 import com.sc.samples.example.ExampleFragment;
+import com.sc.samples.greendao.GreenDaoExampleFragment;
 import com.sc.samples.realm.RealmExampleFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
 import com.sc.samples.widget.WidgetFragment;
@@ -87,6 +88,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
         mToolbar.setTitle(R.string.navigation_realm);
     }
 
+    private void switchToGreenDao() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new GreenDaoExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_greendao);
+    }
+
     private void switchToWiki() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WikiFragment()).commit();
         mToolbar.setTitle(R.string.navigation_wiki);
@@ -134,6 +140,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_Realm:
                         switchToRealm();
+                        break;
+                    case R.id.navigation_item_GreenDao:
+                        switchToGreenDao();
                         break;
                     case R.id.navigation_item_wiki:
                         switchToWiki();

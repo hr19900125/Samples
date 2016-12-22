@@ -92,6 +92,8 @@
 
         <activity android:name=".realm.RealmHelloWorldActivity" />
 
+        <activity android:name="com.sc.samples.gen.NoteActivity" />
+
     </application>
 
 </manifest>

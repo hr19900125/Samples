@@ -99,9 +99,14 @@
     <string name="navigation_design_pattern">设计模式</string>
     <string name="navigation_rxjava">RxJava</string>
     <string name="navigation_realm">Realm</string>
+    <string name="navigation_greendao">GreenDao</string>
     <string name="navigation_wiki">收藏的文章</string>
     <string name="navigation_widget">控件</string>
     <string name="navigation_animation">动画</string>
     <string name="navigation_blog">博客</string>
     <string name="navigation_about">关于</string>
+
+    <string name="enter_new_note">Enter new note</string>
+    <string name="add">Add</string>
+    <string name="click_to_remove">Click a note to remove it</string>
 </resources>
