@@ -100,6 +100,7 @@
     <string name="navigation_rxjava">RxJava</string>
     <string name="navigation_realm">Realm</string>
     <string name="navigation_greendao">GreenDao</string>
+    <string name="navigation_webview">WebView</string>
     <string name="navigation_wiki">收藏的文章</string>
     <string name="navigation_widget">控件</string>
     <string name="navigation_animation">动画</string>

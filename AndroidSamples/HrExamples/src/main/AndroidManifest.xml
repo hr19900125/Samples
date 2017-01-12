@@ -94,6 +94,8 @@
 
         <activity android:name="com.sc.samples.gen.NoteActivity" />
 
+        <activity android:name=".webview.HelloWebViewActivity" />
+
     </application>
 
 </manifest>
