@@ -96,6 +96,8 @@
 
         <activity android:name=".webview.HelloWebViewActivity" />
 
+        <activity android:name=".appframework.LogFrameActivity" />
+
     </application>
 
 </manifest>

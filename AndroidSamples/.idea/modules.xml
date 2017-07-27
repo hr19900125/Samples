@@ -3,19 +3,33 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidSamples.iml" filepath="$PROJECT_DIR$/AndroidSamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidSamples.iml" filepath="$PROJECT_DIR$/AndroidSamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" filepath="$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" filepath="$PROJECT_DIR$/CustomDrawableState/CustomDrawableState.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" filepath="$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" filepath="$PROJECT_DIR$/CustomWidgetDemo/CustomWidgetDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" filepath="$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" filepath="$PROJECT_DIR$/DownloadManagerTest/DownloadManagerTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" filepath="$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" filepath="$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hellsing/Hellsing.iml" filepath="$PROJECT_DIR$/Hellsing/Hellsing.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hellsing/Hellsing.iml" filepath="$PROJECT_DIR$/Hellsing/Hellsing.iml" />
       <module fileurl="file://$PROJECT_DIR$/HrExamples/HrExamples.iml" filepath="$PROJECT_DIR$/HrExamples/HrExamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HrExamples/HrExamples.iml" filepath="$PROJECT_DIR$/HrExamples/HrExamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" filepath="$PROJECT_DIR$/JobQueueDemo/JobQueueDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoaderSample/LoaderSample.iml" filepath="$PROJECT_DIR$/LoaderSample/LoaderSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/LoaderSample/LoaderSample.iml" filepath="$PROJECT_DIR$/LoaderSample/LoaderSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/HrExamples/MaterialDesign.iml" filepath="$PROJECT_DIR$/HrExamples/MaterialDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" filepath="$PROJECT_DIR$/SlidingDrawerDemo/SlidingDrawerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" filepath="$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" filepath="$PROJECT_DIR$/SurfaceViewSample/SurfaceViewSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/Toolbox/Toolbox.iml" filepath="$PROJECT_DIR$/Toolbox/Toolbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Toolbox/Toolbox.iml" filepath="$PROJECT_DIR$/Toolbox/Toolbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" filepath="$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" filepath="$PROJECT_DIR$/TouchEventDeliver/TouchEventDeliver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmentargument/fragmentargument.iml" filepath="$PROJECT_DIR$/fragmentargument/fragmentargument.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragmentargument/fragmentargument.iml" filepath="$PROJECT_DIR$/fragmentargument/fragmentargument.iml" />
     </modules>
   </component>

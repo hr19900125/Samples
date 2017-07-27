@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sc.samples.animation.AnimationExampleFragment;
+import com.sc.samples.appframework.AppFrameworkExampleFragment;
 import com.sc.samples.blog.BlogFragment;
 import com.sc.samples.codesnippet.CodeSnippetExampleFragment;
 import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
@@ -72,6 +73,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
     private void switchToDesignPattern() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new DesignExampleFragment()).commit();
         mToolbar.setTitle(R.string.navigation_design_pattern);
+    }
+
+    private void switchToFramework() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AppFrameworkExampleFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_framework);
     }
 
     private void switchToJavaConcurrent() {
@@ -137,6 +143,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
                         break;
                     case R.id.navigation_item_design_pattern:
                         switchToDesignPattern();
+                        break;
+                    case R.id.navigation_item_framework:
+                        switchToFramework();
                         break;
                     case R.id.navigation_item_concurrent:
                         switchToJavaConcurrent();

@@ -31,8 +31,20 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:cardview-v7:+'
-    compile 'io.reactivex:rxandroid:1.1.0'
 
+    //rxjava
+    compile 'io.reactivex:rxandroid:1.1.0'
+    //realm
     compile 'io.realm:realm-android:0.84.1'
+    //greendao
     compile 'org.greenrobot:greendao:3.2.0'
+    //android-logback
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'com.github.tony19:logback-android-core:1.1.1-6'
+    compile('com.github.tony19:logback-android-classic:1.1.1-6') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+    //timber
+    compile 'com.jakewharton.timber:timber:4.5.1'
 }

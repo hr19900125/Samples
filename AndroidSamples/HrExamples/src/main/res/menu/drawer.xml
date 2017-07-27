@@ -23,6 +23,11 @@
             android:title="@string/navigation_design_pattern" />
 
         <item
+            android:id="@+id/navigation_item_framework"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_framework" />
+
+        <item
             android:id="@+id/navigation_item_RxJava"
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_rxjava" />
@@ -37,7 +42,8 @@
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_greendao" />
 
-        <item android:id="@+id/navigation_item_webview"
+        <item
+            android:id="@+id/navigation_item_webview"
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_webview" />
 

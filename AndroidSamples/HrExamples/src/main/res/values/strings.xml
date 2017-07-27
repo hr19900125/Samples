@@ -97,6 +97,7 @@
     <string name="navigation_example">例子</string>
     <string name="navigation_concurrent">Java 多线程</string>
     <string name="navigation_design_pattern">设计模式</string>
+    <string name="navigation_framework">架构设计</string>
     <string name="navigation_rxjava">RxJava</string>
     <string name="navigation_realm">Realm</string>
     <string name="navigation_greendao">GreenDao</string>
