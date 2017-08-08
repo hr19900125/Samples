@@ -1,5 +1,6 @@
 package com.sc.samples.codesnippet;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.os.FileObserver;
 import android.util.Log;
