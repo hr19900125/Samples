@@ -1,6 +1,6 @@
 {
 	"samples":[
-		{"name":"Hello World"},
-		{"name":"List Sample"}
+		{"name":"Hello World", "href":"/samples/hello"},
+		{"name":"List Sample", "href":"/samples/list"}
 	]
 }

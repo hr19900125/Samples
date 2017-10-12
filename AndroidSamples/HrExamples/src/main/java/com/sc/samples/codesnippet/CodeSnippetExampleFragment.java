@@ -11,7 +11,7 @@ public class CodeSnippetExampleFragment extends BaseExampleFragment {
 
     @Override
     protected String[] initData() {
-        return new String[]{"FileObserver", "获取应用签名(Apk Sign)", "SQLite SDCard"};
+        return new String[]{"FileObserver", "获取应用签名(Apk Sign)", "SQLite SDCard", "监听网络状态变化"};
     }
 
     @Override
@@ -29,6 +29,10 @@ public class CodeSnippetExampleFragment extends BaseExampleFragment {
             case 2:
                 intent = new Intent();
                 intent.setClass(getActivity(), SQLiteSDCardActivity.class);
+                break;
+            case 3:
+                intent = new Intent();
+                intent.setClass(getActivity(), NetworkStateChangeActivity.class);
                 break;
         }
 
