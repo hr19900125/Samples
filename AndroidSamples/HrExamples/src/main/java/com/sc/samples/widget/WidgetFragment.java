@@ -29,7 +29,8 @@ public class WidgetFragment extends BaseFragment {
             "RecyclerView Example",
             "RecyclerView Example(2)",
             "SwipeRefreshLayout Example",
-            "StatusBarUtils(1)"
+            "StatusBarUtils(1)",
+            "ViewPager Example"
     };
 
     @Override

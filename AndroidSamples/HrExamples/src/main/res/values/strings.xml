@@ -93,6 +93,7 @@
 
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="navigation_home">主页</string>
     <string name="navigation_codesnippet">Code snippet</string>
     <string name="navigation_example">例子</string>
     <string name="navigation_concurrent">Java 多线程</string>

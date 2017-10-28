@@ -21,6 +21,7 @@ import com.sc.samples.concurrent.JavaConcurrentExampleFragment;
 import com.sc.samples.design.DesignExampleFragment;
 import com.sc.samples.example.ExampleFragment;
 import com.sc.samples.greendao.GreenDaoExampleFragment;
+import com.sc.samples.home.HomeFragment;
 import com.sc.samples.realm.RealmExampleFragment;
 import com.sc.samples.rxjava.RxJavaExampleFragment;
 import com.sc.samples.webview.WebViewFragment;
@@ -55,6 +56,11 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
 
 //        switchToExample();
 
+    }
+
+    private void switchToHome() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new HomeFragment()).commit();
+        mToolbar.setTitle(R.string.navigation_home);
     }
 
     private void switchToCodeSnippet() {
@@ -135,6 +141,9 @@ public class HomeActivity extends AppCompatActivity implements BaseFragment.OnSe
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        switchToHome();
+                        break;
                     case R.id.navigation_codesnippet:
                         switchToCodeSnippet();
                         break;
