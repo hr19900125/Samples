@@ -6,4 +6,12 @@
         <attr name="civ_border_overlay" format="boolean" />
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="WaterRippleView">
+        <attr name="myRippleSpacing" format="dimension|reference" />
+        <attr name="myRippleCount" format="integer|reference" />
+        <attr name="myRippleColor" format="color|reference" />
+        <attr name="myRippleCenterIcon" format="reference" />
+        <attr name="myRippleAutoRunning" format="boolean" />
+    </declare-styleable>
 </resources>

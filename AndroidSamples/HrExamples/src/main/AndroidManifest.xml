@@ -71,6 +71,7 @@
         <activity android:name=".widget.RecyclerViewExampleActivity" />
         <activity android:name=".widget.RecyclerViewExample2Activity" />
         <activity android:name=".widget.SwipeRefreshLayoutExampleActivity" />
+        <activity android:name=".widget.WaterRippleViewActivity" />
 
         <activity android:name=".animation.AlphaAnimationExampleActivity" />
         <activity android:name=".animation.ScaleAnimationExampleActivity" />

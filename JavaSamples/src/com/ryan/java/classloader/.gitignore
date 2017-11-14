@@ -4,3 +4,7 @@
 /ClassTest.class
 /MyClassLoader.class
 /URLClassLoaderTest.class
+/ClassLoaderTree.class
+/Sample.class
+/DiffClassLoader.class
+/FileSystemClassLoader.class
