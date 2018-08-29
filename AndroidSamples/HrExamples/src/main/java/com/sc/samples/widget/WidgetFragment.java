@@ -31,7 +31,8 @@ public class WidgetFragment extends BaseFragment {
             "SwipeRefreshLayout Example",
             "StatusBarUtils(1)",
             "ViewPager Example",
-            "水波纹效果"
+            "水波纹效果",
+            "Zoom ImageView",
     };
 
     @Override
@@ -100,6 +101,10 @@ public class WidgetFragment extends BaseFragment {
             case 8:
                 intent = new Intent();
                 intent.setClass(getActivity(), WaterRippleViewActivity.class);
+                break;
+            case 9:
+                intent = new Intent();
+                intent.setClass(getActivity(), ZoomImageViewActivity.class);
                 break;
         }
 
