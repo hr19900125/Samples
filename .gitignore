@@ -30,4 +30,5 @@
 */.idea/libraries
 # Keystore files
 **.jks
+*/out/
 

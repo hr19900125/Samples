@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d908dc85-a601-43d3-a209-d9b48e6842dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../JavaSamples/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hr/train/Index.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hr/train/reflect/Reflect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hr/train/reflect/ReflectException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hr/train/reflect/test/ReflectTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaSamples/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaSamples/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaSamples/src/com/ryan/java/concurrent/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaSamples/src/com/ryan/java/concurrent/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="d908dc85-a601-43d3-a209-d9b48e6842dc" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -94,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hr/train/reflect/test/ReflectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+            <state relative-caret-position="315">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#201#202#0" expanded="true" />
@@ -491,7 +482,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535633878622" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535636235800" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -617,8 +608,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hr/train/reflect/test/ReflectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        <state relative-caret-position="315">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#201#202#0" expanded="true" />
